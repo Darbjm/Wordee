@@ -41,7 +41,7 @@ class Navbar extends React.Component {
           </div>
           <Link className="navbar-item has-text-white" to="/map/london">MAP</Link>
           <div className="navbar-item has-dropdown is-hoverable">
-            <a className="navbar-link has-text-white is-arrowless" onClick={this.toggleNavBar}>SKILLS</a>
+            <a className="navbar-link has-text-white is-arrowless" onClick={this.toggleNavBar}>CHEFS</a>
             {
               navbarOpen &&
               <div className="navbar-dropdown">
@@ -68,7 +68,6 @@ class Navbar extends React.Component {
           <div className="navbar-end">
             {!Auth.isAuthenticated() && <Link className="navbar-item has-text-white" to="/register">SIGN UP</Link>}
             {!Auth.isAuthenticated() && <Link className="navbar-item has-text-white" to="/login">LOGIN</Link>}
-            {/* {Auth.isAuthenticated() && <Link className="navbar-item has-text-white" to="/messages">Inbox</Link>} */}
             {Auth.isAuthenticated() && <Link className="navbar-item has-text-white" to="/offers">OFFERS</Link>}
             {Auth.isAuthenticated() && <Link className="navbar-item has-text-white" to="/profile">PROFILE</Link>}
             {Auth.isAuthenticated() && <a className="navbar-item has-text-white" onClick={this.handleLogout}>LOGOUT</a>}

@@ -38,7 +38,7 @@ class Login extends React.Component {
               <img className="floating-image img-three" src="./../assets/background/steak.png"></img>
               <img className="floating-image img-three" src="./../assets/background/pizza.png"></img>
             </div>
-            <div className="logincolumns">
+            <div className="loginarea">
               <form onSubmit={this.handleSubmit} className="column is-half is-offset-one-quarter is-half-mobile has-text-centered">
                 <h2 className="logintitle has-texted-centered">Login</h2>
                 <div className="field">

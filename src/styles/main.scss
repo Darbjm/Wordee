@@ -845,17 +845,23 @@ div.profileSkills {
   font-size: 50px;
   color: #ffc700;
   font-family: montserrat;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   display: flex;
 }
 
+.loginarea {
+  display: flex;
+  min-width: 50vw;
+  align-items: center;
+}
+
 .logincontainer {
-  height: 100vh;
-  padding: 350px;
+  height: 90vh;
+  display: flex;
   margin: 10px;
-  // justify-content: center;
-  // align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .imagelayer {

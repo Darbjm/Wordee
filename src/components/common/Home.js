@@ -26,7 +26,7 @@ class Home extends React.Component {
         <div className="hero-body">
           <form onSubmit={this.handleSubmit} className="search-bar">
             <div className="search">
-              <input type="text" className="search-text" placeholder="What's your postcode?" onChange={this.handleChange} />
+              <input type="text" className="search-text" placeholder="Choose an area" onChange={this.handleChange} />
               <button type="submit" className="search-button">
                 <img src="../../assets/search.png" />
               </button>
