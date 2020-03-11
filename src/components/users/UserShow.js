@@ -159,7 +159,6 @@ class UserShow extends React.Component {
     return (
       <section className="user-section">
         <div className="profilelayer">
-          <img className="profile-image img-seven" src="./../assets/background/strawberries.png"></img>
           <img className="profile-image img-eight" src="./../assets/background/mexican.png"></img>
         </div>
         <div className="user-container">
