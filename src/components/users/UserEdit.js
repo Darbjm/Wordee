@@ -2,8 +2,6 @@ import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/auth'
 import UserForm from './UserForm'
-//import Select from 'react-select'
-//import ImageUpload from '../ImageUpload'
 
 
 class UserEdit extends React.Component {
@@ -39,7 +37,6 @@ class UserEdit extends React.Component {
 
   async componentDidMount() {
     const UserId = this.props.match.params.id
-    // console.log(this.props.match.params.id)
     try {
       const res = await axios.get(`/api/chefs/${UserId}`, {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }

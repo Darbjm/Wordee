@@ -63,107 +63,107 @@ class Register extends React.Component {
 
   render() {
     return (
-      <section className="user-section">
-        <form onSubmit={this.handleSubmit} className="user-container">
-          <div className="user-info">
-            <h2 className="title">Register</h2>
+      <section className='user-section'>
+        <form onSubmit={this.handleSubmit} className='user-container'>
+          <div className='user-info'>
+            <h2 className='title'>Register</h2>
             <br />
-            <div className="fieldContainer">
-              <div className="field">
-                <label className="label">NAME</label>
-                <div className="control">
+            <div className='fieldContainer'>
+              <div className='field'>
+                <label className='label'>NAME</label>
+                <div className='control'>
                   <input
                     className={`input is-rounded ${this.state.errors.name ? 'is-danger' : ''}`}
-                    placeholder="Name"
-                    name="name"
+                    placeholder='Name'
+                    name='name'
                     onChange={this.handleChange}
                   />
                 </div>
-                {this.state.errors.name && <small className="help is-danger">{this.state.errors.name}</small>}
+                {this.state.errors.name && <small className='help is-danger'>{this.state.errors.name}</small>}
               </div>
-              <div className="field">
-                <label className="label">EMAIL</label>
-                <div className="control">
+              <div className='field'>
+                <label className='label'>EMAIL</label>
+                <div className='control'>
 
                   <input
                     className={`input is-rounded ${this.state.errors.email ? 'is-danger' : ''}`}
-                    placeholder="Email"
-                    name="email"
+                    placeholder='Email'
+                    name='email'
                     onChange={this.handleChange}
                   />
                 </div>
-                {this.state.errors.email && <small className="help is-danger">{this.state.errors.email}</small>}
+                {this.state.errors.email && <small className='help is-danger'>{this.state.errors.email}</small>}
               </div>
-              <div className="field">
-                <label className="label">PASSWORD</label>
-                <div className="control">
+              <div className='field'>
+                <label className='label'>PASSWORD</label>
+                <div className='control'>
                   <input
                     className={`input is-rounded ${this.state.errors.password ? 'is-danger' : ''}`}
-                    type="password"
-                    placeholder="Password"
-                    name="password"
+                    type='password'
+                    placeholder='Password'
+                    name='password'
                     onChange={this.handleChange}
                   />
                 </div>
-                {this.state.errors.password && <small className="help is-danger">{this.state.errors.password}</small>}
+                {this.state.errors.password && <small className='help is-danger'>{this.state.errors.password}</small>}
               </div>
-              <div className="field">
-                <label className="label">PASSWORD CONFIRMATION</label>
-                <div className="control">
+              <div className='field'>
+                <label className='label'>PASSWORD CONFIRMATION</label>
+                <div className='control'>
                   <input
                     className={`input is-rounded ${this.state.errors.passwordConfirmation ? 'is-danger' : ''}`}
-                    type="password"
-                    placeholder="Password Confirmation"
-                    name="passwordConfirmation"
+                    type='password'
+                    placeholder='Password Confirmation'
+                    name='passwordConfirmation'
                     onChange={this.handleChange}
                   />
                 </div>
-                {this.state.errors.passwordConfirmation && <small className="help is-danger">{this.state.errors.passwordConfirmation}</small>}
+                {this.state.errors.passwordConfirmation && <small className='help is-danger'>{this.state.errors.passwordConfirmation}</small>}
               </div>
             </div>
           </div>
-          <div className="user-image">
+          <div className='user-image'>
             <ImageUpload
               handleChange={this.handleChange}
-              fieldName="image"
-              inputClassName="my-input-class"
+              fieldName='image'
+              inputClassName='my-input-class'
             />
             <hr />
-            <button type="submit" className="button is-rounded  is-primary">SAVE</button>
+            <button type='submit' className='button is-rounded  is-primary'>SAVE</button>
           </div>
-          <div className="skills-recipes">
-            <div className="fieldContainer">
-              <label className="label">What are your skills?</label>
-              <div className="control">
+          <div className='skills-recipes'>
+            <div className='fieldContainer'>
+              <label className='label'>What are your skills?</label>
+              <div className='control'>
                 <Select
                   options={this.options}
                   isMulti
                   onChange={this.handleMultiChange}
                 />
               </div>
-              <div className="field">
-                <label className="label">CITY</label>
-                <div className="control">
+              <div className='field'>
+                <label className='label'>CITY</label>
+                <div className='control'>
                   <input
                     className={`input ${this.state.errors.city ? 'is-danger' : ''}`}
-                    placeholder="City"
-                    name="city"
+                    placeholder='City'
+                    name='city'
                     onChange={this.handleChange}
                   />
                 </div>
-                {this.state.errors.city && <small className="help is-danger">{this.state.errors.city}</small>}
+                {this.state.errors.city && <small className='help is-danger'>{this.state.errors.city}</small>}
               </div>
-              <div className="field">
-                <label className="label">POSTCODE</label>
-                <div className="control">
+              <div className='field'>
+                <label className='label'>POSTCODE</label>
+                <div className='control'>
                   <input
                     className={`input ${this.state.errors.postcode ? 'is-danger' : ''}`}
-                    placeholder="Postcode"
-                    name="postcode"
+                    placeholder='Postcode'
+                    name='postcode'
                     onChange={this.handleChange}
                   />
                 </div>
-                {this.state.errors.postcode && <small className="help is-danger">{this.state.errors.postcode}</small>}
+                {this.state.errors.postcode && <small className='help is-danger'>{this.state.errors.postcode}</small>}
               </div>
             </div>
           </div>

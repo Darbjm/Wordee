@@ -1,4 +1,3 @@
-// $orange: rgb(140, 207, 33);
 $orange: rgba(255, 145, 0, 0.95);
 $dark-blue: rgba(10, 17, 27, 0.5);
 
@@ -44,17 +43,6 @@ html {
   align-items: center;
 }
 
-// .hero-body-index {
-//   background-image: url('../assets/photo14.jpeg');
-//   background-size: cover;
-//   height: 50vh;
-//   width: 100%;
-//   display: flex;
-//   align-items: flex-end;
-//   // position: fixed;
-//   // z-index: -1;
-// }
-
 .hero-body-index {
   background-image: url('../assets/back7.jpeg');
   background-size: cover;
@@ -86,14 +74,16 @@ html {
   width: 200px;
 }
 
+.user-email {
+  color: white;
+  text-align: center;
+}
+
 .offers {
     font-size: 40px;
     margin: 40px 40px 80px 40px;
     padding-top: 150px;
     font-family: 'Montserrat Subrayada', sans-serif;
-    // font-family: 'Montserrat', sans-serif;
-    // font-family: 'Caveat', cursive;
-    // font-family: 'Kalam', cursive;
     color: white;
   }
 
@@ -424,14 +414,6 @@ html {
 body {
   width: 100%;
   height: 100%;
-  // height: 90vh;
-  // background-color: rgb(37, 35, 39);
-  // background-image: url('../assets/photo14.jpeg');
-  // background-image: url('../assets/photo9.jpeg');
-  // background-image: url('../assets/photo6.jpeg');
-  // background-image: url('../assets/photo21.jpeg');
-  // background-color: rgba(255, 145, 0, 0.5);
-  // background-size: cover;
   background: rgb(10, 17, 27);
   background: linear-gradient(180deg, rgba(10, 17, 27, 0.5) 35%, rgba(255, 145, 0, 0.85) 100%);
 }
@@ -440,7 +422,6 @@ body {
 
 .user-section {
   display: flex;
-  height: 100vh;
   width: 100vw;
   margin-top: 60px;
   padding: 60px;
@@ -524,13 +505,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: space-around;
-    // max-width: 200px;
-    // background-image: url('../assets/background/slider-1-slide-3-left-bottom.png');
-    // background-repeat: no-repeat;
-    // background-size: 150px;
   }
 
   .user-info{
@@ -544,7 +518,6 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  // height: 150px;
   h2 {
     font-size: 28px;
   }
@@ -568,7 +541,6 @@ body {
   border-right: none;
   border-top: none;
   border-left: none;
-  // background: rgb(69, 77, 78);
   text-align: center;
   cursor: pointer;
   font-size: 20px;
@@ -605,10 +577,8 @@ nav.nav {
 }
 
 div.box {
-  // opacity: 0.5;
   margin-bottom: 20px;
   background-color: rgba(10, 17, 27, 0.3);
-  // background-color: rgba(0, 225, 255, 0.26);
 
   h3, h4, p, h5 {
     color: white;
@@ -652,7 +622,6 @@ div.box {
     align-items: center;
 
     p {
-      // border: 1px solid black;
       background-color: $dark-blue;
       height: fit-content;
       margin: 20px;
@@ -671,7 +640,6 @@ div.box {
     align-items: center;
 
     .offer-skills {
-      // border: 1px solid black;
       background-color: $dark-blue;
       height: fit-content;
       margin: 10px;
@@ -697,12 +665,6 @@ div.box {
     font-size: 40px;
     font-family: "Sriracha", cursive;
     color: white;
-    // font-family: 'Montserrat Subrayada', sans-serif;
-    // font-family: 'Acme', sans-serif;
-    // font-family: 'Caveat', cursive;
-    // font-weight: bold;
-    // font-family: 'Permanent Marker', cursive;
-    // font-family: 'Kalam', cursive;
   }
 }
 
@@ -725,9 +687,6 @@ div.box {
   margin: 40px 40px 80px 40px;
   padding-top: 150px;
   font-family: "Montserrat Subrayada", sans-serif;
-  // font-family: 'Montserrat', sans-serif;
-  // font-family: 'Caveat', cursive;
-  // font-family: 'Kalam', cursive;
   color: white;
 }
 
@@ -849,8 +808,6 @@ h2.username {
   max-width: 380px;
   margin: 40px;
   background-color: #727171;
-  // background: rgb(10, 17, 27);
-  // background: linear-gradient(180deg, rgba(10, 17, 27, 0.5) 35%, rgba(255, 145, 0, 0.85) 100%);
   padding: 15px;
   border: solid 1px #727171;
   border-radius: 3px;
@@ -868,12 +825,7 @@ h2.username {
 .user-info-profile {
   max-width: 380px;
   margin: 40px;
-  // background-color: #727171;
-  // background: rgb(10, 17, 27);
-  // background: linear-gradient(180deg, rgba(10, 17, 27, 0.5) 35%, rgba(255, 145, 0, 0.85) 100%);
   padding: 15px;
-  // border: solid 1px #727171;
-  // border-radius: 3px;
   p,
   label {
     color: white;
@@ -999,15 +951,8 @@ div.profileSkills {
 
     background-repeat: no-repeat;
     background-size: 200px;
-    // display: flex;
-    // flex: 10px;
-    // align-items: flex-end;
   }
 }
-
-// h2 {
-//   font-size: 40px;
-// }
 
 .username {
   font-weight: bold;

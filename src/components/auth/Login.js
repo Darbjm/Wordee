@@ -30,42 +30,42 @@ class Login extends React.Component {
   render() {
     return (
       <>
-        <section className="loginsection"> 
-          <div className="logincontainer">
-            <div className="imagelayer">
-              <img className="floating-image img-one" src="./../assets/background/veggie.png"></img>
-              <img className="floating-image img-two" src="./../assets/background/gyoza.png"></img>
-              <img className="floating-image img-three" src="./../assets/background/steak.png"></img>
-              <img className="floating-image img-three" src="./../assets/background/pizza.png"></img>
+        <section className='loginsection'> 
+          <div className='logincontainer'>
+            <div className='imagelayer'>
+              <img className='floating-image img-one' src='./../assets/background/veggie.png'></img>
+              <img className='floating-image img-two' src='./../assets/background/gyoza.png'></img>
+              <img className='floating-image img-three' src='./../assets/background/steak.png'></img>
+              <img className='floating-image img-three' src='./../assets/background/pizza.png'></img>
             </div>
-            <div className="loginarea">
-              <form onSubmit={this.handleSubmit} className="column is-half is-offset-one-quarter is-half-mobile has-text-centered">
-                <h2 className="logintitle has-texted-centered">Login</h2>
-                <div className="field">
-                  <div className="control">
+            <div className='loginarea'>
+              <form onSubmit={this.handleSubmit} className='column is-half is-offset-one-quarter is-half-mobile has-text-centered'>
+                <h2 className='logintitle has-texted-centered'>Login</h2>
+                <div className='field'>
+                  <div className='control'>
                     <input
                       className={`input is-rounded is-large is-primary ${this.state.error ? 'is-dark' : ''}`}
-                      name="email"
-                      placeholder="Email"
+                      name='email'
+                      placeholder='Email'
                       onChange={this.handleChange}
                     />
                   </div>
                 </div>
-                <div className="loginfield">
+                <div className='loginfield'>
                   <br></br>
-                  <div className="control">
+                  <div className='control'>
                     <input
                       className={`input is-rounded is-large is-primary   ${this.state.error ? 'is-danger' : ''}`}
-                      type="password"
-                      name="password"
-                      placeholder="Password"
+                      type='password'
+                      name='password'
+                      placeholder='Password'
                       onChange={this.handleChange}
                     />
                   </div>
-                  {this.state.error && <small className="is-danger">{this.state.error}</small>}
+                  {this.state.error && <small className='is-danger'>{this.state.error}</small>}
                 </div>
                 <br></br>
-                <button type="submit" className="button is-rounded is-large is-primary is-fullwidth">LETS CHOW</button>
+                <button type='submit' className='button is-rounded is-large is-primary is-fullwidth'>LETS CHOW</button>
               </form>
             </div>
           </div>

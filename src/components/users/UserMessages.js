@@ -47,27 +47,27 @@
 //         {/* {this.state.users.map(user => (
 //           <Link to={`/chefs/${user._id}`} key={user._id}>
 //             {console.log(user)} */}
-//         <div className="box">
-//           <article className="media">
+//         <div className='box'>
+//           <article className='media'>
 //             <img src={user.image} alt={user.name} />
-//             <div className="info">
-//               <div className="bio">
-//                 <h3 className="title">{user.name}</h3>
+//             <div className='info'>
+//               <div className='bio'>
+//                 <h3 className='title'>{user.name}</h3>
 //                 {user.avgRating > 0 ?
-//                   <h3>{user.avgRating} <span className="star">★</span></h3>
+//                   <h3>{user.avgRating} <span className='star'>★</span></h3>
 //                   :
 //                   null}
 //                 <h4>{user.city}</h4>
 //               </div>
-//               {/* <div className="skills">
+//               {/* <div className='skills'>
 //                 {user.skills.map((skill, i) => <p key={i}>{skill}</p>)}
 //               </div> */}
 //             </div>
 //           </article>
-//           <div className="inbox">
-//             <form onSubmit={this.handleSubmit} className="messages">
-//               <input onChange={this.handleChange} name="review" type="text" maxLength="200" />
-//               <button className="button is-link is-rounded" type="submit">Send</button>
+//           <div className='inbox'>
+//             <form onSubmit={this.handleSubmit} className='messages'>
+//               <input onChange={this.handleChange} name='review' type='text' maxLength='200' />
+//               <button className='button is-link is-rounded' type='submit'>Send</button>
 //             </form>
 //           </div>
 //         </div>

@@ -88,7 +88,7 @@ class UserMap extends React.Component {
     if (!userswithco.length) return null
     console.log(userPicked)
     return (
-      <section className="map">
+      <section className='map'>
         <MapGL
           ref={this.myMap}
           {...viewport}
@@ -103,7 +103,7 @@ class UserMap extends React.Component {
             mapRef={this.myMap}
             mapboxApiAccessToken={token}
             onViewportChange={this.handleViewportChange}
-            position="bottom-left"
+            position='bottom-left'
           />
           {userswithco[0].latlng && userswithco.map((user, i) => (
             <Marker 
@@ -116,7 +116,7 @@ class UserMap extends React.Component {
                 this.showUser(user)
                 this.togglePopup()
               }}>
-                <img src={user.image} alt={user.name} className="usersmap" />
+                <img src={user.image} alt={user.name} className='usersmap' />
               </a>
             </Marker> 
           ))}
@@ -128,7 +128,7 @@ class UserMap extends React.Component {
               {userPicked.name}
               <br />
               {userPicked.avgRating > 0 ?
-                <h3>{userPicked.avgRating} <span className="star">★</span></h3>
+                <h3>{userPicked.avgRating} <span className='star'>★</span></h3>
                 :
                 <h2>No Rating</h2>}
                 Skills:

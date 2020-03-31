@@ -33,7 +33,7 @@ class ImageUpload extends React.Component {
             <label className={labelClass}>{this.props.labelText}</label>
             <input
               className={this.props.inputClassName}
-              type="file"
+              type='file'
               onChange={this.handleUpload}
             />
           </>

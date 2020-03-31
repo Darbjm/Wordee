@@ -66,24 +66,24 @@ class UserProfile extends React.Component {
     const { ratingsCount } = this.state
     if (!this.state.user) return null
     return (
-      <section className="user-section">
-        <div className="profilelayer">
-          <img className="profile-image img-seven" src="./../assets/background/falafal.png"></img>
-          <img className="profile-image img-eight" src="./../assets/background/mexican.png"></img>
-          <img className="profile-image img-nine" src="./../assets/background/heartybreak.png"></img>
+      <section className='user-section'>
+        <div className='profilelayer'>
+          <img className='profile-image img-seven' src='./../assets/background/falafal.png'></img>
+          <img className='profile-image img-eight' src='./../assets/background/mexican.png'></img>
+          <img className='profile-image img-nine' src='./../assets/background/heartybreak.png'></img>
         </div>
-        <div className="user-container">
-          <div className="user-info fadeInLeft">
-            <h2 className="username">{name}</h2>
+        <div className='user-container'>
+          <div className='user-info fadeInLeft'>
+            <h2 className='username'>{name}</h2>
             <hr />
-            <div className="star-rating">
+            <div className='star-rating'>
               {ratingsCount ?
                 <><h2>{avgRating} ★</h2><p>{ratingsCount} reviews</p></>
                 :
                 <p>No ratings received</p>}
             </div>
             <Link to={`/chefs/${_id}/review`}>
-              <div className="allReviews">
+              <div className='allReviews'>
                 <p>Read reviews</p>
               </div>
               <br />
@@ -92,18 +92,18 @@ class UserProfile extends React.Component {
             <p>{city}</p>
             <p>{postcode}</p>
           </div>
-          <div className="user-image">
-            <figure className="image-container">
-              <img className="chef-image" src={image} alt={name} />
+          <div className='user-image'>
+            <figure className='image-container'>
+              <img className='chef-image' src={image} alt={name} />
             </figure>
             <br />
-            <Link to={`/chefs/${_id}/edit`} className="button is-rounded is-medium is-warning">
+            <Link to={`/chefs/${_id}/edit`} className='button is-rounded is-medium is-warning'>
               Edit Profile
             </Link>
           </div>
-          <div className="skills-recipes fadeInRight">
-            <div className="profileSkills">
-              <h2 className="title">Skills</h2>
+          <div className='skills-recipes fadeInRight'>
+            <div className='profileSkills'>
+              <h2 className='title'>Skills</h2>
               {this.state.skills.map((skill, i) => <p key={i}>{skill}</p>)}
             </div>
           </div>
