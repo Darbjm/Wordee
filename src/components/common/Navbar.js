@@ -19,7 +19,6 @@ class Navbar extends React.Component {
   }
 
   activeClick = () => {
-    console.log('working')
     this.setState({ isActive: !this.state.isActive })
   }
 
