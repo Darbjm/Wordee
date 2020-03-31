@@ -6,7 +6,8 @@ import Auth from '../../lib/auth'
 class Navbar extends React.Component {
   state = {
     navbarOpen: false,
-    searchResult: null
+    searchResult: null,
+    isActive: false
   }
 
   toggleNavBar = () => {
@@ -15,6 +16,11 @@ class Navbar extends React.Component {
 
   handleClick = (e) => {
     localStorage.setItem('skill', e.target.innerHTML)
+  }
+
+  activeClick = () => {
+    console.log('working')
+    this.setState({ isActive: !this.state.isActive })
   }
 
   handleLogout = () => {
@@ -29,7 +35,8 @@ class Navbar extends React.Component {
   }
 
   render() {
-    const { navbarOpen } = this.state
+    const { navbarOpen, isActive } = this.state
+    const menuVis = isActive ? 'is-active' : ''
     return (
       <nav className="navbar nav is-transparent is-fixed-top">
         <div className="container">
@@ -38,12 +45,18 @@ class Navbar extends React.Component {
             <Link className="navbar-item" to="/">
               <h1>Chow Vow</h1>
             </Link>
+            <a role="button" onClick={this.activeClick} className={`navbar-burger burger ${menuVis}`} aria-label="menu" aria-expanded="false">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
           </div>
-          <Link className="navbar-item has-text-white" to="/map/london">MAP</Link>
-          <div className="navbar-item has-dropdown is-hoverable">
-            <a className="navbar-link has-text-white is-arrowless" onClick={this.toggleNavBar}>CHEFS</a>
-            {
-              navbarOpen &&
+          <div className={`navbar-menu ${menuVis}`}>
+            <Link className="navbar-item has-text-white" to="/map/london">MAP</Link>
+            <div className="navbar-item has-dropdown is-hoverable">
+              <a className="navbar-link has-text-white is-arrowless" onClick={this.toggleNavBar}>CHEFS</a>
+              {
+                navbarOpen &&
               <div className="navbar-dropdown">
                 <Link className="navbar-item" to="/chefs" onClick={this.handleClick}>ALL</Link>
                 <Link className="navbar-item" to="/chefs" onClick={this.handleClick}>African</Link>
@@ -63,14 +76,15 @@ class Navbar extends React.Component {
                 <Link className="navbar-item" to="/chefs" onClick={this.handleClick}>Vegan</Link>
                 <Link className="navbar-item" to="/chefs" onClick={this.handleClick}>Vegetarian</Link>
               </div>
-            }
-          </div>
-          <div className="navbar-end">
-            {!Auth.isAuthenticated() && <Link className="navbar-item has-text-white" to="/register">SIGN UP</Link>}
-            {!Auth.isAuthenticated() && <Link className="navbar-item has-text-white" to="/login">LOGIN</Link>}
-            {Auth.isAuthenticated() && <Link className="navbar-item has-text-white" to="/offers">OFFERS</Link>}
-            {Auth.isAuthenticated() && <Link className="navbar-item has-text-white" to="/profile">PROFILE</Link>}
-            {Auth.isAuthenticated() && <a className="navbar-item has-text-white" onClick={this.handleLogout}>LOGOUT</a>}
+              }
+            </div>
+            <div className="navbar-end">
+              {!Auth.isAuthenticated() && <Link className="navbar-item has-text-white" to="/register">SIGN UP</Link>}
+              {!Auth.isAuthenticated() && <Link className="navbar-item has-text-white" to="/login">LOGIN</Link>}
+              {Auth.isAuthenticated() && <Link className="navbar-item has-text-white" to="/offers">OFFERS</Link>}
+              {Auth.isAuthenticated() && <Link className="navbar-item has-text-white" to="/profile">PROFILE</Link>}
+              {Auth.isAuthenticated() && <a className="navbar-item has-text-white" onClick={this.handleLogout}>LOGOUT</a>}
+            </div>
           </div>
         </div>
       </nav>
