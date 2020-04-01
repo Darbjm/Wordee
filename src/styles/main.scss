@@ -477,9 +477,10 @@ body {
 
 }
 .img-nine {
-  top: 500px;
-  left: -20px;
-  bottom: 200px;
+  position: relative;
+  top: 430px;
+  left: 200px;
+  bottom: -100px;
   height: 200px;
 
 }
@@ -509,6 +510,8 @@ body {
 
   .user-info{
     opacity: 0.5;
+    display: flex;
+    flex-wrap: wrap;
   }
 }
 
@@ -806,7 +809,7 @@ h2.username {
 
 .user-info {
   max-width: 380px;
-  margin: 40px;
+  margin: 20px;
   background-color: #727171;
   padding: 15px;
   border: solid 1px #727171;

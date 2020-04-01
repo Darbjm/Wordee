@@ -70,7 +70,6 @@ class UserProfile extends React.Component {
         <div className='profilelayer'>
           <img className='profile-image img-seven' src='./../assets/background/falafal.png'></img>
           <img className='profile-image img-eight' src='./../assets/background/mexican.png'></img>
-          <img className='profile-image img-nine' src='./../assets/background/heartybreak.png'></img>
         </div>
         <div className='user-container'>
           <div className='user-info fadeInLeft'>
