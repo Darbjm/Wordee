@@ -45,9 +45,9 @@ class Navbar extends React.Component {
               <h1>Chow Vow</h1>
             </Link>
             <a role='button' onClick={this.activeClick} className={`navbar-burger burger ${menuVis}`} aria-label='menu' aria-expanded='false'>
-              <span aria-hidden='true'></span>
-              <span aria-hidden='true'></span>
-              <span aria-hidden='true'></span>
+              <span aria-hidden='true' className='white'></span>
+              <span aria-hidden='true' className='white'></span>
+              <span aria-hidden='true' className='white'></span>
             </a>
           </div>
           <div className={`navbar-menu ${menuVis}`}>
