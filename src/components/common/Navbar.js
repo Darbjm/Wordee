@@ -40,7 +40,7 @@ class Navbar extends React.Component {
       <nav className='navbar nav is-transparent is-fixed-top'>
         <div className='container'>
           <div className='navbar-brand'>
-            <img src='../assets/logo.png' alt='logo' />
+            <img src='../assets/ChowVow_white.svg' alt='logo' />
             <Link className='navbar-item' to='/'>
               <h1>Chow Vow</h1>
             </Link>
