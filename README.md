@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-<img src='src/readme/ChowVow_writing.svg' width='400'>
-=======
 # <img src='src/readme/ChowVow_writing.svg' width='400'>
 
 
@@ -41,4 +38,3 @@ f
 asd
 
 <a name="pookie">I'm pookie</a>
->>>>>>> 6daa6ab64b4ddba42842e6c408a14608e0849e2d
