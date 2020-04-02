@@ -17,9 +17,9 @@
 |5. [Future content](#future)
 
 <h2 name='team'>Team</h2>
-[Emily Summers](https://github.com/EmilySummers)
-[Tahirah A'sha](https://github.com/justteaco)
-[Tim Banks](https://github.com/Tbanks9)
+<a href='https://github.com/EmilySummers'>• Emily Summers</a>
+<a href='https://github.com/justteaco'>• Tahirah A'sha</a>
+<a href='https://github.com/Tbanks9'>• Tim Banks</a>
 
 <h2 name='overview'>Overview</h2>
 
