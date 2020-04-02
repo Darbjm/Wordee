@@ -25,24 +25,24 @@
 7 days
 
 <h3>Technologies used</h3>
-<p>• HTML5 <br>
-• SCSS & Bulma <br>
-• JavaScript(ES6) <br>
-• JSON <br>
-• React.js <br>
-• Node.js <br>
-• Express.js <br>
-• axios <br>
-• MongoDB <br>
-• Insomnia <br>
-• Mocha & Chai <br>
-• Robo 3T <br>
-• Dotenv <br>
-• Cloudinary <br>
-• Mapbox <br>
-• Z shell <br>
-• JWT <br>
-• GitHub <br><p/>
+<p>1. HTML5 <br>
+2. SCSS & Bulma <br>
+3. JavaScript (ES6) <br>
+4. JSON <br>
+5. React.js <br>
+6. Node.js <br>
+7. Express.js <br>
+8. Axios <br>
+9. Mongoose MongoDB <br>
+10. Mocha & Chai <br>
+11. Insomnia <br>
+12. Robo 3T <br>
+13. Dotenv <br>
+14. Cloudinary <br>
+15. Mapbox <br>
+16. Z shell <br>
+17. JWT <br>
+18. GitHub <br><p/>
 
 <img src='src/readme/Map1.gif' width='600'>
 
