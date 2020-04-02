@@ -1,1 +1,1 @@
-![](src/readme/ChowVow_writing.svg)
+<img src='src/readme/ChowVow_writing.svg' width='200'>
