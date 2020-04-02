@@ -33,7 +33,7 @@
 6. Node.js <br>
 7. Express.js <br>
 8. Axios <br>
-9. Mongoose MongoDB <br>
+9. Mongoose & MongoDB <br>
 10. Mocha & Chai <br>
 11. Insomnia <br>
 12. Robo 3T <br>
