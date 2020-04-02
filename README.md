@@ -16,7 +16,10 @@
 |4. [Bugs](#bugs)
 |5. [Future content](#future)
 
+------
+
 <h2 name='team'>Team</h2>
+
 • <a href='https://github.com/EmilySummers'>Emily Summers</a> <br>
 • <a href='https://github.com/justteaco'>Tahirah A'sha</a> <br>
 • <a href='https://github.com/Tbanks9'>Tim Banks</a> <br>
