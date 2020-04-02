@@ -44,6 +44,9 @@
 17. JWT <br>
 18. GitHub <br><p/>
 
+<h3>Deployment</h3>
+The app is deployed on Heroku and can be found here: https://chowvow-ga.herokuapp.com
+
 <img src='src/readme/Map1.gif' width='600'>
 
 <img src='src/readme/Offers.gif' width='600'>
