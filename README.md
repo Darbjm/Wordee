@@ -6,10 +6,10 @@
 
 | Contents                      |                |
 | ------------------------------|----------------|
-|1. [Overview](#overview)       |5. [App](#app)
+|1. [Overview](#overview)       |5. [Future content](#future)
 |2. [Brief](#brief)             |6. [Wins and blockers](#wins)
 |3. [Technologies used](#tech)  |7. [Bugs](#bugs)
-|4. [Approach taken](#approach) |8. [Future content](#future)
+|4. [App](#app)                 | 
 
 
 <h2 name='overview'>Overview</h2>
@@ -19,6 +19,12 @@
 • <a href='https://github.com/EmilySummers'>Emily Summers</a> <br>
 • <a href='https://github.com/justteaco'>Tahirah A'sha</a> <br>
 • <a href='https://github.com/Tbanks9'>Tim Banks</a> <br>
+
+<h3>My contributions</h3>
+• All 60+ tests with Mocha & Chai
+• Interactive, searchable Mapbox with pop-ups of users at their location that link to their profile
+• Ability for users to send, accept and delete offers and delete accepted offers
+• Setting up the secure route for both front and back-ends
 
 <h3>Timeframe</h3>
 
@@ -58,6 +64,9 @@ The app is deployed on Heroku and can be found here: https://chowvow-ga.herokuap
 17. JWT <br>
 18. GitHub <br><p/>
 
+<h2 name='app'>App</h2>
+
+Chow Vow is a platform that allows users to search for other individuals that have certain skills within cooking. They are able to search via an interactive map that shows other users general location. The map 
 
 
 
