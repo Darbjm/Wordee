@@ -2,8 +2,17 @@
 
 
 
+1.[Overview](#overview)
+2.[Brief](#brief)
+3.[Technologies Used](#tech)
+4.[Approach Taken](#approach)
+5.[App](#app)
+3.[Wins and blockers](#wins)
+4.[Bugs](#bugs)
+5.[Future content](#future)
 
-Take me to [pookie](#pookie)
+
+<h2 name="overview">Overview</h2>
 
 <img src='src/readme/Map1.gif' width='600'>
 
@@ -14,4 +23,4 @@ Take me to [pookie](#pookie)
 <img src='src/readme/Review.gif' width='600'>
 
 
-<a name="pookie">I'm pookie</a>
+
