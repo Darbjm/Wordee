@@ -4,19 +4,13 @@
 
 <h2>Goal: Within a group of four, build a full-stack RESTful MERN application.</h2>
 
-|Contents
-|----------
-|1. [Team](#team)
-|1. [Overview](#overview)
-|2. [Brief](#brief)
-|3. [Technologies used](#tech)
-|4. [Approach taken](#approach)
-|5. [App](#app)
-|3. [Wins and blockers](#wins)
-|4. [Bugs](#bugs)
-|5. [Future content](#future)
+| Contents                      |                |
+| ------------------------------|----------------|
+|1. [Overview](#overview)       |5. [App](#app)
+|2. [Brief](#brief)             |6. [Wins and blockers](#wins)
+|3. [Technologies used](#tech)  |7. [Bugs](#bugs)
+|4. [Approach taken](#approach) |8. [Future content](#future)
 
-------
 
 <h2 name='team'>Team</h2>
 
