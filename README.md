@@ -1,6 +1,6 @@
 # <img src='src/readme/ChowVow_writing.svg' width='400'>
 
-<h1>General Assembly project three: Chow Vow</h1>
+<h1>General Assembly Project Three: Chow Vow</h1>
 
 <h2>Goal: Within a group of four, build a full-stack RESTful MERN application.</h2>
 
@@ -24,7 +24,21 @@
 
 7 days
 
-<h3>Technologies used</h3>
+<h3>Deployment</h3>
+The app is deployed on Heroku and can be found here: https://chowvow-ga.herokuapp.com
+
+<h2 name='brief'>Brief</h2>
+
+* **Build a full-stack application** by making your own backend and your own front-end
+* **Use an Express API** to serve your data from a Mongo database
+* **Consume your API with a separate front-end** built with React
+* **Be a complete product** which most likely means multiple relationships and CRUD functionality for at least a couple of models
+* **Implement thoughtful user stories/wireframes** that are significant enough to help you know which features are core MVP and which you can cut
+* **Have a visually impressive design** to kick your portfolio up a notch and have something to wow future clients & employers. **ALLOW** time for this.
+* **Be deployed online** so it's publicly accessible.
+* **Have automated tests** 
+
+<h2 name='tech'>Technologies used</h2>
 <p>1. HTML5 <br>
 2. SCSS & Bulma <br>
 3. JavaScript (ES6) <br>
@@ -44,8 +58,9 @@
 17. JWT <br>
 18. GitHub <br><p/>
 
-<h3>Deployment</h3>
-The app is deployed on Heroku and can be found here: https://chowvow-ga.herokuapp.com
+
+
+
 
 <img src='src/readme/Map1.gif' width='600'>
 
@@ -54,6 +69,10 @@ The app is deployed on Heroku and can be found here: https://chowvow-ga.herokuap
 <img src='src/readme/Pictures.gif' width='600'>
 
 <img src='src/readme/Review.gif' width='600'>
+
+
+
+
 
 
 
