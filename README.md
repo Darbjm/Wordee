@@ -14,6 +14,10 @@
 
 <h2 name='overview'>Overview</h2>
 
+<h3>Introduction</h3>
+
+Chow Vow is a platform that allows users to search for other individuals that have certain skills within cooking.
+
 <h3>Team</h3>
 
 • <a href='https://github.com/EmilySummers'>Emily Summers</a> <br>
@@ -65,13 +69,6 @@ The app is deployed on Heroku and can be found here: https://chowvow-ga.herokuap
 18. GitHub <br><p/>
 
 <h2 name='app'>App</h2>
-
-Chow Vow is a platform that allows users to search for other individuals that have certain skills within cooking.
-
-
-
-
-
 
 They are able to search for any area using the Mapbox Geocoder the interactive map then displays the area and other users within it. The markers display the users profile image and then once clicked a pop-up showing their skills, rating and name appears, this is a link to the users profile.
 
