@@ -133,13 +133,6 @@ I would have liked to have the users' cards in the offers section link to the us
 <br>
 <br>
 <h2 name='wins'>Wins</h2>
-<h3>Promise.all()</h3>
-The whole Mapbox feature was a win for me as I had previously tried in another project to implement markers with pop-ups and failed. A few smaller wins were things such as the user is able to search any area on the home screen and the map would load it, and handling the viewport change, meaning the user could move the map with the mouse. However one really great win for me was learning about the Promise.all() function. Because it is synchronous it allowed me to get the latitude and longitude of each user with the geocoder api in order. Because the Promise waits for each user in the map function to be finished before it starts on the next one, it meant I could setState the user and their coordinates at the same time and not have to worry about the wrong coordinates being attatched to the wrong user.<br>
-<br>
-<br>
-<img src='src/readme/MapboxPromise.png' width='600'>
-<br>
-<br>
 <h3>Testing</h3>
 Before this project testing was an intimidating concept, now after creating 62 tests with Mocha and Chai I see it as a fun and satisfying exercise similar to Codewars. However due to our problems with git merging and branching which I discuss in merging we can see that a test failed after the final merge. The test failed because a user was able to delete a different user. I have now fixed this issue with the following code in controllers/users.js:
 
@@ -159,6 +152,20 @@ function destroy(req, res) {
 <br>
 <br>
 <img src='src/readme/Testing.png' width='600'>
+<br>
+<br>
+<h3>Teamwork</h3>
+Although we had issues with git and merging our team worked seamlessly, using trello we democratically divided the tasks and worked quickly and enjoyably together. Helping each other was useful for the team and the individuals doing the help as we all learned from each other and put parts of ourselves into the app. Producing something we were all proud off.<br>
+<br>
+<br>
+<img src='src/readme/Trello.png' width='600'>
+<br>
+<br>
+<h3>Promise.all()</h3>
+The whole Mapbox feature was a win for me as I had previously tried in another project to implement markers with pop-ups and failed. A few smaller wins were things such as the user is able to search any area on the home screen and the map would load it, and handling the viewport change, meaning the user could move the map with the mouse. However one really great win for me was learning about the Promise.all() function. Because it is synchronous it allowed me to get the latitude and longitude of each user with the geocoder api in order. Because the Promise waits for each user in the map function to be finished before it starts on the next one, it meant I could setState the user and their coordinates at the same time and not have to worry about the wrong coordinates being attatched to the wrong user.<br>
+<br>
+<br>
+<img src='src/readme/MapboxPromise.png' width='600'>
 <br>
 <br>
 <h3>Offers pending</h3>
