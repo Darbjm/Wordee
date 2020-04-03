@@ -116,5 +116,31 @@ In the gif below the user navigates via the 'CHEFS' button to a user they have a
 <br>
 <h2 name='future'>Future content</h2>
 <h3>Messaging</h3>
-One of our features we almost finished was a direct messaging feature that would allow the users to communicate via the app.
+One of our features we almost finished was a direct messaging feature that would allow the users to communicate via the app once they had accepted each others offer. This mean't we could do away with the slight clunky emailing option. 
+<br>
+<br>
+<br>
 <img src='src/readme/UserMessages.png' width='600'>
+<br>
+<br>
+<br>
+<h3>Recipes</h3>
+Another feature we had started work on was recipes. We decided to create a model for this and have a one-to-many relationship with the user who creates it. The recipes could then be searchable in a similar way to using the 'CHEFS' button and users could review and rate the recipe.
+<br>
+<br>
+<br>
+<img src='src/readme/Recipes.png' width='600'>
+<br>
+<br>
+<br>
+<h3>Reviews</h3>
+Aspects of the reviewing feature that were missing was the ability to update and delete reviews, you are only able to review if you have accepted each others offers and you are only able to review once.
+<br>
+<br>
+<br>
+<h3>Offers</h3>
+I would have liked to have the users' cards in the offers section link to the users profile.
+<br>
+<br>
+<br>
+<h2 name='wins'>Wins</h2>
