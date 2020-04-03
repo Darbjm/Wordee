@@ -57,11 +57,13 @@ class Register extends React.Component {
       await axios.post('/api/register', this.state.data)
       this.props.history.push('/login')
     } catch (err) {
+      // console.log(err.response.data.errors)
       this.setState({ errors: err.response.data.errors })
     }
   }
 
   render() {
+    console.log(this.state.errors)
     return (
       <section className='user-section'>
         <form onSubmit={this.handleSubmit} className='user-container'>
@@ -79,7 +81,7 @@ class Register extends React.Component {
                     onChange={this.handleChange}
                   />
                 </div>
-                {this.state.errors.name && <small className='help is-danger'>{this.state.errors.name}</small>}
+                {this.state.errors.name && <small className='help is-danger'>{this.state.errors.name.message}</small>}
               </div>
               <div className='field'>
                 <label className='label'>EMAIL</label>
@@ -92,7 +94,7 @@ class Register extends React.Component {
                     onChange={this.handleChange}
                   />
                 </div>
-                {this.state.errors.email && <small className='help is-danger'>{this.state.errors.email}</small>}
+                {this.state.errors.email && <small className='help is-danger'>{this.state.errors.email.message}</small>}
               </div>
               <div className='field'>
                 <label className='label'>PASSWORD</label>
@@ -105,20 +107,20 @@ class Register extends React.Component {
                     onChange={this.handleChange}
                   />
                 </div>
-                {this.state.errors.password && <small className='help is-danger'>{this.state.errors.password}</small>}
+                {this.state.errors.password && <small className='help is-danger'>{this.state.errors.password.message}</small>}
               </div>
               <div className='field'>
                 <label className='label'>PASSWORD CONFIRMATION</label>
                 <div className='control'>
                   <input
-                    className={`input is-rounded ${this.state.errors.passwordConfirmation ? 'is-danger' : ''}`}
+                    className={`input is-rounded ${this.state.data.password !== this.state.data.passwordConfirmation}  ? 'is-danger' : ''`}
                     type='password'
                     placeholder='Password Confirmation'
                     name='passwordConfirmation'
                     onChange={this.handleChange}
                   />
                 </div>
-                {this.state.errors.passwordConfirmation && <small className='help is-danger'>{this.state.errors.passwordConfirmation}</small>}
+                {this.state.data.password !== this.state.data.passwordConfirmation ? <small className='help is-danger'>Passwords do not match</small> : <div></div>}
               </div>
             </div>
           </div>
@@ -151,7 +153,7 @@ class Register extends React.Component {
                     onChange={this.handleChange}
                   />
                 </div>
-                {this.state.errors.city && <small className='help is-danger'>{this.state.errors.city}</small>}
+                {this.state.errors.city && <small className='help is-danger'>{this.state.errors.city.message}</small>}
               </div>
               <div className='field'>
                 <label className='label'>POSTCODE</label>
@@ -163,7 +165,7 @@ class Register extends React.Component {
                     onChange={this.handleChange}
                   />
                 </div>
-                {this.state.errors.postcode && <small className='help is-danger'>{this.state.errors.postcode}</small>}
+                {this.state.errors.postcode && <small className='help is-danger'>{this.state.errors.postcode.message}</small>}
               </div>
             </div>
           </div>
