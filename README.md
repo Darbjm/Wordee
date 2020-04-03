@@ -158,6 +158,7 @@ Before this project testing was an intimidating concept, now after creating 62 t
 <br>
 <br>
 <br>
+
 ```function destroy(req, res) {
   User
     .findById(req.params.id)
@@ -169,6 +170,7 @@ Before this project testing was an intimidating concept, now after creating 62 t
     .catch(err => res.json(err))
 }
 ```
+
 <br>
 <br>
 <br>
