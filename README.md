@@ -167,7 +167,8 @@ function destroy(req, res) {
     .catch(err => res.json(err))
 }
 ```
-
+<br>
+<br>
 <br>
 <img src='src/readme/Testing.png' width='600'>
 <br>
@@ -191,7 +192,6 @@ function offersPendingCreate(req, res) {
 }
 ```
 
-<br> 
 I had to do this because the object has its own ID and therefore could not see how I could use the populate function. I again turned to the Promise.all() function to allow each GET request to return and therefore setState with all the offers in one array.
 <br>
 <br>
