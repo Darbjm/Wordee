@@ -16,7 +16,7 @@
 
 <h3>Introduction</h3>
 
-Chow Vow is a platform that allows users to search for other individuals that have certain skills within cooking. If you want to learn a skill from another user, you can ask that user to collaborate. The users can search via location or via skills. The app uses secure routes meaning users must be logged in to use certain features of the app like viewing others profiles, edit and delete their own profile and send offers of collaboration and accept or delete them.
+Chow Vow is a platform that allows users to search for other individuals that have certain skills within cooking. It then allows users to offer to collaborate in order for them to learn from each other. The users can search via location or via skills. The app uses secure routes meaning users must be logged in to use certain features of the app like viewing others profiles, edit and delete their own profile and send offers of collaboration and accept or delete them.
 
 <h3>Deployment</h3>
 
@@ -75,24 +75,42 @@ The login details are  email:ben@email.com password:pass <br>
 <h2 name='app'>App</h2>
 
 The user can begin by taking a look around the app when not logged in. They can view the map or the list of users that know a skill. As soon as they try to view anothers profile they a redirected to log in. The user can register and upload a profile image via Cloudinary or log in with their existing information.
-
+<br>
+<br>
+<br>
 <img src='src/readme/Register.png' width='600'>
-
+<br>
+<br>
+<br>
 They are able to search for any area using the Mapbox Geocoder the interactive map then displays the area and other users within it. The markers display the users profile image and then once clicked a pop-up showing their skills, rating and name appears, this is a link to the users profile where you can see their information and ask to collaborate.
-
+<br>
+<br>
+<br>
 <img src='src/readme/Map1.gif' width='600'>
-
-The user has an offers page where they can view offers to collaborate and accept or delete them, they can view their accepted offers and see the accepted users email in order for them to persue their desire to collaborate.
-
+<br>
+<br>
+<br>
+The user has an offers page where they can view offers to collaborate and accept or delete them, they can view their accepted offers and see the accepted users email in order for them to persue their desire to collaborate or they can delete this accepted user.
+<br>
+<br>
+<br>
 <img src='src/readme/Offers.gif' width='600'>
-
+<br>
+<br>
+<br>
+You may want to search via specific skills, in this case the user can either search the images on the home page or the drop down list when the 'CHEFS' button is selected on the navbar.
+<br>
+<br>
+<br>
 <img src='src/readme/Pictures.gif' width='600'>
-
+<br>
+<br>
+<br>
+In the gif below the user navigates via the 'CHEFS' button to a user they have accepted. This means we can see the users email under the image. As the user has already collaborated with them they leave a review and score. The users average rating is calculated in the back-end and updated immediately.
+<br>
+<br>
+<br>
 <img src='src/readme/Review.gif' width='600'>
-
-
-
-
-
-
-
+<br>
+<br>
+<br>
