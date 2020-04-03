@@ -34,7 +34,7 @@ The login details are  email: ben@email.com password: pass <br>
 
 • All 62 tests with Mocha & Chai
 • Interactive, searchable Mapbox with pop-ups of users at their location that link to their profile
-• Ability for users to send, accept and delete offers and delete accepted offers
+• The offers page and the ability for users to send, accept and delete offers and delete accepted offers
 • Setting up the secure route for both front and back-ends
 
 <h3>Timeframe</h3>
@@ -154,32 +154,51 @@ The whole Mapbox feature was a win for me as I had previously tried in another p
 <br>
 <br>
 <h3>Testing</h3>
-Before this project testing was an intimidating concept, now after creating 62 tests with Mocha and Chai I see it as a fun and satisfying exercise similar to Codewars. However due to our problems with git merging and branching which I discuss in [merging](#merging) we can see that a test failed after the final merge. The test failed because a user was able to delete a different user from themselves. I would fix this issue with the following code in controllers/users.js:
+Before this project testing was an intimidating concept, now after creating 62 tests with Mocha and Chai I see it as a fun and satisfying exercise similar to Codewars. However due to our problems with git merging and branching which I discuss in [merging](#merging) we can see that a test failed after the final merge. The test failed because a user was able to delete a different user. I have now fixed this issue with the following code in controllers/users.js:
 <br>
-<br>
-<br>
-
 ```function destroy(req, res) {
   User
     .findById(req.params.id)
     .then(user => {
-      if (user._id !== req.currentUser._id) return res.status(401).json({ message: 'Unauthorized' }) //This line was deleted when merged
+      if (!user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorized' }) //This line was deleted when merged
       if (!user) return res.status(404).json({ message: 'Not Found ' })
       user.remove().then(() => res.sendStatus(204))
     })
     .catch(err => res.json(err))
 }
 ```
-
-<br>
-<br>
 <br>
 <img src='src/readme/Testing.png' width='600'>
 <br>
 <br>
 <br>
-<h3>Testing</h3>
+<h3>Offers pending</h3>
+The offers page was another big win. When the user sends an offer I had to attach the user sending the offer in the back-end with the following code:
+<br>
+```
+function offersPendingCreate(req, res) {
+  User
+    .findById(req.params.id)
+    .then(user => {
+      if (!user) return res.status(404).json({ message: 'Not Found' })
+      if (user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorized' })
+      user.offersPending.push({ offeringUser: req.currentUser }) // attaches offering user
+      return user.save()
+    })
+    .then(user => res.status(201).json(user))
+    .catch(err => res.json(err))
+}
+```
+<br> 
+I had to do this because the object has its own ID and therefore could not see how I could use the populate function. I again turned to the Promise.all() function to allow each GET request to return and therefore setState with all the offers in one array.
+<br>
+<br>
+<br>
+<img src='src/readme/FindOffersPromise.png' width='600'>
+<br>
+<br>
+<br>
 
 <h2 name='blockers'>Blockers</h2>
 
-<h3 name='merging' >Merging</h3>
+<h3 name='merging'>Merging</h3>
