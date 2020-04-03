@@ -7,9 +7,9 @@
 | Contents                      |                |
 | ------------------------------|----------------|
 |1. [Overview](#overview)       |5. [Future content](#future)
-|2. [Brief](#brief)             |6. [Wins and blockers](#wins)
-|3. [Technologies used](#tech)  |7. [Bugs](#bugs)
-|4. [App](#app)                 | 
+|2. [Brief](#brief)             |6. [Wins](#wins)
+|3. [Technologies used](#tech)  |7. [Blockers](#blockers)
+|4. [App](#app)                 |8. [Bugs](#bugs)
 
 
 <h2 name='overview'>Overview</h2>
@@ -39,10 +39,10 @@ The app is deployed on Heroku and can be found here: https://chowvow-ga.herokuap
 * **Use an Express API** to serve your data from a Mongo database
 * **Consume your API with a separate front-end** built with React
 * **Be a complete product** which most likely means multiple relationships and CRUD functionality for at least a couple of models
-* **Implement thoughtful user stories/wireframes** that are significant enough to help you know which features are core MVP and which you can cut
-* **Have a visually impressive design** to kick your portfolio up a notch and have something to wow future clients & employers. **ALLOW** time for this.
-* **Be deployed online** so it's publicly accessible.
-* **Have automated tests** 
+* **Have automated tests** for _at least_ one RESTful resource on the back-end.
+* **Implement thoughtful user stories/wireframes**
+* **Have a visually impressive design**
+* **Be deployed online**
 
 <h2 name='tech'>Technologies used</h2>
 <p>1. HTML5 <br>
@@ -66,12 +66,21 @@ The app is deployed on Heroku and can be found here: https://chowvow-ga.herokuap
 
 <h2 name='app'>App</h2>
 
-Chow Vow is a platform that allows users to search for other individuals that have certain skills within cooking. They are able to search via an interactive map that shows other users general location. The map 
+Chow Vow is a platform that allows users to search for other individuals that have certain skills within cooking.
 
 
 
+
+
+
+They are able to search for any area using the Mapbox Geocoder the interactive map then displays the area and other users within it. The markers display the users profile image and then once clicked a pop-up showing their skills, rating and name appears, this is a link to the users profile.
 
 <img src='src/readme/Map1.gif' width='600'>
+
+
+
+
+
 
 <img src='src/readme/Offers.gif' width='600'>
 
