@@ -73,40 +73,35 @@ The login details are  email: ben@email.com password: pass <br>
 
 <h2 name='app'>App</h2>
 
-The user can begin by taking a look around the app when not logged in. They can view the map or the list of users that know a skill. As soon as they try to view anothers profile they a redirected to log in. The user can register and upload a profile image via Cloudinary or log in with their existing information.
-<br>
+The user can begin by taking a look around the app when not logged in. They can view the map or the list of users that know a skill. As soon as they try to view anothers profile they a redirected to log in. The user can register and upload a profile image via Cloudinary or log in with their existing information.<br>
 <br>
 <br>
 <img src='src/readme/Register.png' width='600'>
 <br>
 <br>
 <br>
-They are able to search for any area using the Mapbox Geocoder the interactive map then displays the area and other users within it. The markers display the users profile image and then once clicked a pop-up showing their skills, rating and name appears, this is a link to the users profile where you can see their information and ask to collaborate.
-<br>
+They are able to search for any area using the Mapbox Geocoder the interactive map then displays the area and other users within it. The markers display the users profile image and then once clicked a pop-up showing their skills, rating and name appears, this is a link to the users profile where you can see their information and ask to collaborate.<br>
 <br>
 <br>
 <img src='src/readme/Map1.gif' width='600'>
 <br>
 <br>
 <br>
-The user has an offers page where they can view offers to collaborate and accept or delete them, they can view their accepted offers and see the accepted users email in order for them to persue their desire to collaborate or they can delete this accepted user.
-<br>
+The user has an offers page where they can view offers to collaborate and accept or delete them, they can view their accepted offers and see the accepted users email in order for them to persue their desire to collaborate or they can delete this accepted user.<br>
 <br>
 <br>
 <img src='src/readme/Offers.gif' width='600'>
 <br>
 <br>
 <br>
-You may want to search via specific skills, in this case the user can either search the images on the home page or the drop down list when the 'CHEFS' button is selected on the navbar.
-<br>
+You may want to search via specific skills, in this case the user can either search the images on the home page or the drop down list when the 'CHEFS' button is selected on the navbar.<br>
 <br>
 <br>
 <img src='src/readme/Pictures.gif' width='600'>
 <br>
 <br>
 <br>
-In the gif below the user navigates via the 'CHEFS' button to a user they have accepted. This means we can see the users email under the image. As the user has already collaborated with them they leave a review and score. The users average rating is calculated in the back-end and updated immediately.
-<br>
+In the gif below the user navigates via the 'CHEFS' button to a user they have accepted. This means we can see the users email under the image. As the user has already collaborated with them they leave a review and score. The users average rating is calculated in the back-end and updated immediately.<br>
 <br>
 <br>
 <img src='src/readme/Review.gif' width='600'>
@@ -115,21 +110,17 @@ In the gif below the user navigates via the 'CHEFS' button to a user they have a
 <br>
 <h2 name='future'>Future content</h2>
 <h3>Messaging</h3>
-One of our features we almost finished was a direct messaging feature that would allow the users to communicate via the app once they had accepted each others offer. This mean't we could do away with the slight clunky emailing option. 
-<br>
+One of our features we almost finished was a direct messaging feature that would allow the users to communicate via the app once they had accepted each others offer. This mean't we could do away with the slight clunky emailing option. <br>
 <br>
 <br>
 <img src='src/readme/UserMessages.png' width='600'>
 <br>
 <br>
-<br>
 <h3>Recipes</h3>
-Another feature we had started work on was recipes. We decided to create a model for this and have a one-to-many relationship with the user who creates it. The recipes could then be searchable in a similar way to using the 'CHEFS' button and users could review and rate the recipe.
-<br>
+Another feature we had started work on was recipes. We decided to create a model for this and have a one-to-many relationship with the user who creates it. The recipes could then be searchable in a similar way to using the 'CHEFS' button and users could review and rate the recipe.<br>
 <br>
 <br>
 <img src='src/readme/Recipes.png' width='600'>
-<br>
 <br>
 <br>
 <h3>Reviews</h3>
@@ -141,15 +132,12 @@ Aspects of the reviewing feature that were missing was the ability to update and
 I would have liked to have the users' cards in the offers section link to the users profile.
 <br>
 <br>
-<br>
 <h2 name='wins'>Wins</h2>
 <h3>Promise.all()</h3>
-The whole Mapbox feature was a win for me as I had previously tried in another project to implement markers with pop-ups and failed. A few smaller wins were things such as the user is able to search any area on the home screen and the map would load it, and handling the viewport change, meaning the user could move the map with the mouse. However one really great win for me was learning about the Promise.all() function. Because it is synchronous it allowed me to get the latitude and longitude of each user with the geocoder api in order. Because the Promise waits for each user in the map function to be finished before it starts on the next one, it meant I could setState the user and their coordinates at the same time and not have to worry about the wrong coordinates being attatched to the wrong user.
-<br>
+The whole Mapbox feature was a win for me as I had previously tried in another project to implement markers with pop-ups and failed. A few smaller wins were things such as the user is able to search any area on the home screen and the map would load it, and handling the viewport change, meaning the user could move the map with the mouse. However one really great win for me was learning about the Promise.all() function. Because it is synchronous it allowed me to get the latitude and longitude of each user with the geocoder api in order. Because the Promise waits for each user in the map function to be finished before it starts on the next one, it meant I could setState the user and their coordinates at the same time and not have to worry about the wrong coordinates being attatched to the wrong user.<br>
 <br>
 <br>
 <img src='src/readme/MapboxPromise.png' width='600'>
-<br>
 <br>
 <br>
 <h3>Testing</h3>
@@ -173,7 +161,6 @@ function destroy(req, res) {
 <img src='src/readme/Testing.png' width='600'>
 <br>
 <br>
-<br>
 <h3>Offers pending</h3>
 The offers page was another big win. When the user sends an offer I had to attach the user sending the offer in the back-end with the following code:
 
@@ -192,24 +179,31 @@ function offersPendingCreate(req, res) {
 }
 ```
 
-I had to do this because the object has its own ID and therefore could not see how I could use the populate function. I again turned to the Promise.all() function to allow each GET request to return and therefore setState with all the offers in one array.
+I had to do this because the object has its own ID and therefore could not see how I could use the populate function. I again turned to the Promise.all() function to allow each GET request to return and therefore setState with all the offers in one array.<br>
 <br>
 <br>
-<br>
-<img src='src/readme/FindOffersPromise.png' width='600'>
-<br>
+<img src='src/readme/FindOffersPromise.png' width='600'><br>
 <br>
 <br>
 <h3>User email</h3>
-I wanted the collaborate button on another users page to change according to if the user had not sent a request, had sent a request and finally if that request had been sent. In the begining this proved tricky but I actually found that like many things I had learned in code, it was deceptively simple and used a ternary statement inside a ternary statement and then just had to find if the current user was inside the offersPending or offersAccepted array:
-<br>
+I wanted the collaborate button on another users page to change according to if the user had not sent a request, had sent a request and finally if that request had been sent. In the begining this proved tricky but I actually found that like many things I had learned in code, it was deceptively simple and used a ternary statement inside a ternary statement and then just had to find if the current user was inside the offersPending or offersAccepted array:<br>
 <br>
 <br>
 <img src='src/readme/UserShow.png' width='600'>
 <img src='src/readme/UserShowOfferPending.png' width='600'>
 <br>
 <br>
-<br>
 <h2 name='blockers'>Blockers</h2>
 <h3>Merging</h3>
-
+Using the merge and branch method with git was an interesting new way of working in a group. I can see the benefits and will be happy to work with it in the future. However this particular project it caused a lot of issues and wasted time trying to fix things that were being broken after each merge. I assume one or all of us were using it incorrectly but the random lines of code being deleted all through the app was a big problem in this project.
+<br>
+<br>
+<h3>Offers</h3>
+Although the offers feature was a win for me getting there was difficult. It took me half a day to understand how I could delete an offer. I was struggling to delete the offer because I could not find a unique ID in the offer by which to identify and remove it. I eventually discovered I could attach it to the request but because the acceptedUser and offereyid were different objects in memory I could only use the equality operator rather than the strict equality operator.
+<br>
+<br>
+<img src='src/readme/Backend issue.png' width='600'>
+<br>
+<br>
+<h2 name='bugs'>Bugs</h2>
+<h3></h3>
