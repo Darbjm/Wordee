@@ -21,7 +21,7 @@ Chow Vow is a platform that allows users to search for other individuals that ha
 <h3>Deployment</h3>
 
 The app is deployed on Heroku and can be found here: https://chowvow-ga.herokuapp.com
-The login details are  email:ben@email.com password:pass <br>
+The login details are  email: ben@email.com password: pass <br>
 (The login details are weak to allow easy access, I have addressed this [here](#login))
 
 <h3>Team</h3>
@@ -114,3 +114,5 @@ In the gif below the user navigates via the 'CHEFS' button to a user they have a
 <br>
 <br>
 <br>
+<h2 name='future'>Future content</h2>
+
