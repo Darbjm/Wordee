@@ -154,7 +154,6 @@ The whole Mapbox feature was a win for me as I had previously tried in another p
 <br>
 <h3>Testing</h3>
 Before this project testing was an intimidating concept, now after creating 62 tests with Mocha and Chai I see it as a fun and satisfying exercise similar to Codewars. However due to our problems with git merging and branching which I discuss in merging we can see that a test failed after the final merge. The test failed because a user was able to delete a different user. I have now fixed this issue with the following code in controllers/users.js:
-<br>
 
 ```javascript
 function destroy(req, res) {
@@ -175,8 +174,7 @@ function destroy(req, res) {
 <br>
 <br>
 <h3>Offers pending</h3>
-The offers page was another big win. When the user sends an offer I had to attach the user sending the offer in the back-end with the following code:&nbsp
-
+The offers page was another big win. When the user sends an offer I had to attach the user sending the offer in the back-end with the following code:
 
 ```javascript
 function offersPendingCreate(req, res) {
