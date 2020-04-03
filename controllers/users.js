@@ -65,20 +65,6 @@ function offersPendingCreate(req, res) {
     .catch(err => res.json(err))
 }
 
-function offersPendingDelete(req, res) {
-  User
-    .findById(req.currentUser)
-    .then(user => {
-      if (!user) return res.status(404).json({ message: 'Not Found' })
-      const offerToDelete = user.offersPending.find(offer => offer.offeringUser == req.params.offereyid)
-      // const offerToDelete = user.offersPending.find(offer => offer.offeringUser.equals(req.params.offereyid))
-      offerToDelete.remove()
-      return user.save()
-    })
-    .then(() => res.sendStatus(204)) 
-    .catch(err => res.status(401).json(err))
-}
-
 function offersAccepted(req, res) {
   User
     .findById(req.params.id)
@@ -98,6 +84,19 @@ function offersAcceptDelete(req, res) {
     .then(user => {
       if (!user) return res.status(404).json({ message: 'Not Found' })
       const offerToDelete = user.offersAccepted.find(offer => offer.acceptedUser == req.params.offereyid)
+      offerToDelete.remove()
+      return user.save()
+    })
+    .then(() => res.sendStatus(204)) 
+    .catch(err => res.status(401).json(err))
+}
+
+function offersPendingDelete(req, res) {
+  User
+    .findById(req.currentUser)
+    .then(user => {
+      if (!user) return res.status(404).json({ message: 'Not Found' })
+      const offerToDelete = user.offersPending.find(offer => offer.offeringUser == req.params.offereyid)
       offerToDelete.remove()
       return user.save()
     })
