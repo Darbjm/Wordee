@@ -43,7 +43,6 @@ const userSchema = new mongoose.Schema({
 
 userSchema.plugin(require('mongoose-unique-validator'))
 
-
 userSchema
   .virtual('avgRating')
   .get(function () {
