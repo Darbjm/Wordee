@@ -48,7 +48,7 @@ describe('Test deleting own user profile', () => {
     done()
   })
 
-  it('should return a 202 response with a token', done => {
+  it('should return a 204 response with a token', done => {
     api.delete(`/api/chefs/${user[0]._id}`)
       .set('Authorization', `Bearer ${token}`)
       .end((err, res) => {
