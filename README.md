@@ -182,4 +182,4 @@ Before this project testing was an intimidating concept, now after creating 62 t
 
 <h2 name='blockers'>Blockers</h2>
 
-<h3 name='merging'>Merging</h3>
+<h3 name='merging' >Merging</h3>
