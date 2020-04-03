@@ -70,7 +70,6 @@ class UserEdit extends React.Component {
     } catch (err) {
       this.setState(err.response.data.errors)
     }
-
   }
 
   handleDelete = async () => {
