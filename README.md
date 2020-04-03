@@ -32,7 +32,7 @@ The login details are  email: ben@email.com password: pass <br>
 
 <h3>My contributions</h3>
 
-• All 60+ tests with Mocha & Chai
+• All 62 tests with Mocha & Chai
 • Interactive, searchable Mapbox with pop-ups of users at their location that link to their profile
 • Ability for users to send, accept and delete offers and delete accepted offers
 • Setting up the secure route for both front and back-ends
@@ -144,13 +144,39 @@ I would have liked to have the users' cards in the offers section link to the us
 <br>
 <br>
 <h2 name='wins'>Wins</h2>
-<h3>Mapbox</h3>
-The whole Mapbox feature was a win for me as I had previously tried in another project to implement markers with pop-ups and failed. However one really great win for me was learning about the Promise.all() function. This allowed me to get the latitude and longitude of each user with the geocoder api in order. Because the Promise waits for each user in the map function to be finished before it starts on the next one, it meant I could setState the user and their coordinates at the same time and not have to worry about the wrong coordinates being attatched to the wrong user.
+<h3>Promise.all()</h3>
+The whole Mapbox feature was a win for me as I had previously tried in another project to implement markers with pop-ups and failed. A few smaller wins were things such as the user is able to search any area on the home screen and the map would load it, and handling the viewport change, meaning the user could move the map with the mouse. However one really great win for me was learning about the Promise.all() function. Because it is synchronous it allowed me to get the latitude and longitude of each user with the geocoder api in order. Because the Promise waits for each user in the map function to be finished before it starts on the next one, it meant I could setState the user and their coordinates at the same time and not have to worry about the wrong coordinates being attatched to the wrong user.
 <br>
 <br>
 <br>
-<img src=''src/readme/MapboxPromise.png' width='600'>
+<img src='src/readme/MapboxPromise.png' width='600'>
 <br>
 <br>
 <br>
+<h3>Testing</h3>
+Before this project testing was an intimidating concept, now after creating 62 tests with Mocha and Chai I see it as a fun and satisfying exercise similar to Codewars. However due to our problems with git merging and branching which I discuss [here](#git) we can see that a test failed after the final merge. The test failed because a user was able to delete a different user from themselves. I would fix this issue with the following code in controllers/users.js:
+<br>
+<br>
+<br>
+```function destroy(req, res) {
+  User
+    .findById(req.params.id)
+    .then(user => {
+      if (user._id !== req.currentUser._id) return res.status(401).json({ message: 'Unauthorized' }) //This line was deleted when merged
+      if (!user) return res.status(404).json({ message: 'Not Found ' })
+      user.remove().then(() => res.sendStatus(204))
+    })
+    .catch(err => res.json(err))
+}
+```
+<br>
+<br>
+<br>
+<img src='src/readme/Testing.png' width='600'>
+<br>
+<br>
+<br>
+<h3>Testing</h3>
 
+<h2 name='blockers'>Blockers</h2>
+<h3 name='git'>Merging</h3>
