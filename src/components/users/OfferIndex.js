@@ -7,19 +7,6 @@ class Offers extends React.Component {
     offersAccepted: []
   }
 
-  getOffers = user => {
-    return (axios.get(`/api/chefs/${user.offeringUser}`, {
-      headers: { Authorization: `Bearer ${Auth.getToken()}` }
-    }))
-  }
-
-  getAccepted = user => {
-    console.log(user)
-    return (axios.get(`/api/chefs/${user.acceptedUser}`, {
-      headers: { Authorization: `Bearer ${Auth.getToken()}` }
-    }))
-  }
-
   async componentDidMount() {
     try {
       const user = await axios.get('/api/offers', {
@@ -32,6 +19,7 @@ class Offers extends React.Component {
   }
 
   findOffers = async user => {
+    console.log(user)
     Promise.all(user.data.offersPending.map(info => {
       return this.getOffers(info)
     }))
@@ -44,6 +32,19 @@ class Offers extends React.Component {
       .then(user => {
         this.setState({ offersAccepted: user })
       })
+  }
+
+  getOffers = user => {
+    return (axios.get(`/api/chefs/${user.offeringUser}`, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    }))
+  }
+
+  getAccepted = user => {
+    console.log(user)
+    return (axios.get(`/api/chefs/${user.acceptedUser}`, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    }))
   }
 
   handleDelete = async offerery => {
