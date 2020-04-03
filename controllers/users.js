@@ -6,6 +6,7 @@ function index(req, res) {
     .then(foundUsers => res.status(200).json(foundUsers))
     .catch(err => res.json(err))
 }
+
 function show(req, res) {
   User
     .findById(req.params.id)
@@ -13,6 +14,7 @@ function show(req, res) {
     .then(selectedUser => res.status(200).json(selectedUser))
     .catch(err => res.status(404).json(err))
 }
+
 function update(req, res) {
   User
     .findById(req.params.id)
@@ -25,15 +27,18 @@ function update(req, res) {
     .then(updatedUser => res.status(202).json(updatedUser))
     .catch(err => res.status(401).json(err))
 }
+
 function destroy(req, res) {
   User
     .findById(req.params.id)
     .then(user => {
+      if (!user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorized' }) //This line was deleted when merged
       if (!user) return res.status(404).json({ message: 'Not Found ' })
       user.remove().then(() => res.sendStatus(204))
     })
     .catch(err => res.json(err))
 }
+
 function ratingCreate(req, res) {
   User
     .findById(req.params.id)
@@ -46,18 +51,20 @@ function ratingCreate(req, res) {
     .then(user => res.status(201).json(user))
     .catch(err => res.status(404).json(err))
 }
+
 function offersPendingCreate(req, res) {
   User
     .findById(req.params.id)
     .then(user => {
       if (!user) return res.status(404).json({ message: 'Not Found' })
       if (user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorized' })
-      user.offersPending.push({ offeringUser: req.currentUser })
+      user.offersPending.push({ offeringUser: req.currentUser }) // attaches offering user
       return user.save()
     })
     .then(user => res.status(201).json(user))
     .catch(err => res.json(err))
 }
+
 function offersPendingDelete(req, res) {
   User
     .findById(req.currentUser)
@@ -71,6 +78,7 @@ function offersPendingDelete(req, res) {
     .then(() => res.sendStatus(204)) 
     .catch(err => res.status(401).json(err))
 }
+
 function offersAccepted(req, res) {
   User
     .findById(req.params.id)
@@ -83,6 +91,7 @@ function offersAccepted(req, res) {
     .then(user => res.status(201).json(user))
     .catch(err => res.status(401).json(err))
 }
+
 function offersAcceptDelete(req, res) {
   User
     .findById(req.currentUser)
@@ -95,6 +104,7 @@ function offersAcceptDelete(req, res) {
     .then(() => res.sendStatus(204)) 
     .catch(err => res.status(401).json(err))
 }
+
 function reviewCreate(req, res) {
   User
     .findById(req.params.id)
@@ -107,4 +117,5 @@ function reviewCreate(req, res) {
     .then(user => res.status(201).json(user))
     .catch(err => res.status(404).json(err))
 }
+
 module.exports = { index, show, update, ratingCreate, offersPendingCreate, reviewCreate, offersPendingDelete, offersAccepted, offersAcceptDelete, destroy }

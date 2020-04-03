@@ -19,11 +19,11 @@ class Offers extends React.Component {
   }
 
   findOffers = async user => {
-    console.log(user)
     Promise.all(user.data.offersPending.map(info => {
       return this.getOffers(info)
     }))
       .then(user => {
+        console.log(user)
         this.setState({ offersPending: user })
       })
     Promise.all(user.data.offersAccepted.map(info => {
