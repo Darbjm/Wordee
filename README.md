@@ -155,7 +155,7 @@ function destroy(req, res) {
 <br>
 <br>
 <h3>Teamwork</h3>
-Although we had issues with git and merging our team worked seamlessly, using trello we democratically divided the tasks and worked quickly and enjoyably together. Helping each other was useful for the team and the individuals doing the help as we all learned from each other and put parts of ourselves into the app. Producing something we were all proud off.<br>
+Although we had issues with git and merging our team worked seamlessly, using trello we democratically divided the tasks and worked quickly and enjoyably together. Helping each other was useful for the team and the individuals doing the help as we all learned from each other and put parts of ourselves into the app. Producing something we were all proud of.<br>
 <br>
 <br>
 <img src='src/readme/Trello.png' width='600'>
