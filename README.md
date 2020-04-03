@@ -153,10 +153,8 @@ The whole Mapbox feature was a win for me as I had previously tried in another p
 <br>
 <br>
 <h3>Testing</h3>
-Before this project testing was an intimidating concept, now after creating 62 tests with Mocha and Chai I see it as a fun and satisfying exercise similar to Codewars. However due to our problems with git merging and branching which I discuss [here] we can see that a test failed after the final merge. The test failed because a user was able to delete a different user. I have now fixed this issue with the following code in controllers/users.js:
+Before this project testing was an intimidating concept, now after creating 62 tests with Mocha and Chai I see it as a fun and satisfying exercise similar to Codewars. However due to our problems with git merging and branching which I discuss in merging we can see that a test failed after the final merge. The test failed because a user was able to delete a different user. I have now fixed this issue with the following code in controllers/users.js:
 <br>
-
-[here]: http://www.reddit.com
 
 ```javascript
 function destroy(req, res) {
@@ -177,8 +175,8 @@ function destroy(req, res) {
 <br>
 <br>
 <h3>Offers pending</h3>
-The offers page was another big win. When the user sends an offer I had to attach the user sending the offer in the back-end with the following code:
-<br>
+The offers page was another big win. When the user sends an offer I had to attach the user sending the offer in the back-end with the following code:&nbsp
+
 
 ```javascript
 function offersPendingCreate(req, res) {
@@ -205,8 +203,15 @@ I had to do this because the object has its own ID and therefore could not see h
 <br>
 <br>
 <h3>User email</h3>
-  
-
+I wanted the collaborate button on another users page to change according to if the user had not sent a request, had sent a request and finally if that request had been sent. In the begining this proved tricky but I actually found that like many things I had learned in code, it was deceptively simple and used a ternary statement inside a ternary statement and then just had to find if the current user was inside the offersPending or offersAccepted array:
+<br>
+<br>
+<br>
+<img src='src/readme/UserShow.png' width='600'>
+<img src='src/readme/UserShowOfferPending.png' width='600'>
+<br>
+<br>
+<br>
 <h2 name='blockers'>Blockers</h2>
+<h3>Merging</h3>
 
-<h3 name='merging'>Merging</h3>
