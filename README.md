@@ -11,7 +11,6 @@
 |3. [Technologies used](#tech)  |7. [Blockers](#blockers)
 |4. [App](#app)                 |8. [Bugs](#bugs)
 
-
 <h2 name='overview'>Overview</h2>
 
 <h3>Introduction</h3>
@@ -154,7 +153,7 @@ The whole Mapbox feature was a win for me as I had previously tried in another p
 <br>
 <br>
 <h3>Testing</h3>
-Before this project testing was an intimidating concept, now after creating 62 tests with Mocha and Chai I see it as a fun and satisfying exercise similar to Codewars. However due to our problems with git merging and branching which I discuss in [merging](#merging) we can see that a test failed after the final merge. The test failed because a user was able to delete a different user. I have now fixed this issue with the following code in controllers/users.js:
+Before this project testing was an intimidating concept, now after creating 62 tests with Mocha and Chai I see it as a fun and satisfying exercise similar to Codewars. However due to our problems with git merging and branching which I discuss [here] we can see that a test failed after the final merge. The test failed because a user was able to delete a different user. I have now fixed this issue with the following code in controllers/users.js:
 <br>
 
 ```function destroy(req, res) {
@@ -202,6 +201,8 @@ I had to do this because the object has its own ID and therefore could not see h
 <br>
 <br>
 <br>
+<h3>User email</h3>
+  
 
 <h2 name='blockers'>Blockers</h2>
 
