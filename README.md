@@ -144,3 +144,13 @@ I would have liked to have the users' cards in the offers section link to the us
 <br>
 <br>
 <h2 name='wins'>Wins</h2>
+<h3>Mapbox</h3>
+The whole Mapbox feature was a win for me as I had previously tried in another project to implement markers with pop-ups and failed. However one really great win for me was learning about the Promise.all() function. This allowed me to get the latitude and longitude of each user with the geocoder api in order. Because the Promise waits for each user in the map function to be finished before it starts on the next one, it meant I could setState the user and their coordinates at the same time and not have to worry about the wrong coordinates being attatched to the wrong user.
+<br>
+<br>
+<br>
+<img src=''src/readme/MapboxPromise.png' width='600'>
+<br>
+<br>
+<br>
+
