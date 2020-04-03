@@ -78,7 +78,7 @@ The user can begin by taking a look around the app when not logged in. They can 
 
 <img src='src/readme/Register.png' width='600'>
 
-They are able to search for any area using the Mapbox Geocoder the interactive map then displays the area and other users within it. The markers display the users profile image and then once clicked a pop-up showing their skills, rating and name appears, this is a link to the users profile.
+They are able to search for any area using the Mapbox Geocoder the interactive map then displays the area and other users within it. The markers display the users profile image and then once clicked a pop-up showing their skills, rating and name appears, this is a link to the users profile where you can see all their information apart from their email, and ask to collaborate.
 
 <img src='src/readme/Map1.gif' width='600'>
 
