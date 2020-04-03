@@ -154,7 +154,7 @@ The whole Mapbox feature was a win for me as I had previously tried in another p
 <br>
 <br>
 <h3>Testing</h3>
-Before this project testing was an intimidating concept, now after creating 62 tests with Mocha and Chai I see it as a fun and satisfying exercise similar to Codewars. However due to our problems with git merging and branching which I discuss in [merging](#git) we can see that a test failed after the final merge. The test failed because a user was able to delete a different user from themselves. I would fix this issue with the following code in controllers/users.js:
+Before this project testing was an intimidating concept, now after creating 62 tests with Mocha and Chai I see it as a fun and satisfying exercise similar to Codewars. However due to our problems with git merging and branching which I discuss in [merging](#merging) we can see that a test failed after the final merge. The test failed because a user was able to delete a different user from themselves. I would fix this issue with the following code in controllers/users.js:
 <br>
 <br>
 <br>
@@ -182,4 +182,4 @@ Before this project testing was an intimidating concept, now after creating 62 t
 
 <h2 name='blockers'>Blockers</h2>
 
-<h3 name='git'>Merging</h3>
+<h3 name='merging'>Merging</h3>
