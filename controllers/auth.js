@@ -33,18 +33,6 @@ function showProfile(req, res) {
     .catch(err => res.json(err))
 }
 
-// function message(req, res) {
-//   User
-//     .findById(req.params.id)
-//     .then(user => {
-//       if (!user) return res.status(404).json({ message: 'Not Found' })
-//       user.review.push(req.body)
-//       return user.save()
-//     })
-//     .then(user => res.status(201).json(user))
-//     .catch(err => res.json(err))
-// }
-
 function offers(req, res) {
   User
     .findById(req.currentUser._id)

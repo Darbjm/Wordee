@@ -19,26 +19,11 @@ const offersAcceptedSchema = new mongoose.Schema({
   timestamps: true
 })
 
-// const recipeSchema = new mongoose.Schema({
-//   name: { type: String, required: true },
-//   image: { type: String, required: true },
-//   serving: { type: Number, required: true, min: 1, max: 20 },
-//   cookTime: { type: Number, required: true },
-//   ingredients: { type: Array, required: true }
-//   // user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
-// })
-
 const reviewSchema = new mongoose.Schema({
   review: { type: String, required: true }
 }, {
   timestamps: true
 })
-
-// const messageSchema = new mongoose.Schema({
-//   message: { type: String, required: true }
-// }, {
-//   timestamps: true
-// })
 
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -52,19 +37,11 @@ const userSchema = new mongoose.Schema({
   offersPending: [offersPendingSchema],
   offersAccepted: [offersAcceptedSchema],
   review: [reviewSchema]
-  // recipes: [ recipeSchema ]
-  // message: [ messageSchema ]
 }, {
   timestamps: true
 })
 
 userSchema.plugin(require('mongoose-unique-validator'))
-
-// userSchema.virtual('ownedRecipes', {
-//   ref: 'Recipe',
-//   localField: '_id',
-//   foreignField: 'owner'
-// })
 
 
 userSchema
