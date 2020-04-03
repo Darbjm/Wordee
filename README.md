@@ -19,7 +19,7 @@ Chow Vow is a platform that allows users to search for other individuals that ha
 
 <h3>Deployment</h3>
 
-The app is deployed on Heroku and can be found here: https://chowvow-ga.herokuapp.com
+The app is deployed on Heroku and can be found here: https://chowvow-ga.herokuapp.com <br>
 The login details are  email: ben@email.com password: pass <br>
 (The login details are weak to allow easy access, I have addressed this [here](#bugs))
 
@@ -207,7 +207,7 @@ Although the offers feature was a win for me getting there was difficult. It too
 <br>
 <h2 name='bugs'>Bugs</h2>
 <h3>Passwords</h3>
-unfortunately we did include a way to make sure that the user had to create a secure password that was at least 8 characters long and contained uppercase and lowercase letters and numbers.
+Unfortunately we did include a way to make sure that the user had to create a secure password that was at least 8 characters long and contained uppercase and lowercase letters and numbers.
 <br>
 <br>
 <h3>CSS</h3>
