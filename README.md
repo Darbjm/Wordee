@@ -16,7 +16,7 @@
 
 <h3>Introduction</h3>
 
-Chow Vow is a platform that allows users to search for other individuals that have certain skills within cooking.
+Chow Vow is a platform that allows users to search for other individuals that have certain skills within cooking. If you want to learn a skill from another user, you can ask that user to collaborate. The users can search via location or via skills. The app uses secure routes meaning users must be logged in to use certain features of the app like viewing others profiles, edit and delete their own profile and send offers of collaboration and accept or delete them.
 
 <h3>Team</h3>
 
@@ -69,6 +69,8 @@ The app is deployed on Heroku and can be found here: https://chowvow-ga.herokuap
 18. GitHub <br><p/>
 
 <h2 name='app'>App</h2>
+
+The user can begin by taking a look around the app when not logged in. They can view the map or the list of users that know a skill. As soon as they try to view anothers profile they a redirected to log in. The user can register and upload a profile image via Cloudinary or log in with their existing.
 
 They are able to search for any area using the Mapbox Geocoder the interactive map then displays the area and other users within it. The markers display the users profile image and then once clicked a pop-up showing their skills, rating and name appears, this is a link to the users profile.
 
