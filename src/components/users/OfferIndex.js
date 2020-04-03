@@ -6,17 +6,31 @@ class Offers extends React.Component {
     offersPending: [],
     offersAccepted: []
   }
+
   getOffers = user => {
     return (axios.get(`/api/chefs/${user.offeringUser}`, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     }))
   }
+
   getAccepted = user => {
     console.log(user)
     return (axios.get(`/api/chefs/${user.acceptedUser}`, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     }))
   }
+
+  async componentDidMount() {
+    try {
+      const user = await axios.get('/api/offers', {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+      await this.findOffers(user)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   findOffers = async user => {
     Promise.all(user.data.offersPending.map(info => {
       return this.getOffers(info)
@@ -31,16 +45,7 @@ class Offers extends React.Component {
         this.setState({ offersAccepted: user })
       })
   }
-  async componentDidMount() {
-    try {
-      const user = await axios.get('/api/offers', {
-        headers: { Authorization: `Bearer ${Auth.getToken()}` }
-      })
-      await this.findOffers(user)
-    } catch (err) {
-      console.log(err)
-    }
-  }
+
   handleDelete = async offerery => {
     try {
       await axios.delete(`/api/chefs/${Auth.getUser()}/offersPending/${offerery._id}`, {
@@ -55,6 +60,7 @@ class Offers extends React.Component {
       await this.findOffers(user)
     }
   }
+
   handleDeleteAccepted = async offerery => {
     try {
       await axios.delete(`/api/chefs/${Auth.getUser()}/offersAccepted/${offerery.data._id}`, {
@@ -69,6 +75,7 @@ class Offers extends React.Component {
       await this.findOffers(user)
     }
   }
+
   handleAccept = async offerery => {
     this.handleDelete(offerery)
     try {
@@ -84,6 +91,7 @@ class Offers extends React.Component {
       await this.findOffers(user)
     }
   }
+
   render() {
     const { offersPending, offersAccepted } = this.state
     return (
@@ -154,4 +162,5 @@ class Offers extends React.Component {
     )
   }
 }
+
 export default Offers
