@@ -115,4 +115,6 @@ In the gif below the user navigates via the 'CHEFS' button to a user they have a
 <br>
 <br>
 <h2 name='future'>Future content</h2>
-
+<h3>Messaging</h3>
+One of our features we almost finished was a direct messaging feature that would allow the users to communicate via the app.
+<img src='src/readme/UserMessages.png' width='600'>
