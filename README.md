@@ -6,10 +6,11 @@
 
 | Contents                      |                |
 | ------------------------------|----------------|
-|1. [Overview](#overview)       |5. [Future content](#future)
-|2. [Brief](#brief)             |6. [Wins](#wins)
-|3. [Technologies used](#tech)  |7. [Blockers](#blockers)
-|4. [App](#app)                 |8. [Bugs](#bugs)
+|1. [Overview](#overview)       |6. [Wins](#wins)
+|2. [Brief](#brief)             |7. [Blockers](#blockers)
+|3. [Technologies used](#tech)  |8. [Bugs](#bugs)
+|4. [App](#app)                 |9. [Future learnings](#learn)
+|5. [Future content](#future)
 
 <h2 name='overview'>Overview</h2>
 
@@ -225,4 +226,8 @@ The users image does not load for the edit page as we were focusing on finishing
 <br>
 <br>
 <h3>CSS</h3>
-The styling also has sections that are glitchy and ugly. It is not very responsive however we proritised the time we had on functionality and features. 
+The styling also has sections that are glitchy and ugly. It is not very responsive however we proritised the time we had on functionality and features.
+<h2 name='learn'>Future learnings</h2>
+• Learn about refs<br>
+• Include password security features<br>
+• Get a better understanding of objects in memory and equality operators<br>
