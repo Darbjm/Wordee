@@ -217,5 +217,12 @@ Although the offers feature was a win for me getting there was difficult. It too
 Unfortunately we did include a way to make sure that the user had to create a secure password that was at least 8 characters long and contained uppercase and lowercase letters and numbers.
 <br>
 <br>
+<h3>Edit profile</h3>
+The users image does not load for the edit page as we were focusing on finishing the app and did not donate enough time to figureing out how were could uses the profile image as an upload button that would change.
+<br>
+<br>
+<img src='src/readme/Editprofile.png' width='600'>
+<br>
+<br>
 <h3>CSS</h3>
 The styling also has sections that are glitchy and ugly. It is not very responsive however we proritised the time we had on functionality and features. 
