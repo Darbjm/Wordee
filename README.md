@@ -214,7 +214,7 @@ Although the offers feature was a win for me getting there was difficult. It too
 <br>
 <h2 name='bugs'>Bugs</h2>
 <h3>Passwords</h3>
-Unfortunately we did include a way to make sure that the user had to create a secure password that was at least 8 characters long and contained uppercase and lowercase letters and numbers.
+Unfortunately we did not include a way to make sure that the user had to create a secure password that was at least 8 characters long and contained uppercase and lowercase letters and numbers.
 <br>
 <br>
 <h3>Edit profile</h3>
