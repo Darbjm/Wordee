@@ -32,10 +32,10 @@ The login details are  email: ben@email.com password: pass <br>
 
 <h3>My contributions</h3>
 
-• All 62 tests with Mocha & Chai
-• Interactive, searchable Mapbox with pop-ups of users at their location that link to their profile
-• The offers page and the ability for users to send, accept and delete offers and delete accepted offers
-• Setting up the secure route for both front and back-ends
+• All 62 tests with Mocha & Chai<br>
+• Interactive, searchable Mapbox with pop-ups of users at their location that link to their profile<br>
+• The offers page and the ability for users to send, accept and delete offers and delete accepted offers<br>
+• Setting up the secure route for both front and back-ends<br>
 
 <h3>Timeframe</h3>
 
@@ -46,7 +46,6 @@ The login details are  email: ben@email.com password: pass <br>
 * **Build a full-stack application** by making your own backend and your own front-end
 * **Use an Express API** to serve your data from a Mongo database
 * **Consume your API with a separate front-end** built with React
-* **Be a complete product** which most likely means multiple relationships and CRUD functionality for at least a couple of models
 * **Have automated tests** for _at least_ one RESTful resource on the back-end.
 * **Implement thoughtful user stories/wireframes**
 * **Have a visually impressive design**
