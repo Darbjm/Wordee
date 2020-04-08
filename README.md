@@ -69,7 +69,8 @@ The login details are  email: ben@email.com password: pass <br>
 15. Mapbox <br>
 16. Z shell <br>
 17. JWT <br>
-18. GitHub <br><p/>
+18. Heroku <br>
+19. GitHub <br><p/>
 
 <h2 name='app'>App</h2>
 
