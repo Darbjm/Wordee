@@ -69,6 +69,7 @@ The login details are  email: ben@email.com password: pass <br>
 15. Mapbox <br>
 16. Z shell <br>
 17. JWT <br>
+17. Yarn <br>
 18. Heroku <br>
 19. GitHub <br><p/>
 
@@ -225,7 +226,7 @@ The users image does not load for the edit page as we were focusing on finishing
 <img src='src/readme/Editprofile.png' width='600'>
 <br>
 <br>
-<h3>CSS</h3>
+<h3>SCSS</h3>
 The styling also has sections that are glitchy and ugly. It is not very responsive however we proritised the time we had on functionality and features.
 <h2 name='learn'>Future learnings</h2>
 • Learn about refs<br>
