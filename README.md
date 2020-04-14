@@ -6,11 +6,11 @@
 
 | Contents                      |                |
 | ------------------------------|----------------|
-|1. [Overview](#overview)       |6. [Wins](#wins)
-|2. [Brief](#brief)             |7. [Blockers](#blockers)
-|3. [Technologies used](#tech)  |8. [Bugs](#bugs)
-|4. [App](#app)                 |9. [Future learnings](#learn)
-|5. [Future content](#future)
+|1. [Overview](#overview)       |6. [Future content](#future)
+|2. [Brief](#brief)             |7. [Wins](#wins)
+|3. [Technologies used](#tech)  |8. [Blockers](#blockers)
+|4. [App](#app)                 |9. [Bugs](#bugs)
+|5. [Approach](#approach)       |10. [Future learnings](#learn)
 
 <h2 name='overview'>Overview</h2>
 
@@ -69,7 +69,8 @@ The login details are  email: ben@email.com password: pass <br>
 15. Mapbox <br>
 16. Z shell <br>
 17. JWT <br>
-18. GitHub <br><p/>
+18. bcrypt <br>
+19. GitHub <br></p>
 
 <h2 name='app'>App</h2>
 
@@ -105,6 +106,14 @@ In the gif below the user navigates via the 'CHEFS' button to a user they have a
 <br>
 <br>
 <img src='src/readme/Review.gif' width='600'>
+<br>
+<br>
+<br>
+<h2 name='approach'>Approach</h2>
+We listed a few different project ideas to start with and then voted for our favourite, the most popular was the sharing skills app, which we then further refined into cooking skills. Using the MoSCoW method we outlined our most important features and proceeded to sketch wireframes and user journeys. We distributed sketches of each feature to the person assigned to build it and used Trello to track our progress.<br>
+<br>
+<br>
+<img src='src/readme/Trello.png'>
 <br>
 <br>
 <br>
@@ -156,9 +165,6 @@ function destroy(req, res) {
 <br>
 <h3>Teamwork</h3>
 Although we had issues with git and merging our team worked seamlessly, using trello we democratically divided the tasks and worked quickly and enjoyably together. Helping each other was useful for the team and the individuals doing the help as we all learned from each other and put parts of ourselves into the app. Producing something we were all proud of.<br>
-<br>
-<br>
-<img src='src/readme/Trello.png' width='600'>
 <br>
 <br>
 <h3>Promise.all()</h3>
