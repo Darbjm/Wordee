@@ -145,7 +145,7 @@ I would have liked to have the users' cards in the offers section link to the us
 <br>
 <h2 name='wins'>Wins</h2>
 <h3>Testing</h3>
-Before this project testing was an intimidating concept, now after creating 62 tests with Mocha and Chai I see it as a fun and satisfying exercise similar to Codewars. However due to our problems with git merging and branching which I discuss in merging we can see that a test failed after the final merge. The test failed because a user was able to delete a different user. I have now fixed this issue with the following code in controllers/users.js:
+Before this project testing was an intimidating concept, if you have seen my previous personal project Irony, you will see I started a small amount of testing. However it was a future learning of mine to do more, now after creating 62 tests with Mocha and Chai I see it as a fun and satisfying exercise similar to Codewars. However due to our problems with git merging and branching which I discuss in merging we can see that a test failed after the final merge. The test failed because a user was able to delete a different user. I have now fixed this issue with the following code in controllers/users.js:
 
 ```javascript
 function destroy(req, res) {
