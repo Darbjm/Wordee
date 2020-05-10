@@ -5,7 +5,7 @@ import MapGL, { Marker, Popup } from 'react-map-gl'
 import Geocoder from 'react-map-gl-geocoder'
 import { Link } from 'react-router-dom'
 
-const token = 'pk.eyJ1IjoiZGFyYmptIiwiYSI6ImNrNWk5MDFwMjA5NmozZW5weWUyb21xa3YifQ.iJv7D-hvXJ2Tw4p2AiQMtQ'
+const token = process.env.REACT_APP_MAPBOX
 
 class UserMap extends React.Component {
   state = {
@@ -84,9 +84,7 @@ class UserMap extends React.Component {
 
   render() {
     const { viewport, userswithco, userPicked, display } = this.state
-    console.log(userPicked)
     if (!userswithco.length) return null
-    console.log(userPicked)
     return (
       <section className='map'>
         <MapGL
