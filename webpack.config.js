@@ -49,6 +49,11 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       { from: './src/assets', to: 'assets' }
-    ])
+    ]),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'REACT_APP_MAPBOX': JSON.stringify(process.env.REACT_APP_MAPBOX)
+      }
+    })
   ]
 }
