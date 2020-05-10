@@ -83,6 +83,7 @@ class UserMap extends React.Component {
 
 
   render() {
+    console.log(process.env.REACT_APP_MAPBOX)
     const { viewport, userswithco, userPicked, display } = this.state
     if (!userswithco.length) return null
     return (
