@@ -67,9 +67,6 @@ const EditProfile = ({ history }) => {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    if (!data.files) {
-      delete data.files
-    }
     try {
       const newData = {
         username: data.username,
