@@ -89,33 +89,33 @@ const EditProfile = ({ history }) => {
           }
         )
       )
-      // files.map(doc => {
-      //   const uploadTask = storage.ref(`files/${doc.name}`).put(doc)
-      //   uploadTask.on(
-      //     'state_changed',
-      //     snapshot => {
-      //       console.log(snapshot)
-      //     },
-      //     error => {
-      //       console.log(error)
-      //     },
-      //     () => {
-      //       storage
-      //         .ref('files')
-      //         .child(doc.name)
-      //         .getDownloadURL()
-      //         .then(async (url) => {
-      //           await axios.post(
-      //             '/api/docs/add',
-      //             { url: url, name: doc.name },
-      //             {
-      //               headers: { Authorization: `Bearer ${getToken()}` }
-      //             }
-      //           )
-      //         })
-      //     }
-      //   )
-      // })
+      files.map(doc => {
+        const uploadTask = storage.ref(`files/${doc.name}`).put(doc)
+        uploadTask.on(
+          'state_changed',
+          snapshot => {
+            console.log(snapshot)
+          },
+          error => {
+            console.log(error)
+          },
+          () => {
+            storage
+              .ref('files')
+              .child(doc.name)
+              .getDownloadURL()
+              .then(async (url) => {
+                await axios.post(
+                  '/api/docs/add',
+                  { url: url, name: doc.name },
+                  {
+                    headers: { Authorization: `Bearer ${getToken()}` }
+                  }
+                )
+              })
+          }
+        )
+      })
       history.push(`profile/${getUser()}`)
     } catch (err) {
       setErrors(err.response.data)

@@ -225,9 +225,9 @@ const BriefForm = ({ data, handleChange, handleSubmit, errors, header }) => (
               id="radio13"
               name="purpose"
               type="radio"
-              value="ReinhtmlForce your brand values"
+              value="Reinforce your brand values"
               onChange={handleChange}
-              checked={data.purpose === 'ReinhtmlForce your brand values'}
+              checked={data.purpose === 'Reinforce your brand values'}
             />
             <span className="wide">Reinforce your brand values</span>
           </label>
@@ -269,7 +269,7 @@ const BriefForm = ({ data, handleChange, handleSubmit, errors, header }) => (
 
       <div className="field">
         <div className="underline">
-          In a sentance, what is the purpose of this piece of content?
+          In a sentence, what is the purpose of this piece of content?
         </div>
         <div className="control">
           <input

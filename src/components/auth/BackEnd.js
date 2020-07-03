@@ -12,7 +12,6 @@ const BackEnd = () => {
           headers: { Authorization: `Bearer ${getToken()}` }
         })
         setData(res.data)
-        console.log(res)
       } catch (err) {
         console.log(err)
       }
@@ -25,16 +24,17 @@ const BackEnd = () => {
         {user[0] &&
           user.map((one, i) => (
             <div key={i} className="each">
+              <img src={one.logo} alt={one.logo} className='backend-logo'/>
               <div>username: {one.username}</div>
               <div>email: {one.email}</div>
               <div>logo: {one.logo}</div>
               <div>website: {one.website}</div>
               <div>blog: {one.blog}</div>
+              <hr />
               <div>
                 {one.docs &&
                   one.docs.map((doc, i) => (
                     <div className="sec" key={i}>
-                      <hr />
                       doc:
                       <div>url: {doc.doc}</div>
                       <div>name: {doc.name}</div>
@@ -43,8 +43,8 @@ const BackEnd = () => {
                   ))}
               </div>
               <div>
-                {one.briefs &&
-                  one.briefs.map((brief, i) => (
+                {one.liveBriefs &&
+                  one.liveBriefs.map((brief, i) => (
                     <div className="sec" key={i}>
                       brief:
                       <div>title: {brief.title}</div>
@@ -64,15 +64,17 @@ const BackEnd = () => {
                   ))}
               </div>
               <div>
-                {one.images &&
-                  one.images.map((doc, i) => (
+                {one.image &&
+                  one.image.map((doc, i) => (
                     <div className="sec" key={i}>
-                      <hr />
                       image:
+                      <br />
+                      <img src={doc.url} alt={doc.url} className='backend-logo'/>
                       <div>url: {doc.url}</div>
                     </div>
                   ))}
               </div>
+              <hr />
               <div className="user"></div>
             </div>
           ))}
