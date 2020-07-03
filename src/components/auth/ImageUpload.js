@@ -8,9 +8,9 @@ const ImageUpload = ({ value, onChange, name }) => {
   const handleUpload = async ({ target: { files } }) => {
     const data = new FormData()
     data.append('file', files[0])
+    console.log(process.env)
     data.append('upload_preset', process.env.REACT_APP_CLOUDINARY_LOGOS)
     const res = await axios.post(process.env.REACT_APP_CLOUDINARY_URL, data)
-    console.log(process.env)
     console.log(res)
     setLogo(res.data.url)
     onChange(name, res.data.url)
