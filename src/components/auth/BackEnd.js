@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { getToken } from '../lib/auth'
+import folder from '../../styles/images/folder.svg'
 
 const BackEnd = () => {
   const [user, setData] = useState({})
@@ -36,7 +37,11 @@ const BackEnd = () => {
                   one.docs.map((doc, i) => (
                     <div className="sec" key={i}>
                       doc:
-                      <div>url: {doc.doc}</div>
+                      <br />
+                      <a href={doc.url} target='_blank' rel='noopener noreferrer'>
+                        <img src={folder} alt={folder} className='backend-folder'/>
+                      </a>
+                      <div>url: {doc.url}</div>
                       <div>name: {doc.name}</div>
                       <hr />
                     </div>
