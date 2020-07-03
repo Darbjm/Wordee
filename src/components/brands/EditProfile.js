@@ -46,9 +46,9 @@ const EditProfile = ({ history }) => {
           formData.append('file', image)
           formData.append(
             'upload_preset',
-            process.env.REACT_APP_cloudimage
+            'W_Imagery2020'
           )
-          return axios.post(process.env.REACT_APP_url, formData)
+          return axios.post('https://api.cloudinary.com/v1_1/wordee/image/upload', formData)
         })
       ).then(response => {
         const images = response.map(info => info.data.url)
