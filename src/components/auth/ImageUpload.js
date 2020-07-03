@@ -8,12 +8,9 @@ const ImageUpload = ({ value, onChange, name }) => {
   const handleUpload = async ({ target: { files } }) => {
     const data = new FormData()
     data.append('file', files[0])
-    console.log('here')
-    console.log(process.env.REACT_APP_CLOUDINARY_LOGOS)
     data.append('upload_preset', process.env.REACT_APP_CLOUDINARY_LOGOS)
-    const res = await axios.post(process.env.REACT_APP_CLOUDINARY_URL, data)
+    const res = await axios.post('https://api.cloudinary.com/v1_1/wordee/image/upload', data)
     console.log(res)
-    console.log('here2')
     setLogo(res.data.url)
     onChange(name, res.data.url)
   }

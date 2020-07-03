@@ -48,7 +48,7 @@ const EditProfile = ({ history }) => {
             'upload_preset',
             process.env.REACT_APP_CLOUDINARY_IMAGERY
           )
-          return axios.post(process.env.REACT_APP_CLOUDINARY_URL, formData)
+          return axios.post('https://api.cloudinary.com/v1_1/wordee/image/upload', formData)
         })
       ).then(response => {
         const images = response.map(info => info.data.url)
