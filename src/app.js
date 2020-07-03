@@ -4,42 +4,32 @@ import './styles/main.scss'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import 'bulma'
 
-
-import Home from './components/common/Home'
-import UserMap from './components/users/UserMap'
-import UserIndex from './components/users/UserIndex'
-import UserShow from './components/users/UserShow'
-import UserProfile from './components/users/UserProfile'
-import UserReview from './components/users/UserReview'
-import UserEdit from './components/users/UserEdit'
-// import UserMessages from './components/users/UserMessages'
-
-import Navbar from './components/common/Navbar'
-import FailedPage from './components/common/FailedPage'
+import SecureRoute from './components/common/SecureRoute'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
-import Offers from './components/users/OfferIndex'
-import SecureRoute from './components/common/SecureRoute'
+import BackEnd from './components/auth/BackEnd'
+import EditProfile from './components/brands/EditProfile'
+import Profile from './components/brands/BrandProfile'
+import Brandbrief from './components/briefs/Brandbrief'
+import BrandEditBrief from './components/briefs/BrandEditBrief'
+import FailedPage from './components/common/FailedPage'
+import BackEndLogin from './components/auth/BackEndLogin'
 
 const App = () => (
   <BrowserRouter>
-    <>
-      <Navbar />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <SecureRoute path="/chefs/:id/edit" component={UserEdit} />
-        <Route path="/chefs/:id/review" component={UserReview} />
-        <SecureRoute path="/chefs/:id" component={UserShow} />
-        <Route path="/map/:address" component={UserMap} />
-        <SecureRoute path="/offers" component={Offers} />
-        <Route path="/chefs" component={UserIndex} />
-        <Route path="/register" component={Register} />
-        <Route path="/login" component={Login} />
-        <Route path="/profile" component={UserProfile} />
-        {/* <Route path="/messages" component={UserMessages} /> */}
-        <Route path="/*" component={FailedPage} />
-      </Switch>
-    </>
+  <>
+    <Switch>
+      <Route exact path="/" component={Login} />
+      <Route path="/register" component={Register} />
+      <Route path="/admin" component={BackEndLogin} />
+      <SecureRoute path="/backendtesting5702918301" component={BackEnd} />
+      <SecureRoute path="/profile/:id/edit" component={EditProfile} />
+      <SecureRoute path="/profile/:id" component={Profile} />
+      <SecureRoute path="/createbrandbrief/:id" component={Brandbrief} />
+      <SecureRoute path="/editbrief/:id" component={BrandEditBrief} />
+      <Route path="/*" component={FailedPage} />
+    </Switch>
+  </>
   </BrowserRouter>
 )
 ReactDOM.render(

@@ -1,63 +1,79 @@
 const mongoose = require('mongoose') // This is needed to create a new schema and model
 const bcrypt = require('bcrypt') // Our chosen our library used to hash passwords
 
-const ratingSchema = new mongoose.Schema({
-  rating: { type: Number, required: true }
+const docSchema = new mongoose.Schema({
+  url: { type: String, required: true },
+  name: { type: String, required: true },
+  brand: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 }, {
   timestamps: true
 })
 
-const offersPendingSchema = new mongoose.Schema({
-  offeringUser: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+const imageSchema = new mongoose.Schema({
+  url: { type: String, required: true },
+  brand: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 }, {
   timestamps: true
 })
 
-const offersAcceptedSchema = new mongoose.Schema({
-  acceptedUser: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+const completedBriefSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  content: { type: String, required: true },
+  length: { type: String, required: true },
+  level: { type: String, required: true },
+  purpose: { type: String, required: true },
+  sentance: { type: String, required: true },
+  message: { type: String, required: true },
+  url: { type: String, required: true },
+  first_draft: { type: String, required: true },
+  topic: { type: String, required: true },
+  keyword1: { type: String, required: true },
+  keyword2: { type: String, required: true },
+  keyword3: { type: String, required: true },
+  brand: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+
 }, {
   timestamps: true
 })
 
-const reviewSchema = new mongoose.Schema({
-  review: { type: String, required: true }
+const liveBriefSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  content: { type: String, required: true },
+  length: { type: String, required: true },
+  level: { type: String, required: true },
+  purpose: { type: String, required: true },
+  sentance: { type: String, required: true },
+  message: { type: String, required: true },
+  url: { type: String, required: true },
+  first_draft: { type: String, required: true },
+  topic: { type: String, required: true },
+  keyword1: { type: String, required: true },
+  keyword2: { type: String, required: true },
+  keyword3: { type: String, required: true },
+  brand: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+
 }, {
   timestamps: true
 })
 
 const userSchema = new mongoose.Schema({
-  name: { type: String, required: true },
+  username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
-  image: { type: Object, required: true },
-  skills: { type: Array, required: true },
-  city: { type: String, required: true },
-  postcode: { type: String, required: true },
   password: { type: String, required: true },
-  rating: [ratingSchema],
-  offersPending: [offersPendingSchema],
-  offersAccepted: [offersAcceptedSchema],
-  review: [reviewSchema]
+  logo: { type: String },
+  cover: { type: String },
+  summary: { type: String },
+  website: { type: String },
+  blog: { type: String },
+  docs: [docSchema],
+  image: [imageSchema],
+  liveBriefs: [liveBriefSchema],
+  completedBriefs: [completedBriefSchema]
 }, {
   timestamps: true
 })
 
 userSchema.plugin(require('mongoose-unique-validator'))
-
-userSchema
-  .virtual('avgRating')
-  .get(function () {
-    const mappedUsers = [...this.rating]
-    if (mappedUsers.length) {
-      const newMappedUsers = mappedUsers.map(rating => {
-        return rating.rating
-      })
-      const sum = newMappedUsers.reduce((previous, current) => current += previous)
-      const avgRating = (sum / newMappedUsers.length).toFixed(1)
-      return avgRating
-    } else {
-      return 0
-    }
-  })
 
 userSchema
   .set('toJSON', {
@@ -70,6 +86,7 @@ userSchema
 
 // This validates whether a password is correct at login
 userSchema.methods.validatePassword = function validatePassword(password) {
+  console.log(password, this.password, this)
   return bcrypt.compareSync(password, this.password) // bcyrpt hashes the password our user is trying to login with the same it hashed the one stored in the DB when they registered, it then compares them for us to see if they match, and returns true or false depending on the outcome
 }
 

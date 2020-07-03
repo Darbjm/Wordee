@@ -1,178 +1,149 @@
-
-import React from 'react'
+import propTypes from 'prop-types'
+import React, { useState } from 'react'
 import axios from 'axios'
-import Select from 'react-select'
-import ImageUpload from '../ImageUpload'
+import { Link } from 'react-router-dom'
+import logo from '../../styles/images/Wordee.svg'
 
+const Register = ({ history }) => {
+  const [data, setData] = useState({})
+  const [error, setError] = useState('')
+  // const [user, setUser] = useState(true);
 
-class Register extends React.Component {
-  state = {
-    data: {
-      name: '',
-      email: '',
-      password: '',
-      passwordConfirmation: '',
-      skills: '',
-      city: '',
-      postcode: '',
-      image: ''
-    },
-    errors: {}
-  }
+  const handleChange = ({ target: { name, value } }) =>
+    setData({ ...data, [name]: value })
 
-  options = [
-    { value: 'African', label: 'African' },
-    { value: 'Caribbean', label: 'Caribbean' },
-    { value: 'Chinese', label: 'Chinese' },
-    { value: 'French', label: 'French' },
-    { value: 'Greek', label: 'Greek' },
-    { value: 'Indian', label: 'Indian' },
-    { value: 'Italian', label: 'Italian' },
-    { value: 'Japanese', label: 'Japanese' },
-    { value: 'Korean', label: 'Korean' },
-    { value: 'Mexican', label: 'Mexican' },
-    { value: 'Moroccan', label: 'Moroccan' },
-    { value: 'South-East Asian', label: 'South-East Asian' },
-    { value: 'Turkish/Middle-Eastern', label: 'Turkish/Middle-Eastern' },
-    { value: 'Vegan', label: 'Vegan' },
-    { value: 'Vegetarian', label: 'Vegetarian' }
-  ]
+  // const handleUser = value => setUser(value);
 
-  handleChange = e => {
-    const data = { ...this.state.data, [e.target.name]: e.target.value }
-    const errors = { ...this.state.errors, [e.target.name]: '' }
-    this.setState({ data, errors })
-  }
-
-  handleMultiChange = (selected) => {
-    const skills = selected ? selected.map(item => item.value) : []
-    const data = { ...this.state.data, skills }
-    this.setState({ data })
-  }
-
-  handleSubmit = async e => {
+  const handleSubmit = async e => {
     e.preventDefault()
-    console.log('submitting', this.state.data)
+    // const address = user ? 'brands' : 'writers';
     try {
-      await axios.post('/api/register', this.state.data)
-      this.props.history.push('/login')
+      const res = await axios.post('/api/brands/register', data)
+      console.log(res)
+      history.push('/')
     } catch (err) {
-      // console.log(err.response.data.errors)
-      this.setState({ errors: err.response.data.errors })
+      console.log(err.response)
+      setError(err.response.data)
     }
   }
 
-  render() {
-    console.log(this.state.errors)
-    return (
-      <section className='user-section'>
-        <form onSubmit={this.handleSubmit} className='user-container'>
-          <div className='user-info'>
-            <h2 className='title'>Register</h2>
-            <br />
-            <div className='fieldContainer'>
-              <div className='field'>
-                <label className='label'>NAME</label>
-                <div className='control'>
+  return (
+    <main>
+      <section className="register">
+        <div className="column is-6-tablet is-offset-one-quarter is-8-mobile is-offset-2-mobile card">
+          <form
+            onSubmit={handleSubmit}
+            className="has-text-centered is-centered"
+          >
+            <img src={logo} alt="Wordee Logo" />
+            <div className="field">
+              {/* <div className="oneline">
+                <h2 className="label">Register as a:</h2>
+                <label className="radio" htmlFor="brandradio">
                   <input
-                    className={`input is-rounded ${this.state.errors.name ? 'is-danger' : ''}`}
-                    placeholder='Name'
-                    name='name'
-                    onChange={this.handleChange}
+                    id="brandradio"
+                    name="user"
+                    type="radio"
+                    value="brand"
+                    onChange={() => handleUser(true)}
+                    checked={user === true}
                   />
-                </div>
-                {this.state.errors.name && <small className='help is-danger'>{this.state.errors.name.message}</small>}
-              </div>
-              <div className='field'>
-                <label className='label'>EMAIL</label>
-                <div className='control'>
-
+                  Brand
+                </label>
+                <label className="radio" htmlFor="userradio">
                   <input
-                    className={`input is-rounded ${this.state.errors.email ? 'is-danger' : ''}`}
-                    placeholder='Email'
-                    name='email'
-                    onChange={this.handleChange}
+                    id="userradio"
+                    name="user"
+                    type="radio"
+                    value="writer"
+                    onChange={() => handleUser(false)}
+                    checked={user === false}
                   />
+                  Writer
+                </label>
+              </div> */}
+              <div className="fieldContainer">
+                <div className="field">
+                  <div className="control">
+                    <input
+                      className={`input is-large is-rounded ${
+                        error.username ? 'is-danger' : ''
+                      }`}
+                      placeholder="Brandname"
+                      name="username"
+                      onChange={handleChange}
+                    />
+                  </div>
+                  {error.username && (
+                    <small className="help is-danger">{error.username}</small>
+                  )}
                 </div>
-                {this.state.errors.email && <small className='help is-danger'>{this.state.errors.email.message}</small>}
-              </div>
-              <div className='field'>
-                <label className='label'>PASSWORD</label>
-                <div className='control'>
-                  <input
-                    className={`input is-rounded ${this.state.errors.password ? 'is-danger' : ''}`}
-                    type='password'
-                    placeholder='Password'
-                    name='password'
-                    onChange={this.handleChange}
-                  />
+                <div className="field">
+                  <div className="control">
+                    <input
+                      className={`input is-large is-rounded ${
+                        error.email ? 'is-danger' : ''
+                      }`}
+                      placeholder="Email"
+                      name="email"
+                      onChange={handleChange}
+                    />
+                  </div>
+                  {error.email && (
+                    <small className="help is-danger">{error.email}</small>
+                  )}
                 </div>
-                {this.state.errors.password && <small className='help is-danger'>{this.state.errors.password.message}</small>}
-              </div>
-              <div className='field'>
-                <label className='label'>PASSWORD CONFIRMATION</label>
-                <div className='control'>
-                  <input
-                    className={`input is-rounded ${this.state.data.password !== this.state.data.passwordConfirmation}  ? 'is-danger' : ''`}
-                    type='password'
-                    placeholder='Password Confirmation'
-                    name='passwordConfirmation'
-                    onChange={this.handleChange}
-                  />
+                <div className="field">
+                  <div className="control">
+                    <input
+                      className={`input is-large is-rounded ${
+                        error.password ? 'is-danger' : ''
+                      }`}
+                      type="password"
+                      placeholder="Password"
+                      name="password"
+                      onChange={handleChange}
+                    />
+                  </div>
+                  {error.password && (
+                    <small className="help is-danger">{error.password}</small>
+                  )}
                 </div>
-                {this.state.data.password !== this.state.data.passwordConfirmation ? <small className='help is-danger'>Passwords do not match</small> : <div></div>}
+                <div className="field">
+                  <div className="control">
+                    <input
+                      className={`input is-large is-rounded ${
+                        error.password_confirmation ? 'is-danger' : ''
+                      }`}
+                      type="password"
+                      placeholder="Password Confirmation"
+                      name="password_confirmation"
+                      onChange={handleChange}
+                    />
+                  </div>
+                  {error.password_confirmation && (
+                    <small className="help is-danger">
+                      {error.password_confirmation}
+                    </small>
+                  )}
+                </div>
+                <button type="submit" className="button is-rounded is-large">
+                  Register Brand
+                </button>
               </div>
             </div>
-          </div>
-          <div className='user-image'>
-            <ImageUpload
-              handleChange={this.handleChange}
-              fieldName='image'
-              inputClassName='my-input-class'
-            />
-            <hr />
-            <button type='submit' className='button is-rounded  is-primary'>SAVE</button>
-          </div>
-          <div className='skills-recipes'>
-            <div className='fieldContainer'>
-              <label className='label'>What are your skills?</label>
-              <div className='control'>
-                <Select
-                  options={this.options}
-                  isMulti
-                  onChange={this.handleMultiChange}
-                />
-              </div>
-              <div className='field'>
-                <label className='label'>CITY</label>
-                <div className='control'>
-                  <input
-                    className={`input ${this.state.errors.city ? 'is-danger' : ''}`}
-                    placeholder='City'
-                    name='city'
-                    onChange={this.handleChange}
-                  />
-                </div>
-                {this.state.errors.city && <small className='help is-danger'>{this.state.errors.city.message}</small>}
-              </div>
-              <div className='field'>
-                <label className='label'>POSTCODE</label>
-                <div className='control'>
-                  <input
-                    className={`input ${this.state.errors.postcode ? 'is-danger' : ''}`}
-                    placeholder='Postcode'
-                    name='postcode'
-                    onChange={this.handleChange}
-                  />
-                </div>
-                {this.state.errors.postcode && <small className='help is-danger'>{this.state.errors.postcode.message}</small>}
-              </div>
+            <div className="log">
+              Already have an account? <Link to="/">Login</Link>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </section>
-    )
-  }
+    </main>
+  )
+}
+
+Register.propTypes = {
+  history: propTypes.object
 }
 
 export default Register

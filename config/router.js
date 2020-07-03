@@ -3,43 +3,41 @@ const users = require('../controllers/users')
 const authUsers = require('../controllers/auth')
 const secureRoute = require('../lib/secureRoute')
 
-
-router.route('/chefs')
-  .get(users.index)
-
-router.route('/chefs/:id')
+router.route('/brands/:id')
   .get(secureRoute, users.show)
   .put(secureRoute, users.update)
   .delete(secureRoute, users.destroy)
 
-router.route('/chefs/:id/rating')
-  .post(secureRoute, users.ratingCreate)
+router.route('/all')
+  .get(secureRoute, authUsers.showProfileAll)
 
-router.route('/chefs/:id/review')
-  .post(secureRoute, users.reviewCreate)
-
-router.route('/profile')
-  .get(secureRoute, authUsers.showProfile)
-
-router.route('/chefs/:id/offersAccepted')
-  .post(secureRoute, users.offersAccepted)
-
-router.route('/chefs/:id/offersAccepted/:offereyid')
-  .delete(secureRoute, users.offersAcceptDelete)
-
-router.route('/chefs/:id/offersPending')
-  .post(secureRoute, users.offersPendingCreate)
-
-router.route('/chefs/:id/offersPending/:offereyid')
-  .delete(secureRoute, users.offersPendingDelete)
-
-router.route('/offers')
-  .get(secureRoute, authUsers.offers)
-
-router.route('/register')
+router.route('/brands/register')
   .post(authUsers.register)
 
-router.route('/login')
+router.route('/brands/login')
   .post(authUsers.login)
+
+router.route('/admin/login')
+  .post(authUsers.admin)
+
+router.route('/briefs/add')
+  .post(secureRoute, users.briefsCreate)
+
+router.route('/briefs/:id')
+  .get(secureRoute, users.briefs)
+  .put(secureRoute, users.briefsEdit)
+  .delete(secureRoute, users.briefsDestroy)
+
+router.route('/images/add')
+  .post(secureRoute, users.imagesAdd)
+
+router.route('/images/delete/:id')
+  .delete(secureRoute, users.imagesDestory)
+
+router.route('/docs/add')
+  .post(secureRoute, users.docsAdd)
+
+router.route('/docs/delete/:id')
+  .delete(secureRoute, users.docsDestory)
 
 module.exports = router

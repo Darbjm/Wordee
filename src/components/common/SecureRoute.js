@@ -1,11 +1,17 @@
+import propTypes from 'prop-types'
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import Auth from '../../lib/auth'
+import { isAuthenticated, logout } from '../lib/auth'
 
 const SecureRoute = ({ component: Component, ...rest }) => {
-  if (Auth.isAuthenticated()) return <Route {...rest} component={Component}/>
-  Auth.logout()
-  return <Redirect to='/login'/>
+  if (isAuthenticated()) return <Route {...rest} component={Component} />
+  logout()
+  return <Redirect to="/" />
+}
+
+SecureRoute.propTypes = {
+  component: propTypes.func,
+  Component: propTypes.func
 }
 
 export default SecureRoute

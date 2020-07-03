@@ -1,29 +1,24 @@
 import propTypes from 'prop-types'
 import React, { useState } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
-import { setToken, getUser } from '../lib/auth'
+import { setToken } from '../lib/auth'
 import logo from '../../styles/images/Wordee.svg'
 
-const Login = ({ history }) => {
+const BackEndLogin = ({ history }) => {
   const [data, setData] = useState({})
   const [error, setError] = useState('')
-  // const [user, setUser] = useState(true);
 
   const handleChange = ({ target: { name, value } }) =>
     setData({ ...data, [name]: value })
 
-  // const handleUser = value => setUser(value);
-
   const handleSubmit = async e => {
     e.preventDefault()
-    // const address = user ? 'brands' : 'writers';
     try {
       const {
         data: { token }
-      } = await axios.post('/api/brands/login', data)
+      } = await axios.post('/api/admin/login', data)
       setToken(token)
-      history.push(`/profile/${getUser()}`)
+      history.push('/backendtesting5702918301')
     } catch (err) {
       setError('Invalid Credentials')
     }
@@ -38,35 +33,8 @@ const Login = ({ history }) => {
             className="has-text-centered is-centered"
           >
             <img src={logo} alt="Wordee Logo" />
-            {/* <div className="field">
-              <div className="oneline">
-                <h2 className="label">Login as a:</h2>
-                <div className="control">
-                  <label className="radio" htmlFor="brandradio2">
-                    <input
-                      id="brandradio2"
-                      name="user"
-                      type="radio"
-                      value="brand"
-                      onChange={() => handleUser(true)}
-                      checked={user === true}
-                    />
-                    Brand
-                  </label>
-                  <label className="radio" htmlFor="userradio2">
-                    <input
-                      id="userradio2"
-                      name="user"
-                      type="radio"
-                      value="writer"
-                      onChange={() => handleUser(false)}
-                      checked={user === false}
-                    />
-                    Writer
-                  </label>
-                </div>
-              </div>
-            </div> */}
+            <h1>ADMIN</h1>
+            <hr />
             <div className="field">
               <div className="control">
                 <input
@@ -96,11 +64,8 @@ const Login = ({ history }) => {
                 <small className="is-danger">{error}</small>
               </div>
               <button type="submit" className="button is-rounded is-large">
-                Login
+                Admin Login
               </button>
-            </div>
-            <div className="reg">
-              <p>{'Don\'t have an account?'}</p> <Link to="/register">Register</Link>
             </div>
           </form>
         </div>
@@ -109,8 +74,8 @@ const Login = ({ history }) => {
   )
 }
 
-Login.propTypes = {
+BackEndLogin.propTypes = {
   history: propTypes.object
 }
 
-export default Login
+export default BackEndLogin
