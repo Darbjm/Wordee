@@ -86,7 +86,6 @@ userSchema
 
 // This validates whether a password is correct at login
 userSchema.methods.validatePassword = function validatePassword(password) {
-  console.log(password, this.password, this)
   return bcrypt.compareSync(password, this.password) // bcyrpt hashes the password our user is trying to login with the same it hashed the one stored in the DB when they registered, it then compares them for us to see if they match, and returns true or false depending on the outcome
 }
 
@@ -98,9 +97,10 @@ userSchema
 
 userSchema
   .pre('validate', function checkPassword(next) { // running before validation step
-    if (this.isModified('password') && this._passwordConfirmation !== this.password) {
-      this.invalidate('passwordConfirmation', 'does not match') // throws an error back to the controllers if the password passConf do not match
-    }
+    // console.log(this._passwordConfirmation, this.password)
+    // if (this.isModified('password') && this._passwordConfirmation !== this.password) {
+    //   this.invalidate('passwordConfirmation', 'does not match') // throws an error back to the controllers if the password passConf do not match
+    // }
     next() // otherwise allows to move on the Validate step
   })
 
