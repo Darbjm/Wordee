@@ -16,6 +16,7 @@ const Brandbrief = ({ history }) => {
     // const check = (element) => element == ''
     // const exists = arry.some(check)
     // console.log(exists)
+    //
     try {
       await axios.post('/api/briefs/add', data, {
         headers: { Authorization: `Bearer ${getToken()}` }
