@@ -31,6 +31,16 @@ const BrandEditBrief = ({
   const handleSubmit = async e => {
     e.preventDefault()
     try {
+      const keys = Object.keys(data)
+      const vals = Object.values(data)
+      const newError = {}
+      vals.forEach((value, i) => {
+        if (value === '') {
+          newError[keys[i]] = 'Please complete all sections' 
+        }
+      })
+      setErrors(newError)
+      if (Object.keys(newError).length > 0) return
       await axios.put(`/api/briefs/${id}`, data, {
         headers: { Authorization: `Bearer ${getToken()}` }
       })
@@ -61,8 +71,10 @@ const BrandEditBrief = ({
             header="Edit Brief"
             data={data}
             errors={errors}
-            handleChange={({ target: { name, value } }) =>
+            handleChange={({ target: { name, value } }) => {
               setData({ ...data, [name]: value })
+              setErrors({})
+            }
             }
             handleSubmit={handleSubmit}
           />

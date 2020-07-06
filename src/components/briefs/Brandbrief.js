@@ -6,17 +6,36 @@ import BriefForm from './BriefForm'
 import Navbar from '../common/Navbar'
 
 const Brandbrief = ({ history }) => {
-  const [data, setData] = useState({})
+  const [data, setData] = useState({
+    title: '',
+    content: '',
+    length: '',
+    level: '',
+    purpose: '',
+    sentance: '',
+    message: '',
+    url: '',
+    first_draft: '',
+    topic: '',
+    keyword1: '',
+    keyword2: '',
+    keyword3: ''
+  })
   const [errors, setErrors] = useState({})
 
   const handleSubmit = async e => {
     e.preventDefault()
-    // const arry = Object.keys(data)
-    // console.log(arry)
-    // const check = (element) => element == ''
-    // const exists = arry.some(check)
-    // console.log(exists)
     try {
+      const keys = Object.keys(data)
+      const vals = Object.values(data)
+      const newError = {}
+      vals.forEach((value, i) => {
+        if (value === '') {
+          newError[keys[i]] = 'Please complete all sections' 
+        }
+      })
+      setErrors(newError)
+      if (Object.keys(newError).length > 0) return
       await axios.post('/api/briefs/add', data, {
         headers: { Authorization: `Bearer ${getToken()}` }
       })
@@ -35,8 +54,10 @@ const Brandbrief = ({ history }) => {
             header="Create Brief"
             data={data}
             errors={errors}
-            handleChange={({ target: { name, value } }) =>
+            handleChange={({ target: { name, value } }) => {
               setData({ ...data, [name]: value })
+              setErrors({})
+            }
             }
             handleSubmit={handleSubmit}
           />
@@ -49,5 +70,9 @@ const Brandbrief = ({ history }) => {
 Brandbrief.propTypes = {
   history: propTypes.object
 }
+
+// Brandbrief.propTypes = {
+//   history: propTypes.object
+// }
 
 export default Brandbrief
