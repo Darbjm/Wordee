@@ -179,32 +179,6 @@ const EditProfile = ({ history }) => {
               <div className="space">
                 <input
                   className={`input is-rounded ${
-                    errors.website ? 'is-danger' : ''
-                  }`}
-                  placeholder="Website url"
-                  name="website"
-                  onChange={({ target: { name, value } }) =>
-                    setData({ ...data, [name]: value })
-                  }
-                  value={data.website}
-                />
-              </div>
-              <div className="space">
-                <input
-                  className={`input is-rounded ${
-                    errors.blog ? 'is-danger' : ''
-                  }`}
-                  placeholder="Blog/ Product url"
-                  name="blog"
-                  onChange={({ target: { name, value } }) =>
-                    setData({ ...data, [name]: value })
-                  }
-                  value={data.blog}
-                />
-              </div>
-              <div className="space">
-                <input
-                  className={`input is-rounded ${
                     errors.username ? 'is-danger' : ''
                   }`}
                   placeholder="Brandname"
@@ -212,7 +186,7 @@ const EditProfile = ({ history }) => {
                   onChange={({ target: { name, value } }) =>
                     setData({ ...data, [name]: value })
                   }
-                  value={data.username}
+                  value={data.username || ''}
                 />
               </div>
               {errors.username && (
@@ -228,12 +202,38 @@ const EditProfile = ({ history }) => {
                   onChange={({ target: { name, value } }) =>
                     setData({ ...data, [name]: value })
                   }
-                  value={data.email}
+                  value={data.email || ''}
                 />
               </div>
               {errors.email && (
                 <small className="help is-danger">{errors.email}</small>
               )}
+              <div className="space">
+                <input
+                  className={`input is-rounded ${
+                    errors.website ? 'is-danger' : ''
+                  }`}
+                  placeholder="Website url"
+                  name="website"
+                  onChange={({ target: { name, value } }) =>
+                    setData({ ...data, [name]: value })
+                  }
+                  value={data.website || ''}
+                />
+              </div>
+              <div className="space">
+                <input
+                  className={`input is-rounded ${
+                    errors.blog ? 'is-danger' : ''
+                  }`}
+                  placeholder="Blog/ Product url"
+                  name="blog"
+                  onChange={({ target: { name, value } }) =>
+                    setData({ ...data, [name]: value })
+                  }
+                  value={data.blog || ''}
+                />
+              </div>
               <div className="space">
                 <textarea
                   className={`textarea is-rounded ${
