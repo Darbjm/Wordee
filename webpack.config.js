@@ -50,9 +50,6 @@ module.exports = {
     new CopyWebpackPlugin([
       { from: './src/styles/assets', to: 'assets' }
     ]),
-    new HtmlWebpackPlugin({
-      favicon: './src/styles/assets/Wordee_logo.ico'
-    }),
     new webpack.DefinePlugin({
       'process.env': {
         'REACT_APP_cloudlogos': JSON.stringify(process.env.REACT_APP_cloudlogos),
