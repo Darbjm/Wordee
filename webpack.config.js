@@ -63,7 +63,7 @@ module.exports = {
         'REACT_APP_messagingSenderId': JSON.stringify(process.env.REACT_APP_messagingSenderId),
         'REACT_APP_appId': JSON.stringify(process.env.REACT_APP_appId),
         'REACT_APP_measurementId': JSON.stringify(process.env.REACT_APP_measurementId),
-        'REACT_APP_SECRET': JSON.stringify(process.env.REACT_APP_SECRET)
+        'SECRET': JSON.stringify(process.env.REACT_APP_SECRET)
 
       }
     })
