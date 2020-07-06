@@ -1,12 +1,4 @@
 const User = require('../models/user')
-const cloudinary = require('cloudinary').v2
-
-cloudinary.config({
-  cloud_name: 'wordee',
-  api_key: '618229286258282',
-  api_secret: 'Y9fpiRgV7u94KakNOTeodNAlScQ',
-  secure: 'True'
-})
 
 function show(req, res) {
   User

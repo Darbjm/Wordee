@@ -11,6 +11,11 @@ const Brandbrief = ({ history }) => {
 
   const handleSubmit = async e => {
     e.preventDefault()
+    // const arry = Object.keys(data)
+    // console.log(arry)
+    // const check = (element) => element == ''
+    // const exists = arry.some(check)
+    // console.log(exists)
     try {
       await axios.post('/api/briefs/add', data, {
         headers: { Authorization: `Bearer ${getToken()}` }
