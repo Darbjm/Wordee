@@ -317,7 +317,7 @@ const EditProfile = ({ history }) => {
                   type="submit"
                   className="button is-rounded is-large blue"
                 >
-                  Edit Brand
+                  Save Brand
                 </button>
               </div>
             </form>

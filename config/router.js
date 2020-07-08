@@ -40,4 +40,7 @@ router.route('/docs/add')
 router.route('/docs/delete/:id')
   .delete(secureRoute, users.docsDestory)
 
+router.route('/report/add/:id')
+  .post(secureRoute, users.addReport)
+
 module.exports = router

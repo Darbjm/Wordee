@@ -250,6 +250,9 @@ label.is-danger{
         color: $Blue;
       }
     }
+    .link{
+      color: $Coral;
+    }
   }
 }
 
@@ -463,6 +466,9 @@ label.is-danger{
       background-color: $Blue;
       height: 100px;
       width: 100%;
+    }
+    .padding{
+      padding-left: 30px;
     }
   }
 }

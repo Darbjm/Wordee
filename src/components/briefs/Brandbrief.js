@@ -12,6 +12,11 @@ const Brandbrief = ({ history }) => {
     length: '',
     level: '',
     purpose: '',
+    prodName: '',
+    new: '',
+    keypoint1: '',
+    keypoint2: '',
+    keypoint3: '',
     sentance: '',
     message: '',
     url: '',
@@ -22,6 +27,7 @@ const Brandbrief = ({ history }) => {
     keyword3: ''
   })
   const [errors, setErrors] = useState({})
+  const [extra, setExtra] = useState(false)
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -50,11 +56,25 @@ const Brandbrief = ({ history }) => {
       <Navbar />
       <main>
         <section className="createbrief">
+          {console.log(data)}
           <BriefForm
             header="Create Brief"
+            type="Create Brief"
             data={data}
             errors={errors}
+            extra={extra}
             handleChange={({ target: { name, value } }) => {
+              if (name === 'purpose' && value !== 'Sell a product or service') {
+                setExtra(false)
+                delete data['prodName']
+                delete data['new']
+                delete data['keypoint1']
+                delete data['keypoint2']
+                delete data['keypoint3']
+              }
+              if (value === 'Sell a product or service') {
+                setExtra(true)
+              }
               setData({ ...data, [name]: value })
               setErrors({})
             }

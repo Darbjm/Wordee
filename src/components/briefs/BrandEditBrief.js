@@ -13,6 +13,7 @@ const BrandEditBrief = ({
 }) => {
   const [data, setData] = useState({})
   const [errors, setErrors] = useState({})
+  const [extra, setExtra] = useState(false)
 
   useEffect(() => {
     const getData = async () => {
@@ -20,6 +21,7 @@ const BrandEditBrief = ({
         const res = await axios.get(`/api/briefs/${id}`, {
           headers: { Authorization: `Bearer ${getToken()}` }
         })
+        if (res.data.purpose === 'Sell a product or service') setExtra(true)
         setData(res.data)
       } catch (err) {
         console.log(err)
@@ -69,9 +71,13 @@ const BrandEditBrief = ({
         <section>
           <BriefForm
             header="Edit Brief"
+            type="Save Brief"
             data={data}
             errors={errors}
+            extra={extra}
             handleChange={({ target: { name, value } }) => {
+              if (name === 'purpose') setExtra(false)
+              if (value === 'Sell a product or service') setExtra(true)
               setData({ ...data, [name]: value })
               setErrors({})
             }

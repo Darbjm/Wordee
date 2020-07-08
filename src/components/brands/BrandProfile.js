@@ -98,6 +98,9 @@ const Profile = ({
           </Link>
         </div>
         <div className="right-side">
+          <h3>Report Summary</h3>
+          {user.reportSummary ? <a href={user.reportSummary} rel="noopener noreferrer" target="_blank" className='link'>Read report here</a> : <p>Pending</p> }
+          <hr />
           <h3>Live Briefs</h3>
           <ol>
             {user.liveBriefs && user.liveBriefs.length

@@ -11,7 +11,7 @@ function update(req, res) {
   User
     .findById(req.currentUser._id)
     .then(user => {
-      if (!user) throw new Error('Not Found')
+      if (!user) return res.status(404).json({ message: 'Not Found' })
       if (!user._id.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorized' })
       Object.assign(user, req.body) 
       return user.save()  
@@ -113,7 +113,7 @@ function imagesDestory(req, res) {
       image.remove()
       return brand.save()
     })
-    .then(brand => res.status(202).json(brand))
+    .then(brand => res.status(204).json(brand))
     .catch(err => res.json(err))
 }
 
@@ -148,9 +148,23 @@ function docsDestory(req, res) {
       doc.remove()
       return brand.save()
     })
-    .then(brand => res.status(202).json(brand))
+    .then(brand => res.status(204).json(brand))
+    .catch(err => res.json(err))
+}
+
+function addReport(req, res) {
+  console.log(req)
+  User
+    .findOne({ _id: req.params.id })
+    .then(brand => {
+      if (!brand) return res.status(404).json({ message: 'Not Found' })
+      if (req.currentUser.email !== 'wordee@email.co.uk') return res.status(401).json({ message: 'Unauthorized' })
+      Object.assign(brand, req.body)
+      return brand.save()
+    })
+    .then(updatedBrand => res.status(202).json(updatedBrand))
     .catch(err => res.json(err))
 }
 
 
-module.exports = { show, update, destroy, briefs, briefsCreate, briefsEdit, briefsDestroy, imagesAdd, imagesDestory, docsAdd, docsDestory }
+module.exports = { show, update, destroy, briefs, briefsCreate, briefsEdit, briefsDestroy, imagesAdd, imagesDestory, docsAdd, docsDestory, addReport }

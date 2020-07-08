@@ -1,7 +1,8 @@
 import propTypes from 'prop-types'
 import React from 'react'
+import ExtraQuestions from './ExtraQuestions.js'
 
-const BriefForm = ({ data, handleChange, handleSubmit, errors, header }) => (
+const BriefForm = ({ data, handleChange, handleSubmit, errors, header, extra, type }) => (
   <div className="column is-6-tablet is-offset-3-tablet is-8-mobile is-offset-2-mobile card">
     <h1 className="header">{header}</h1>
     <form className="brief-form" onSubmit={handleSubmit}>
@@ -156,9 +157,9 @@ const BriefForm = ({ data, handleChange, handleSubmit, errors, header }) => (
               id="radio9"
               name="level"
               type="radio"
-              value="accredited writer"
+              value="Wordee accredited writer"
               onChange={handleChange}
-              checked={data.level === 'accredited writer'}
+              checked={data.level === 'Wordee accredited writer'}
             />
             <span className="wide">Wordee accredited writer</span>
           </label>
@@ -171,9 +172,9 @@ const BriefForm = ({ data, handleChange, handleSubmit, errors, header }) => (
               id="radio10"
               name="level"
               type="radio"
-              value="luxe writer"
+              value="Wordee luxe writer"
               onChange={handleChange}
-              checked={data.level === 'luxe writer'}
+              checked={data.level === 'Wordee luxe writer'}
             />
             <span className="wide">Wordee luxe writer</span>
           </label>
@@ -195,9 +196,9 @@ const BriefForm = ({ data, handleChange, handleSubmit, errors, header }) => (
               id="radio11"
               name="purpose"
               type="radio"
-              value="Drive traffic to my website"
+              value="Drive traffic to their website"
               onChange={handleChange}
-              checked={data.purpose === 'Drive traffic to my website'}
+              checked={data.purpose === 'Drive traffic to their website'}
             />
             <span className="wide">Drive traffic to my website</span>
           </label>
@@ -225,9 +226,9 @@ const BriefForm = ({ data, handleChange, handleSubmit, errors, header }) => (
               id="radio13"
               name="purpose"
               type="radio"
-              value="Reinforce your brand values"
+              value="Reinforce their brand values"
               onChange={handleChange}
-              checked={data.purpose === 'Reinforce your brand values'}
+              checked={data.purpose === 'Reinforce their brand values'}
             />
             <span className="wide">Reinforce your brand values</span>
           </label>
@@ -240,9 +241,9 @@ const BriefForm = ({ data, handleChange, handleSubmit, errors, header }) => (
               id="radio14"
               name="purpose"
               type="radio"
-              value="Remain credible in your industry"
+              value="Remain credible in their industry"
               onChange={handleChange}
-              checked={data.purpose === 'Remain credible in your industry'}
+              checked={data.purpose === 'Remain credible in their industry'}
             />
             <span className="wide">Remain credible in your industry</span>
           </label>
@@ -255,9 +256,9 @@ const BriefForm = ({ data, handleChange, handleSubmit, errors, header }) => (
               id="radio15"
               name="purpose"
               type="radio"
-              value="Engage your audience"
+              value="Engage their audience"
               onChange={handleChange}
-              checked={data.purpose === 'Engage your audience'}
+              checked={data.purpose === 'Engage their audience'}
             />
             <span className="wide">Engage your audience</span>
           </label>
@@ -266,7 +267,11 @@ const BriefForm = ({ data, handleChange, handleSubmit, errors, header }) => (
           <small className="help is-danger">{errors.purpose}</small>
         )}
       </div>
-
+      {extra ? <ExtraQuestions 
+        data={data}
+        errors={errors}
+        handleChange={handleChange}
+      /> : ''}
       <div className="field">
         <div className="underline">
           In a sentence, what is the purpose of this piece of content?
@@ -472,7 +477,7 @@ const BriefForm = ({ data, handleChange, handleSubmit, errors, header }) => (
       </div>
       <div className="width">
         <button type="submit" className="button is-large is-rounded blue">
-          {header}
+          {type}
         </button>
       </div>
     </form>

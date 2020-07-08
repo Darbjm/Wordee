@@ -2,23 +2,39 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { getToken } from '../lib/auth'
 import folder from '../../styles/images/folder.svg'
+import ReactHTMLTableToExcel from 'react-html-table-to-excel'
 
 const BackEnd = () => {
-  const [user, setData] = useState({})
+  const [user, setUser] = useState({})
+  const [report, setReport] = useState({})
+
+  const getData = async () => {
+    try {
+      const res = await axios.get('/api/all', {
+        headers: { Authorization: `Bearer ${getToken()}` }
+      })
+      setUser(res.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   useEffect(() => {
-    const getData = async () => {
-      try {
-        const res = await axios.get('/api/all', {
-          headers: { Authorization: `Bearer ${getToken()}` }
-        })
-        setData(res.data)
-      } catch (err) {
-        console.log(err)
-      }
-    }
     getData()
   }, [])
+
+  const submit = async e => {
+    e.preventDefault()
+    try {
+      console.log(report.id, report.reportSummary)
+      await axios.post(`/api/report/add/${report.id}`, report, {
+        headers: { Authorization: `Bearer ${getToken()}` }
+      })
+      getData()
+    } catch (err) {
+      console.log(err)
+    }
+  }
   return (
     <main>
       <section className="back">
@@ -31,6 +47,24 @@ const BackEnd = () => {
               <div>logo: {one.logo}</div>
               <div>website: {one.website}</div>
               <div>blog: {one.blog}</div>
+              <div>Report Summary: {one.reportSummary}</div>
+              <form onSubmit={submit} >
+                <div className="field">
+                  <div className="control">
+                    <input 
+                      className="input" 
+                      type="text" 
+                      placeholder="Report link" 
+                      name="reportSummary"
+                      onChange={({ target: { value } }) => { 
+                        setReport({ id: one._id, reportSummary: value })
+                      }
+                      }
+                    />
+                  </div>
+                </div>
+                <button>Send</button>
+              </form>
               <hr />
               <div>
                 {one.docs &&
@@ -48,22 +82,102 @@ const BackEnd = () => {
                   ))}
               </div>
               <div>
+                <h1>Briefs:</h1>
+                <br />
                 {one.liveBriefs &&
                   one.liveBriefs.map((brief, i) => (
-                    <div className="sec" key={i}>
-                      brief:
-                      <div>title: {brief.title}</div>
-                      <div>first_draft: {brief.first_draft}</div>
-                      <div>keyword1: {brief.keyword1}</div>
-                      <div>keyword2: {brief.keyword2}</div>
-                      <div>keyword3: {brief.keyword3}</div>
-                      <div>length: {brief.length}</div>
-                      <div>level: {brief.level}</div>
-                      <div>message: {brief.message}</div>
-                      <div>purpose: {brief.purpose}</div>
-                      <div>sentance: {brief.sentance}</div>
-                      <div>topic: {brief.topic}</div>
-                      <div>url: {brief.url}</div>
+                    <div key={i}>
+                      <table className="table is-hoverable is-bordered is-striped" id={`table ${i}`}>
+                        <thead> <tbody>
+                          <tr>
+                            <th>Title:</th>
+                            <td>{brief.title}</td>
+                          </tr>
+                          <tr>
+                            <th>Content Needed:</th>
+                            <td>{brief.content}</td>
+                          </tr>
+                          <tr>
+                            <th>Length:</th>
+                            <td>{brief.length} words</td>
+                          </tr>
+                          <tr>
+                            <th>Length:</th>
+                            <td>{brief.length} words</td>
+                          </tr>
+                          <tr>
+                            <th>Level of writer:</th>
+                            <td>{brief.level}</td>
+                          </tr>
+                          <tr>
+                            <th>The purpose of this content is to:</th>
+                            <td>{brief.purpose}</td>
+                          </tr>
+                          {brief.purpose === 'Sell a product or service' ? 
+                            <><tr>
+                              <th>Name of product or service:</th>
+                              <td>{brief.prodName}</td>
+                            </tr>
+                            <tr>
+                              <th>Is it new or lanched?:</th>
+                              <td>{brief.new}</td>
+                            </tr>
+                            <tr>
+                              <th>Key selling points:</th>
+                              <td className='padding'>
+                                <ol>
+                                  <li>{brief.keypoint1}</li>
+                                  <li>{brief.keypoint2}</li>
+                                  <li>{brief.keypoint3}</li>
+                                  <li>{brief.keypoint4}</li>
+                                  <li>{brief.keypoint5}</li>
+                                </ol>
+                              </td>
+                            </tr>
+                            </>
+                            : ''}
+                          <tr>
+                            <th>Description of purpose in a sentance:</th>
+                            <td>{brief.sentance}</td>
+                          </tr>
+                          <tr>
+                            <th>Message the audience should leave with:</th>
+                            <td>{brief.message}</td>
+                          </tr>
+                          <tr>
+                            <th>Reference URL:</th>
+                            <td>{brief.url}</td>
+                          </tr>
+                          <tr>
+                            <th>First draft needed by:</th>
+                            <td>{brief.first_draft}</td>
+                          </tr>
+                          <tr>
+                            <th>The Topic is:</th>
+                            <td>{brief.topic}</td>
+                          </tr>
+                          <tr>
+                            <th>keyword1:</th>
+                            <td>{brief.keyword1}</td>
+                          </tr>
+                          <tr>
+                            <th>keyword2:</th>
+                            <td>{brief.keyword2}</td>
+                          </tr>
+                          <tr>
+                            <th>keyword3:</th>
+                            <td>{brief.keyword3}</td>
+                          </tr>
+                        </tbody>
+                        </thead>
+                      </table>
+                      <ReactHTMLTableToExcel
+                        id="table-xls-button"
+                        className="download-table-xls-button"
+                        table={`table ${i}`}
+                        filename={brief.title}
+                        sheet="tablexls"
+                        buttonText="Download as Excel"/>
                       <hr />
                     </div>
                   ))}
