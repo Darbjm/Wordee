@@ -14,10 +14,7 @@ const Brandbrief = ({ history }) => {
     purpose: '',
     prodName: '',
     new: '',
-    keypoint1: '',
-    keypoint2: '',
-    keypoint3: '',
-    sentance: '',
+    keypoints: '',
     message: '',
     url: '',
     first_draft: '',
@@ -56,7 +53,6 @@ const Brandbrief = ({ history }) => {
       <Navbar />
       <main>
         <section className="createbrief">
-          {console.log(data)}
           <BriefForm
             header="Create Brief"
             type="Create Brief"
@@ -68,12 +64,13 @@ const Brandbrief = ({ history }) => {
                 setExtra(false)
                 delete data['prodName']
                 delete data['new']
-                delete data['keypoint1']
-                delete data['keypoint2']
-                delete data['keypoint3']
+                delete data['keypoints']
               }
               if (value === 'Sell a product or service') {
                 setExtra(true)
+                data.prodName = ''
+                data.new = ''
+                data.keypoints = ''
               }
               setData({ ...data, [name]: value })
               setErrors({})
@@ -90,9 +87,5 @@ const Brandbrief = ({ history }) => {
 Brandbrief.propTypes = {
   history: propTypes.object
 }
-
-// Brandbrief.propTypes = {
-//   history: propTypes.object
-// }
 
 export default Brandbrief

@@ -13,7 +13,6 @@ const BriefSchema = new mongoose.Schema({
   keypoint3: { type: String },
   keypoint4: { type: String },
   keypoint5: { type: String },
-  sentance: { type: String, required: true },
   message: { type: String, required: true },
   url: { type: String, required: true },
   first_draft: { type: String, required: true },

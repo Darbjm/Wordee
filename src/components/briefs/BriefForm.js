@@ -3,8 +3,8 @@ import React from 'react'
 import ExtraQuestions from './ExtraQuestions.js'
 
 const BriefForm = ({ data, handleChange, handleSubmit, errors, header, extra, type }) => (
-  <div className="column is-6-tablet is-offset-3-tablet is-8-mobile is-offset-2-mobile card">
-    <h1 className="header">{header}</h1>
+  <div className="brief">
+    <h1 className="larger">{header}</h1>
     <form className="brief-form" onSubmit={handleSubmit}>
       <br />
       <div className="field">
@@ -274,25 +274,6 @@ const BriefForm = ({ data, handleChange, handleSubmit, errors, header, extra, ty
       /> : ''}
       <div className="field">
         <div className="underline">
-          In a sentence, what is the purpose of this piece of content?
-        </div>
-        <div className="control">
-          <input
-            className={`input is-small is-rounded ${
-              errors.sentance ? 'is-danger' : ''
-            }`}
-            placeholder="Purpose"
-            name="sentance"
-            onChange={handleChange}
-            value={data.sentance || ''}
-          />
-        </div>
-        {errors.sentance && (
-          <small className="help is-danger">{errors.sentance}</small>
-        )}
-      </div>
-      <div className="field">
-        <div className="underline">
           What is the message your audience should leave with?
         </div>
         <div className="control">
@@ -408,6 +389,12 @@ const BriefForm = ({ data, handleChange, handleSubmit, errors, header, extra, ty
         {errors.first_draft && (
           <small className="help is-danger">{errors.first_draft}</small>
         )}
+      </div>
+      <hr />
+      <div className="header">
+        <div className="underline">
+          <h1 className="larger">Topic & Keywords</h1>
+        </div>
       </div>
       <div className="field">
         <div className="underline">

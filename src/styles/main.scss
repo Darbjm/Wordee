@@ -257,14 +257,10 @@ label.is-danger{
 }
 
 .editprofile {
-  background-image: url('./images/Wordee-branding.jpg');
-  background-position: 50% 40%;
-  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 50px 0;
-  .card {
     .space{
       margin: 20px 0;
       display: flex;
@@ -330,7 +326,6 @@ label.is-danger{
       display: flex;
       justify-content: center;
     }
-  }
   .remove{
     width: 100%;
     display: flex;
@@ -352,6 +347,14 @@ label.is-danger{
 .header{
   text-align: center;
 }
+
+.brief {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .brief-form{
   display: flex;
   justify-content: center;
@@ -383,6 +386,7 @@ label.is-danger{
     }
     label {
       border-radius: 10px;
+      // background-color: none;
       margin: 10px 0;
     }
       label span{
@@ -398,6 +402,10 @@ label.is-danger{
         color: $Blue;
         cursor: pointer;
         justify-content: center;
+        padding: 12px;
+        -webkit-box-shadow: 0px 0px 10px -6px rgba(161,161,161,1);
+        -moz-box-shadow: 0px 0px 10px -6px rgba(161,161,161,1);
+        box-shadow: 0px 0px 10px -6px rgba(161,161,161,1);
       }
 
       .wide{
@@ -406,7 +414,6 @@ label.is-danger{
         text-align: center;
         font-size: 10px;
         display: flex;
-        // border-radius: 10px;
         align-items: center;
         background-color: rgb(235, 235, 235);
         color: $Blue;
@@ -425,19 +432,23 @@ label.is-danger{
   }
 }
 
+.larger {
+  margin: 20px 0;
+  font-size: 30px;
+  text-align: center;
+}
+
 .createbrief{
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 50px 0;
-  background-image: url('./images/createbrief.jpg');
 }
 
 .editbrief{
   display: flex;
   align-items: center;
   padding: 50px 0;
-  background-image: url('./images/Wordee-editbrief.jpg');
-  background-size: 70%;
   flex-direction: column;
   section{
     width: 100%;

@@ -72,61 +72,20 @@ const ExtraQuestions = ({ data, handleChange, errors }) => (
     <div className="field">
       <div className="underline">Key selling points of your product or service</div>
       <div className="control">
-        <input
-          className={`input is-small is-rounded ${
-            errors.keypoint1 ? 'is-danger' : ''
+        <textarea
+          className={`textarea is-small ${
+            errors.keypoints ? 'is-danger' : ''
           }`}
-          placeholder="1"
-          name="keypoint1"
+          placeholder="Please give at least 3 points"
+          name="keypoints"
           onChange={handleChange}
-          value={data.keypoint1 || ''}
-        />
-      </div>
-      <div className="control">
-        <input
-          className={`input is-small is-rounded ${
-            errors.keypoint2 ? 'is-danger' : ''
-          }`}
-          placeholder="2"
-          name="keypoint2"
-          onChange={handleChange}
-          value={data.keypoint2 || ''}
-        />
-      </div>
-      <div className="control">
-        <input
-          className={`input is-small is-rounded ${
-            errors.keypoint3 ? 'is-danger' : ''
-          }`}
-          placeholder="3"
-          name="keypoint3"
-          onChange={handleChange}
-          value={data.keypoint3 || ''}
-        />
-      </div>
-      <div className="control">
-        <input
-          className={`input is-small is-rounded ${
-            errors.keypoint4 ? 'is-danger' : ''
-          }`}
-          placeholder="4"
-          name="keypoint4"
-          onChange={handleChange}
-          value={data.keypoint4 || ''}
-        />
-      </div>
-      <div className="control">
-        <input
-          className={`input is-small is-rounded ${
-            errors.keypoint5 ? 'is-danger' : ''
-          }`}
-          placeholder="5"
-          name="keypoint5"
-          onChange={handleChange}
-          value={data.keypoint5 || ''}
+          value={data.keypoints || ''}
         />
       </div>
     </div>
+    {errors.keypoints && (
+      <small className="help is-danger">{errors.keypoints}</small>
+    )}
   </div>
 )
 

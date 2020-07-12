@@ -151,9 +151,9 @@ const EditProfile = ({ history }) => {
       <Navbar />
       <main className="editprofile">
         <section>
-          <div className="column is-6-tablet is-offset-one-quarter is-8-mobile is-offset-2-mobile card">
+          <div className="column ">
             <form onSubmit={handleSubmit}>
-              <h1 className="center space">Edit Profile</h1>
+              <h1 className="center space larger">Edit Profile</h1>
               <h3>Logo:</h3>
               <div className="space">
                 <ImageUpload
@@ -236,7 +236,7 @@ const EditProfile = ({ history }) => {
               </div>
               <div className="space">
                 <textarea
-                  className={`textarea is-rounded ${
+                  className={`textarea ${
                     errors.summary ? 'is-danger' : ''
                   }`}
                   placeholder="Summary"
