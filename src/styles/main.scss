@@ -1,36 +1,36 @@
 @font-face {
-  font-family: 'rale';
-  src: url('./assets/Raleway-Light.ttf')
+  font-family: "rale";
+  src: url("./assets/Raleway-Light.ttf");
 }
 
 @font-face {
-  font-family: 'Calm';
-  src: url('./assets/KeepCalm-Medium.ttf')
+  font-family: "Calm";
+  src: url("./assets/KeepCalm-Medium.ttf");
 }
 
 $Blue: rgba(0, 42, 59, 1);
 $Coral: rgba(235, 76, 76, 1);
 
-.button{ 
+.button {
   background-color: $Coral !important;
   color: white !important;
-  font-family: 'rale' !important;
+  font-family: "rale" !important;
   border: none !important;
 }
 
-.button:focus{
+.button:focus {
   background-color: $Coral !important;
   color: white !important;
-  font-family: 'rale' !important;
+  font-family: "rale" !important;
   border: none !important;
 }
 
 body {
-  font-family: 'rale' !important;
+  font-family: "rale" !important;
   color: $Blue !important;
 }
 
-.button:hover{
+.button:hover {
   color: $Coral !important;
   background-color: white !important;
   border-color: $Coral !important;
@@ -52,11 +52,11 @@ body {
 
 .blue:hover {
   color: $Blue;
-  border: 1px $Blue solid
+  border: 1px $Blue solid;
 }
 
 h1 {
-  font-family: 'Calm';
+  font-family: "Calm";
   font-size: 40px;
   color: $Blue;
 }
@@ -66,7 +66,7 @@ h2 {
 }
 
 h3 {
-  font-family: 'Calm';
+  font-family: "Calm";
   font-size: 20px;
   color: $Blue;
 }
@@ -75,38 +75,38 @@ h3 {
   max-height: 100px;
 }
 
-small.is-danger{
-  color: $Coral !important
+small.is-danger {
+  color: $Coral !important;
 }
 
-input.is-danger{
-  border: $Coral 1px solid !important
+input.is-danger {
+  border: $Coral 1px solid !important;
 }
 
-label.is-danger{
-  border: $Coral 1px solid !important
+label.is-danger {
+  border: $Coral 1px solid !important;
 }
 
 //navbar
 .navbar {
   background-color: $Blue !important;
-  .navbar-brand{
-    .navbar-logo{
+  .navbar-brand {
+    .navbar-logo {
       min-width: 50px;
       min-height: 50px;
-      margin-left: 10px
+      margin-left: 10px;
     }
-  .coral{
+    .coral {
       background-color: $Coral;
     }
   }
-  .navbar-menu{
+  .navbar-menu {
     background-color: $Blue;
-    .navbar-end{
-      .navbar-item{
+    .navbar-end {
+      .navbar-item {
         font-size: 25px;
       }
-      .navbar-item:hover{
+      .navbar-item:hover {
         color: $Coral !important;
       }
     }
@@ -121,37 +121,36 @@ label.is-danger{
   display: flex;
   align-items: center;
   // .card {
-    form {
-      .oneline {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        .label {
-          margin-right: 20px;
-        }
-      }
-      img {
-        max-height: 250px;
-        padding: 50px;
-      }
-      .button {
-        margin-top: 20px;
+  form {
+    .oneline {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      .label {
+        margin-right: 20px;
       }
     }
-    .reg {
-      margin: 20px 0;
+    img {
+      max-height: 250px;
+      padding: 50px;
     }
+    .button {
+      margin-top: 20px;
+    }
+  }
+  .reg {
+    margin: 20px 0;
+  }
   // }
 }
 
 .register {
   height: 100vh;
-  background-image: url('./images/Wordee-writing.jpg');
+  background-image: url("./images/Wordee-writing.jpg");
   background-size: cover;
   display: flex;
   align-items: center;
   .card {
-
     form {
       .oneline {
         display: flex;
@@ -172,40 +171,64 @@ label.is-danger{
   }
 }
 
-.brandprofile{
+.sect {
+  padding-left: 20px;
+}
+
+.brandprofile {
   padding: 50px;
   display: flex;
   flex-direction: row;
-  .user-cover{
-    width: 100%;
-    height: 200px;
-    background-position: contain;
-  }
   .left-side {
-    width: 60%;
+    width: 80%;
     margin-right: 20px;
-    .profile-logo{
-      max-width: 200px;
-    }
-    .logo-circle{
-      border: 2px $Blue solid;
-      border-radius: 50%;
-      max-width: 200px;
-      height: 200px;
+    .branding {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      color: $Blue;
+      flex-direction: column;
+      .user-cover {
+        display: flex;
+        color: $Blue;
+        text-align: center;
+        justify-content: center;
+        width: 100%;
+        height: 300px;
+        background-position: center;
+        object-fit: cover;
+        background-color: rgb(212, 212, 212);
+        div {
+          height: 100%;
+          display: flex;
+          align-items: center;
+        }
+      }
+      .profile-logo {
+        background-color: white;
+        border-radius: 10px;
+        max-width: 250px;
+        padding: 20px 20px 0 20px;
+        margin-top: -50px;
+      }
+      .logo-circle {
+        border: 2px $Blue solid;
+        border-radius: 50%;
+        max-width: 200px;
+        height: 200px;
+        width: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $Blue;
+      }
     }
-    .brand-imagery{
+    .brand-imagery {
       max-width: 200px;
       max-height: 100px;
       margin: 5px;
     }
-    .documents{
+    .documents {
       display: flex;
       flex-wrap: wrap;
-      .docs{
+      .docs {
         font-size: 10px;
         display: flex;
         width: 150px;
@@ -220,14 +243,16 @@ label.is-danger{
       }
     }
     h1 {
-      margin: 30px 0;
+      font-size: 50px;
     }
-    p{
+    h2 {
       margin: 20px 0;
+      font-size: 17px;
+      font-weight: bolder;
     }
-    .no-image{
+    .no-image {
       color: $Blue;
-      div{
+      div {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -237,20 +262,17 @@ label.is-danger{
         margin: 20px 0;
       }
     }
-
-
   }
-  .right-side{
-    width: 35%;
+  .right-side {
     margin-left: 20px;
-    .lists{
+    .lists {
       color: $Coral;
       margin-left: 15px;
-      .bluetext{
+      .bluetext {
         color: $Blue;
       }
     }
-    .link{
+    .link {
       color: $Coral;
     }
   }
@@ -261,82 +283,81 @@ label.is-danger{
   flex-direction: column;
   justify-content: center;
   padding: 50px 0;
-    .space{
-      margin: 20px 0;
+  .space {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    .image-input {
       display: flex;
-      justify-content: center;
-      .image-input{
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-      }
-      .multiple-images{
-        border: 2px $Coral dashed;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        padding: 10px;
-        cursor: pointer;
-        justify-content: center;
-        min-width: 220px;
-      }
+      align-items: center;
+      flex-direction: column;
     }
-    .image-container{
+    .multiple-images {
+      border: 2px $Coral dashed;
       display: flex;
+      align-items: center;
+      text-align: center;
+      padding: 10px;
+      cursor: pointer;
       justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-      .file-box{
-        font-size: 10px;
-        display: flex;
-        flex-direction: column;
-        max-width: 100px;
-        align-items: center;
-        margin: 20px;
-        text-align: center;
-        position: relative;
-        .brand-imagery{
-          max-width: 200px;
-          max-height: 100px;
-          margin: 5px;
-          height: 100px;
-        }
-        .delete{
-          position: absolute;
-          right: 1px;
-        }
-      }
-      .image-box{
-        position: relative;
-      .brand-imagery{
+      min-width: 220px;
+    }
+  }
+  .image-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    .file-box {
+      font-size: 10px;
+      display: flex;
+      flex-direction: column;
+      max-width: 100px;
+      align-items: center;
+      margin: 20px;
+      text-align: center;
+      position: relative;
+      .brand-imagery {
         max-width: 200px;
         max-height: 100px;
         margin: 5px;
         height: 100px;
       }
-      .delete{
+      .delete {
+        position: absolute;
+        right: 1px;
+      }
+    }
+    .image-box {
+      position: relative;
+      .brand-imagery {
+        max-width: 200px;
+        max-height: 100px;
+        margin: 5px;
+        height: 100px;
+      }
+      .delete {
         position: absolute;
         right: -4px;
         top: -4px;
       }
     }
-    }
-    .center{
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
-  .remove{
+  }
+  .center {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .remove {
     width: 100%;
     display: flex;
     justify-content: center;
     margin-top: 50px;
-
   }
 }
 
 .editbrief {
-  .remove{
+  .remove {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -344,7 +365,7 @@ label.is-danger{
   }
 }
 
-.header{
+.header {
   text-align: center;
 }
 
@@ -355,25 +376,24 @@ label.is-danger{
   flex-direction: column;
 }
 
-.brief-form{
+.brief-form {
   display: flex;
   justify-content: center;
   flex-direction: column;
   .field {
-    .underline{
+    .underline {
       border-bottom: 1px solid rgb(235, 235, 235);
       margin: 20px 0;
-
     }
     .button-control {
       display: flex;
       justify-content: space-evenly;
       flex-wrap: wrap;
-      .is-danger{
+      .is-danger {
         border-radius: 11px;
-        border: 1px solid hsl(348, 100%, 61%)
+        border: 1px solid hsl(348, 100%, 61%);
       }
-      input[type="radio"]{
+      input[type="radio"] {
         opacity: 0;
         width: 0;
         position: fixed;
@@ -383,13 +403,13 @@ label.is-danger{
       }
       input[type="radio"]:hover ~ * {
         background-color: $Coral;
-    }
-    label {
-      border-radius: 10px;
-      // background-color: none;
-      margin: 10px 0;
-    }
-      label span{
+      }
+      label {
+        border-radius: 10px;
+        // background-color: none;
+        margin: 10px 0;
+      }
+      label span {
         height: 60px;
         width: 60px;
         font-family: Calm;
@@ -403,12 +423,12 @@ label.is-danger{
         cursor: pointer;
         justify-content: center;
         padding: 12px;
-        -webkit-box-shadow: 0px 0px 10px -6px rgba(161,161,161,1);
-        -moz-box-shadow: 0px 0px 10px -6px rgba(161,161,161,1);
-        box-shadow: 0px 0px 10px -6px rgba(161,161,161,1);
+        -webkit-box-shadow: 0px 0px 10px -6px rgba(161, 161, 161, 1);
+        -moz-box-shadow: 0px 0px 10px -6px rgba(161, 161, 161, 1);
+        box-shadow: 0px 0px 10px -6px rgba(161, 161, 161, 1);
       }
 
-      .wide{
+      .wide {
         width: 100px;
         font-family: Calm;
         text-align: center;
@@ -422,10 +442,10 @@ label.is-danger{
       }
     }
     .space {
-      margin: 10px 0
+      margin: 10px 0;
     }
-  } 
-  .width{
+  }
+  .width {
     max-width: 100%;
     display: flex;
     justify-content: center;
@@ -438,20 +458,22 @@ label.is-danger{
   text-align: center;
 }
 
-.createbrief{
+.createbrief {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 50px 0;
 }
 
-.editbrief{
+.editbrief {
   display: flex;
   align-items: center;
   padding: 50px 0;
   flex-direction: column;
-  section{
+  section {
     width: 100%;
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -460,31 +482,30 @@ label.is-danger{
     margin: 20px;
     display: flex;
     flex-direction: column;
-    .backend-logo{
+    .backend-logo {
       max-height: 200px;
       max-width: 200px;
     }
-    .backend-folder{
+    .backend-folder {
       max-height: 100px;
       max-width: 100px;
     }
     .sec {
       padding: 10px;
       max-width: 90%;
-
     }
     .user {
       background-color: $Blue;
       height: 100px;
       width: 100%;
     }
-    .padding{
+    .padding {
       padding-left: 30px;
     }
   }
 }
 
-.hero-body-failed{
+.hero-body-failed {
   background-color: $Blue;
   height: 100vh;
   display: flex;

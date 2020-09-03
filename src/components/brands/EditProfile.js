@@ -74,7 +74,8 @@ const EditProfile = ({ history }) => {
         logo: data.logo,
         summary: data.summary,
         blog: data.blog,
-        website: data.website
+        website: data.website,
+        cover: data.cover
       }
       await axios
         .put(`/api/brands/${getUser()}`, newData, {
@@ -154,6 +155,18 @@ const EditProfile = ({ history }) => {
           <div className="column ">
             <form onSubmit={handleSubmit}>
               <h1 className="center space larger">Edit Profile</h1>
+              <h3>Cover Image:</h3>
+              <div className="space">
+                <ImageUpload
+                  name="cover"
+                  onChange={(name, value) =>
+                    setData({ ...data, [name]: value })
+                  }
+                  className="image-input"
+                  value={data.cover}
+                  size="Please use .jpg or .png under 810 x 300"
+                />
+              </div>
               <h3>Logo:</h3>
               <div className="space">
                 <ImageUpload
@@ -163,19 +176,9 @@ const EditProfile = ({ history }) => {
                   }
                   className="image-input"
                   value={data.logo}
+                  size="Please use .jpg or .png under 700 x 700"
                 />
               </div>
-              {/* <h3>Cover Image:</h3>
-              <div className="space">
-                <ImageUpload
-                  name="cover"
-                  onChange={(name, value) =>
-                    setData({ ...data, [name]: value })
-                  }
-                  className="image-input"
-                  value={data.cover}
-                />
-              </div> */}
               <div className="space">
                 <input
                   className={`input is-rounded ${
