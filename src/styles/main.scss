@@ -8,7 +8,7 @@
   src: url("./assets/KeepCalm-Medium.ttf");
 }
 
-$Blue: rgba(0, 42, 59, 1);
+$Blue: rgb(0, 42, 59);
 $Coral: rgba(235, 76, 76, 1);
 
 .button {
@@ -85,6 +85,15 @@ input.is-danger {
 
 label.is-danger {
   border: $Coral 1px solid !important;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.space {
+  margin-right: 10px;
 }
 
 //navbar
@@ -193,13 +202,20 @@ label.is-danger {
         width: 100%;
         height: 300px;
         background-position: center;
-        object-fit: cover;
         background-color: rgb(212, 212, 212);
-        div {
-          height: 100%;
-          display: flex;
-          align-items: center;
+        .edit {
+          cursor: pointer;
+          position: absolute;
+          left: 33px;
+          top: 83px;
         }
+        img {
+          object-fit: cover;
+        }
+      }
+      .empty {
+        display: flex;
+        align-items: center;
       }
       .profile-logo {
         background-color: white;
@@ -219,6 +235,24 @@ label.is-danger {
         align-items: center;
         color: $Blue;
       }
+      .logo {
+        cursor: pointer;
+      }
+      .position-bottom {
+        display: flex;
+        align-items: flex-end;
+      }
+    }
+    .multiple-images {
+      border: 2px $Coral dashed;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      padding: 10px;
+      cursor: pointer;
+      justify-content: center;
+      width: 100px;
+      height: 100px;
     }
     .brand-imagery {
       max-width: 200px;
@@ -263,6 +297,52 @@ label.is-danger {
       }
     }
   }
+  .image-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    .image-box {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .brand-imagery {
+        max-width: 200px;
+        max-height: 100px;
+        margin: 0 5px 5px 5px;
+        height: 100px;
+      }
+      .delete {
+        position: absolute;
+        right: -4px;
+        top: -4px;
+      }
+    }
+  }
+  .file-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    .image-box {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 5px 5px 5px;
+      .brand-files {
+        max-width: 200px;
+        max-height: 100px;
+        height: 100px;
+      }
+      .delete {
+        position: absolute;
+        right: -4px;
+        top: -4px;
+      }
+    }
+  }
   .right-side {
     margin-left: 20px;
     .lists {
@@ -291,56 +371,6 @@ label.is-danger {
       display: flex;
       align-items: center;
       flex-direction: column;
-    }
-    .multiple-images {
-      border: 2px $Coral dashed;
-      display: flex;
-      align-items: center;
-      text-align: center;
-      padding: 10px;
-      cursor: pointer;
-      justify-content: center;
-      min-width: 220px;
-    }
-  }
-  .image-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-    .file-box {
-      font-size: 10px;
-      display: flex;
-      flex-direction: column;
-      max-width: 100px;
-      align-items: center;
-      margin: 20px;
-      text-align: center;
-      position: relative;
-      .brand-imagery {
-        max-width: 200px;
-        max-height: 100px;
-        margin: 5px;
-        height: 100px;
-      }
-      .delete {
-        position: absolute;
-        right: 1px;
-      }
-    }
-    .image-box {
-      position: relative;
-      .brand-imagery {
-        max-width: 200px;
-        max-height: 100px;
-        margin: 5px;
-        height: 100px;
-      }
-      .delete {
-        position: absolute;
-        right: -4px;
-        top: -4px;
-      }
     }
   }
   .center {

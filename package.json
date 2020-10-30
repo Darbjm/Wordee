@@ -12,6 +12,9 @@
     "build": "webpack -p"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.12",
     "axios": "^0.19.2",
     "bcrypt": "^3.0.7",
     "body-parser": "^1.19.0",
