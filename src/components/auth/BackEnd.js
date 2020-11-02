@@ -1,19 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel
+} from 'react-accessible-accordion'
+import ReactHTMLTableToExcel from 'react-html-table-to-excel'
+import 'react-accessible-accordion/dist/fancy-example.css'
+import Navbar from '../common/Navbar'
 import { getToken } from '../lib/auth'
 import folder from '../../styles/images/folder.svg'
-import ReactHTMLTableToExcel from 'react-html-table-to-excel'
 
 const BackEnd = () => {
-  const [user, setUser] = useState({})
+  const [brands, setBrands] = useState({})
   const [report, setReport] = useState({})
+  const [filterBrand, setBrandFilter] = useState('')
 
   const getData = async () => {
     try {
       const res = await axios.get('/api/all', {
         headers: { Authorization: `Bearer ${getToken()}` }
       })
-      setUser(res.data)
+      setBrands(res.data)
     } catch (err) {
       console.log(err)
     }
@@ -37,58 +47,83 @@ const BackEnd = () => {
   }
   return (
     <main>
-      <section className="back">
-        {user[0] &&
-          user.map((one, i) => (
-            <div key={i} className="each">
-              <img src={one.logo} alt={one.logo} className='backend-logo'/>
-              <div>username: {one.username}</div>
-              <div>email: {one.email}</div>
-              <div>logo: {one.logo}</div>
-              <div>website: {one.website}</div>
-              <div>blog: {one.blog}</div>
-              <div>Report Summary: {one.reportSummary}</div>
-              <form onSubmit={submit} >
-                <div className="field">
-                  <div className="control">
-                    <input 
-                      className="input" 
-                      type="text" 
-                      placeholder="Report link" 
-                      name="reportSummary"
-                      onChange={({ target: { value } }) => { 
-                        setReport({ id: one._id, reportSummary: value })
-                      }
-                      }
-                    />
-                  </div>
-                </div>
-                <button>Send</button>
-              </form>
-              <hr />
-              <div>
-                {one.docs &&
-                  one.docs.map((doc, i) => (
+      <Navbar />
+      <section className='backend'>
+        <div>
+          <h1>Wordee admin panel</h1>
+        </div>
+        <div className='search'>
+          <input 
+            className="input" 
+            type="text"
+            placeholder='Search by brand name'
+            onChange={({ target: { value } }) => {
+              setBrandFilter(value)
+            }}/>
+        </div>
+        <div className='brands'>
+          <Accordion allowZeroExpanded>
+            {brands[0] && brands.filter(brand => {
+              const regEx = new RegExp(filterBrand, 'gi')
+              return brand.username.match(regEx)
+            }).map(filteredBrands => (
+              <AccordionItem key={filteredBrands.username}>
+                <AccordionItemHeading>
+                  <AccordionItemButton>
+                    <div className='accordionTitle'>
+                      <img src={filteredBrands.logo} className='accordionlogo'/><h1>{filteredBrands.username}</h1>
+                    </div>
+                  </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel>
+                  <p>filteredBrandsname: {filteredBrands.username}</p>
+                  <p>Email: {filteredBrands.email}</p>
+                  <p>Logo: {filteredBrands.logo}</p>
+                  <p>Website: {filteredBrands.website}</p>
+                  <p>Blog: {filteredBrands.blog}</p>
+                  <p>Report summary: {filteredBrands.reportSummary}</p>
+                  <form onSubmit={submit} >
+                    <div className="field">
+                      <div className="control">
+                        <input 
+                          className="input" 
+                          type="text" 
+                          placeholder="Report link" 
+                          name="reportSummary"
+                          onChange={({ target: { value } }) => { 
+                            setReport({ id: filteredBrands._id, reportSummary: value })
+                          }
+                          }
+                        />
+                      </div>
+                    </div>
+                    <button>Send</button>
+                  </form>
+                  <hr />
+                  <div>
+                    <h2>filteredBrands documents:</h2>
+                    {filteredBrands.docs &&
+                  filteredBrands.docs.map((doc, i) => (
                     <div className="sec" key={i}>
-                      doc:
+                      <br/>
+                      <h4>name: {doc.name}</h4>
                       <br />
                       <a href={doc.url} target='_blank' rel='noopener noreferrer'>
                         <img src={folder} alt={folder} className='backend-folder'/>
                       </a>
                       <div>url: {doc.url}</div>
-                      <div>name: {doc.name}</div>
                       <hr />
                     </div>
                   ))}
-              </div>
-              <div>
-                <h1>Briefs:</h1>
-                <br />
-                {one.liveBriefs &&
-                  one.liveBriefs.map((brief, i) => (
+                  </div>
+                  <div>
+                    <h2>filteredBrands briefs:</h2>
+                    <br />
+                    {filteredBrands.liveBriefs &&
+                  filteredBrands.liveBriefs.map((brief, i) => (
                     <div key={i}>
                       <table className="table is-hoverable is-bordered is-striped" id={`table ${i}`}>
-                        <thead> <tbody>
+                        <tbody>
                           <tr>
                             <th>Title:</th>
                             <td>{brief.title}</td>
@@ -113,29 +148,31 @@ const BackEnd = () => {
                             <th>The purpose of this content is to:</th>
                             <td>{brief.purpose}</td>
                           </tr>
+                          {/* decide whether to show extra questions or not */}
                           {brief.purpose === 'Sell a product or service' ? 
-                            <><tr>
-                              <th>Name of product or service:</th>
-                              <td>{brief.prodName}</td>
-                            </tr>
-                            <tr>
-                              <th>Is it new or lanched?:</th>
-                              <td>{brief.new}</td>
-                            </tr>
-                            <tr>
-                              <th>Key selling points:</th>
-                              <td className='padding'>
-                                <ol>
-                                  <li>{brief.keypoint1}</li>
-                                  <li>{brief.keypoint2}</li>
-                                  <li>{brief.keypoint3}</li>
-                                  <li>{brief.keypoint4}</li>
-                                  <li>{brief.keypoint5}</li>
-                                </ol>
-                              </td>
-                            </tr>
+                            <>
+                              <tr>
+                                <th>Name of product or service:</th>
+                                <td>{brief.prodName}</td>
+                              </tr>
+                              <tr>
+                                <th>Is it new or lanched?:</th>
+                                <td>{brief.new}</td>
+                              </tr>
+                              <tr>
+                                <th>Key selling points:</th>
+                                <td className='padding'>
+                                  <ol>
+                                    <li>{brief.keypoint1}</li>
+                                    <li>{brief.keypoint2}</li>
+                                    <li>{brief.keypoint3}</li>
+                                    <li>{brief.keypoint4}</li>
+                                    <li>{brief.keypoint5}</li>
+                                  </ol>
+                                </td>
+                              </tr>
                             </>
-                            : ''}
+                            : null}
                           <tr>
                             <th>Description of purpose in a sentance:</th>
                             <td>{brief.sentance}</td>
@@ -169,7 +206,6 @@ const BackEnd = () => {
                             <td>{brief.keyword3}</td>
                           </tr>
                         </tbody>
-                        </thead>
                       </table>
                       <ReactHTMLTableToExcel
                         id="table-xls-button"
@@ -181,22 +217,24 @@ const BackEnd = () => {
                       <hr />
                     </div>
                   ))}
-              </div>
-              <div>
-                {one.image &&
-                  one.image.map((doc, i) => (
+                  </div>
+                  <div>
+                    <h2>filteredBrands images:</h2>
+                    {filteredBrands.image &&
+                  filteredBrands.image.map((image, i) => (
                     <div className="sec" key={i}>
-                      image:
+                      
                       <br />
-                      <img src={doc.url} alt={doc.url} className='backend-logo'/>
-                      <div>url: {doc.url}</div>
+                      <img src={image.url} alt={image.url} className='accordionImage'/>
+                      <div>url: {image.url}</div>
                     </div>
                   ))}
-              </div>
-              <hr />
-              <div className="user"></div>
-            </div>
-          ))}
+                  </div>
+                </AccordionItemPanel>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
       </section>
     </main>
   )

@@ -1,5 +1,13 @@
 const User = require('../models/user')
 
+function index(req, res) {
+  User
+    .find()
+    .populate('user')
+    .then(foundUsers => res.status(200).json(foundUsers))
+    .catch(err => res.json(err))
+}
+
 function show(req, res) {
   User
     .findById(req.currentUser._id)
@@ -17,7 +25,7 @@ function update(req, res) {
       return user.save()  
     })
     .then(updatedUser => res.status(202).json(updatedUser))
-    .catch(err => console.log(err))
+    .catch(err => res.status(401).json(err))
 }
 
 function destroy(req, res) {
@@ -28,10 +36,10 @@ function destroy(req, res) {
       if (!user) return res.status(404).json({ message: 'Not Found' })
       user.remove().then(() => res.sendStatus(204))
     })
-    .catch(err => res.json(err))
+    .catch(err => res.status(403).json(err))
 }
-
-function briefs(req, res) {
+/**Show brief */
+function showBriefs(req, res) {
   User
     .findById(req.currentUser._id)
     .then(brand => {
@@ -40,7 +48,7 @@ function briefs(req, res) {
       return brief 
     })
     .then(Brief => res.status(202).json(Brief)) 
-    .catch(err => res.json(err))
+    .catch(err => res.status(404).json(err))
 }
 
 function briefsCreate(req, res) {
@@ -53,7 +61,7 @@ function briefsCreate(req, res) {
       return brand.save()
     })
     .then(brand => res.status(202).json(brand))
-    .catch(err => res.json(err))
+    .catch(err => res.status(422).json(err))
 }
 
 function briefsEdit(req, res) {
@@ -66,7 +74,7 @@ function briefsEdit(req, res) {
       return brand.save()  
     })
     .then(updatedBrief => res.status(202).json(updatedBrief)) 
-    .catch(err => res.json(err))
+    .catch(err => res.status(404).json(err))
 }
 
 function briefsDestroy(req, res) {
@@ -80,7 +88,7 @@ function briefsDestroy(req, res) {
       brand.save()
     })
     .then(() => res.sendStatus(204))
-    .catch(err => res.json(err))
+    .catch(err => res.status(404).json(err))
 }
 
 function imagesAdd(req, res) {
@@ -99,7 +107,7 @@ function imagesAdd(req, res) {
       return brand.save()
     })
     .then(brand => res.status(202).json(brand))
-    .catch(err => res.json(err))
+    .catch(err => res.status(422).json(err))
 }
 
 function imagesDestory(req, res) {
@@ -114,7 +122,7 @@ function imagesDestory(req, res) {
       return brand.save()
     })
     .then(brand => res.status(204).json(brand))
-    .catch(err => res.json(err))
+    .catch(err => res.status(404).json(err))
 }
 
 function docsAdd(req, res) {
@@ -134,7 +142,7 @@ function docsAdd(req, res) {
       return brand.save()
     })
     .then(brand => res.status(202).json(brand))
-    .catch(err => res.json(err))
+    .catch(err => res.status(422).json(err))
 }
 
 function docsDestory(req, res) {
@@ -149,7 +157,7 @@ function docsDestory(req, res) {
       return brand.save()
     })
     .then(brand => res.status(204).json(brand))
-    .catch(err => res.json(err))
+    .catch(err => res.status(404).json(err))
 }
 
 function addReport(req, res) {
@@ -163,8 +171,8 @@ function addReport(req, res) {
       return brand.save()
     })
     .then(updatedBrand => res.status(202).json(updatedBrand))
-    .catch(err => res.json(err))
+    .catch(err => res.status(422).json(err))
 }
 
 
-module.exports = { show, update, destroy, briefs, briefsCreate, briefsEdit, briefsDestroy, imagesAdd, imagesDestory, docsAdd, docsDestory, addReport }
+module.exports = { index, show, update, destroy, showBriefs, briefsCreate, briefsEdit, briefsDestroy, imagesAdd, imagesDestory, docsAdd, docsDestory, addReport }

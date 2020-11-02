@@ -2,9 +2,9 @@ import propTypes from 'prop-types'
 import React, { useState, useEffect } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { getUser, logout } from '../lib/auth'
-
 import logo from '../../styles/images/Wordee_logo.svg'
 
+/**Component for Navbar */
 const Navbar = ({
   location: { pathname },
   history,
@@ -18,6 +18,7 @@ const Navbar = ({
     setOpen(false)
   }, [pathname])
 
+  /**Logout */
   const handleLogout = () => {
     logout()
     history.push('/')

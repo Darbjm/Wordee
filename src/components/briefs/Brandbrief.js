@@ -5,6 +5,14 @@ import { getToken, getUser } from '../lib/auth'
 import BriefForm from './BriefForm'
 import Navbar from '../common/Navbar'
 
+/**Enum for extra questions */
+const EXTRAQUESTIONS = {
+  PRODNAME: 'prodName',
+  NEW: 'new',
+  KEYPOINTS: 'keypoints'
+}
+
+/**Component for creating brand brief */
 const Brandbrief = ({ history }) => {
   const [data, setData] = useState({
     title: '',
@@ -24,8 +32,9 @@ const Brandbrief = ({ history }) => {
     keyword3: ''
   })
   const [errors, setErrors] = useState({})
-  const [extra, setExtra] = useState(false)
+  const [extraQuestions, setExtraQuestions] = useState(false)
 
+  /**Upload new brief */
   const handleSubmit = async e => {
     e.preventDefault()
     try {
@@ -48,6 +57,32 @@ const Brandbrief = ({ history }) => {
     }
   }
 
+  /**Add extra questions to the brief form */
+  const addExtraQuestions = (event) => {
+    event.persist()
+    const { name, value } = event.target
+    //if the user does not want to sell a product or service remove extra questions
+    if (name === 'purpose' && value !== 'Sell a product or service') {
+      setExtraQuestions(false)
+      const newData = { ...data }
+      delete newData[EXTRAQUESTIONS.PRODNAME]
+      delete newData[EXTRAQUESTIONS.NEW]
+      delete newData[EXTRAQUESTIONS.KEYPOINTS]
+      setData(newData)
+    }
+    // if the user does want to sell a product or service add extra questions
+    if (value === 'Sell a product or service') {
+      setExtraQuestions(true)
+      setData({ ...data, 
+        [EXTRAQUESTIONS.PRODNAME]: '',
+        [EXTRAQUESTIONS.NEW]: '',
+        [EXTRAQUESTIONS.KEYPOINTS]: ''
+      })
+    }
+    setData({ ...data, [name]: value })
+    setErrors({})
+  }
+
   return (
     <>
       <Navbar />
@@ -58,24 +93,8 @@ const Brandbrief = ({ history }) => {
             type="Create Brief"
             data={data}
             errors={errors}
-            extra={extra}
-            handleChange={({ target: { name, value } }) => {
-              if (name === 'purpose' && value !== 'Sell a product or service') {
-                setExtra(false)
-                delete data['prodName']
-                delete data['new']
-                delete data['keypoints']
-              }
-              if (value === 'Sell a product or service') {
-                setExtra(true)
-                data.prodName = ''
-                data.new = ''
-                data.keypoints = ''
-              }
-              setData({ ...data, [name]: value })
-              setErrors({})
-            }
-            }
+            extraQuestions={extraQuestions}
+            handleChange={(event) => addExtraQuestions(event)}
             handleSubmit={handleSubmit}
           />
         </section>

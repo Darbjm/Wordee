@@ -3,6 +3,9 @@ const users = require('../controllers/users')
 const authUsers = require('../controllers/auth')
 const secureRoute = require('../lib/secureRoute')
 
+router.route('/brands')
+  .get(users.index)
+
 router.route('/brands/:id')
   .get(secureRoute, users.show)
   .put(secureRoute, users.update)
@@ -18,13 +21,13 @@ router.route('/brands/login')
   .post(authUsers.login)
 
 router.route('/admin/login')
-  .post(authUsers.admin)
+  .post(authUsers.adminLogin)
 
 router.route('/briefs/add')
   .post(secureRoute, users.briefsCreate)
 
 router.route('/briefs/:id')
-  .get(secureRoute, users.briefs)
+  .get(secureRoute, users.showBriefs)
   .put(secureRoute, users.briefsEdit)
   .delete(secureRoute, users.briefsDestroy)
 

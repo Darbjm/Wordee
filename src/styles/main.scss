@@ -125,7 +125,6 @@ label.is-danger {
 //login
 .login {
   height: 100vh;
-  // background-image: url('./images/Wordee-copywriting.jpg');
   background-size: cover;
   display: flex;
   align-items: center;
@@ -507,31 +506,35 @@ label.is-danger {
   }
 }
 
-.back {
-  .each {
-    margin: 20px;
-    display: flex;
-    flex-direction: column;
-    .backend-logo {
-      max-height: 200px;
-      max-width: 200px;
+.backend {
+  padding: 20px;
+  .brands {
+    .accordionlogo {
+      max-height: 50px;
+      max-width: 100px;
+      margin-right: 20px;
+    }
+    .accordionImage {
+      max-height: 50px;
+      max-width: 100px;
+      margin-right: 20px;
+    }
+    .accordionTitle {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
     }
     .backend-folder {
       max-height: 100px;
       max-width: 100px;
     }
-    .sec {
-      padding: 10px;
-      max-width: 90%;
-    }
-    .user {
-      background-color: $Blue;
-      height: 100px;
-      width: 100%;
-    }
     .padding {
       padding-left: 30px;
     }
+  }
+  .search {
+    margin: 20px 0;
   }
 }
 

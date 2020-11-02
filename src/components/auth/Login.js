@@ -5,16 +5,19 @@ import { Link } from 'react-router-dom'
 import { setToken, getUser } from '../lib/auth'
 import logo from '../../styles/images/Wordee.svg'
 
+/**Component to render login form*/
 const Login = ({ history }) => {
   const [data, setData] = useState({})
   const [error, setError] = useState('')
   // const [user, setUser] = useState(true);
 
+  /**Change data in state */
   const handleChange = ({ target: { name, value } }) =>
     setData({ ...data, [name]: value })
 
   // const handleUser = value => setUser(value);
 
+  /**Submit data for login */
   const handleSubmit = async e => {
     e.preventDefault()
     // const address = user ? 'brands' : 'writers';
@@ -38,6 +41,7 @@ const Login = ({ history }) => {
             className="has-text-centered is-centered"
           >
             <img src={logo} alt="Wordee Logo" />
+            {/* This section will be used if the writers need a login */}
             {/* <div className="field">
               <div className="oneline">
                 <h2 className="label">Login as a:</h2>

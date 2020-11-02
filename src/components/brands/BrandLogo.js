@@ -6,6 +6,7 @@ import { useDropzone } from 'react-dropzone'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenSquare } from '@fortawesome/free-solid-svg-icons'
 
+/**Component to display and upload brand logo */
 const BrandLogo = ({ user, getData }) => {
   const [reject, changeReject] = useState('')
   const [loading, setLoading] = useState(false)

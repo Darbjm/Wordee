@@ -1,8 +1,9 @@
 import propTypes from 'prop-types'
 import React from 'react'
-import ExtraQuestions from './ExtraQuestions.js'
+import ExtraQuestions from './ExtraQuestions'
 
-const BriefForm = ({ data, handleChange, handleSubmit, errors, header, extra, type }) => (
+/**Component to create brief */
+const BriefForm = ({ data, handleChange, handleSubmit, errors, header, extraQuestions, type }) => (
   <div className="brief">
     <h1 className="larger">{header}</h1>
     <form className="brief-form" onSubmit={handleSubmit}>
@@ -267,7 +268,7 @@ const BriefForm = ({ data, handleChange, handleSubmit, errors, header, extra, ty
           <small className="help is-danger">{errors.purpose}</small>
         )}
       </div>
-      {extra ? <ExtraQuestions 
+      {extraQuestions ? <ExtraQuestions 
         data={data}
         errors={errors}
         handleChange={handleChange}

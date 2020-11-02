@@ -5,6 +5,7 @@ import { getToken, getUser } from '../lib/auth'
 import BriefForm from './BriefForm'
 import Navbar from '../common/Navbar'
 
+/**Component to edit brief */
 const BrandEditBrief = ({
   history,
   match: {
@@ -13,7 +14,7 @@ const BrandEditBrief = ({
 }) => {
   const [data, setData] = useState({})
   const [errors, setErrors] = useState({})
-  const [extra, setExtra] = useState(false)
+  const [extraQuestions, setExtraQuestions] = useState(false)
 
   useEffect(() => {
     const getData = async () => {
@@ -21,7 +22,7 @@ const BrandEditBrief = ({
         const res = await axios.get(`/api/briefs/${id}`, {
           headers: { Authorization: `Bearer ${getToken()}` }
         })
-        if (res.data.purpose === 'Sell a product or service') setExtra(true)
+        if (res.data.purpose === 'Sell a product or service') setExtraQuestions(true)
         setData(res.data)
       } catch (err) {
         console.log(err)
@@ -30,6 +31,7 @@ const BrandEditBrief = ({
     getData()
   }, [id])
 
+  /**Upload Brief */
   const handleSubmit = async e => {
     e.preventDefault()
     try {
@@ -52,6 +54,7 @@ const BrandEditBrief = ({
     }
   }
 
+  /**Delete Brief */
   const remove = async e => {
     e.preventDefault()
     try {
@@ -64,6 +67,16 @@ const BrandEditBrief = ({
     }
   }
 
+  /**Add extra questions to the brief form */
+  const addExtraQuestions = (event) => {
+    event.persist()
+    const { name, value } = event.target
+    if (name === 'purpose') setExtraQuestions(false)
+    if (value === 'Sell a product or service') setExtraQuestions(true)
+    setData({ ...data, [name]: value })
+    setErrors({})
+  }
+
   return (
     <>
       <Navbar />
@@ -74,14 +87,8 @@ const BrandEditBrief = ({
             type="Save Brief"
             data={data}
             errors={errors}
-            extra={extra}
-            handleChange={({ target: { name, value } }) => {
-              if (name === 'purpose') setExtra(false)
-              if (value === 'Sell a product or service') setExtra(true)
-              setData({ ...data, [name]: value })
-              setErrors({})
-            }
-            }
+            extraQuestions={extraQuestions}
+            handleChange={(event) => addExtraQuestions(event)}
             handleSubmit={handleSubmit}
           />
         </section>

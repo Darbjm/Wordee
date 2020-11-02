@@ -18,6 +18,6 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
     .then(createdUsers => {
       console.log(`${createdUsers.length} users created `)
     })
-    .catch(err => console.log(err))
     .finally(() => mongoose.connection.close())
+    .catch(err => console.log(err))
 })

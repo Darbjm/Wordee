@@ -22,6 +22,7 @@ const Profile = ({
     getData()
   }, [id])
 
+  /**Get profile data */
   const getData = async () => {
     try {
       const res = await axios.get(`/api/brands/${id}`, {

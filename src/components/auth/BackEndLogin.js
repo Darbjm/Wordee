@@ -4,13 +4,16 @@ import axios from 'axios'
 import { setToken } from '../lib/auth'
 import logo from '../../styles/images/Wordee.svg'
 
+/**Component to render login for backend */
 const BackEndLogin = ({ history }) => {
   const [data, setData] = useState({})
   const [error, setError] = useState('')
 
+  /**Change data in state */
   const handleChange = ({ target: { name, value } }) =>
     setData({ ...data, [name]: value })
 
+  /**Submit data for login on backend */
   const handleSubmit = async e => {
     e.preventDefault()
     try {

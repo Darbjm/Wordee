@@ -8,10 +8,8 @@ function register(req, res) {
     .then(user => { 
       res.status(201).json({ 'message': `Thanks for registering ${user.username}` })
     })
-    .catch(err => console.log(err))
+    .catch(err => res.status(422).json(err))
 }
-
-//res.status(422).json(err)
 
 function login(req, res) {
   User
@@ -26,10 +24,10 @@ function login(req, res) {
         token
       })
     })
-    .catch(err => console.log(err))
+    .catch(err => res.status(404).json(err))
 }
 
-function admin(req, res) {
+function adminLogin(req, res) {
   User
     .findOne({ email: req.body.email })
     .then(user => {
@@ -37,14 +35,13 @@ function admin(req, res) {
       if (!user || !user.validatePassword(req.body.password)) {
         return res.status(401).json({ message: 'Unauthorized' })
       }
-
       const token = jwt.sign({ sub: user._id }, secret, { expiresIn: '24h' })
       res.status(202).json({
         message: `Welcome back ${user.username}`,
         token
       })
     })
-    .catch(err => console.log(err))
+    .catch(err => res.status(404).json(err))
 }
 
 function showProfileAll(req, res) {
@@ -54,7 +51,7 @@ function showProfileAll(req, res) {
       if (req.currentUser.email !== 'wordee@email.co.uk') return res.status(401).json({ message: 'Unauthorized' })
       res.status(200).json(selectedUsers)
     })
-    .catch(err => res.json(err))
+    .catch(err => res.status(404).json(err))
 }
 
-module.exports = { register, login, showProfileAll, admin }
+module.exports = { register, login, showProfileAll, adminLogin }

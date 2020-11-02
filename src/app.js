@@ -8,7 +8,6 @@ import SecureRoute from './components/common/SecureRoute'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import BackEnd from './components/auth/BackEnd'
-import EditProfile from './components/brands/EditProfile'
 import Profile from './components/brands/BrandProfile'
 import Brandbrief from './components/briefs/Brandbrief'
 import BrandEditBrief from './components/briefs/BrandEditBrief'
@@ -23,9 +22,8 @@ const App = () => (
       <Route path="/register" component={Register} />
       <Route path="/admin" component={BackEndLogin} />
       <SecureRoute path="/backendtesting5702918301" component={BackEnd} />
-      <SecureRoute path="/profile/:id/edit" component={EditProfile} />
       <SecureRoute path="/profile/:id" component={Profile} />
-      <SecureRoute path="/createbrandbrief/:id" component={Brandbrief} />
+      <SecureRoute path="/createbrandbrief" component={Brandbrief} />
       <SecureRoute path="/editbrief/:id" component={BrandEditBrief} />
       <Route path="/*" component={FailedPage} />
     </Switch>

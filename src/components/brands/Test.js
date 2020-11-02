@@ -1,7 +1,7 @@
 
 // // learn built in functions for JS
 
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
 
 // const ListItem = ({ value, completed }) => {
 //   // when usesing boolean in state make hooks readable as boolean
@@ -91,42 +91,42 @@ import React, { useState } from 'react'
 
 // export default List
 
-const BlogPost = () => {
-  const [datas, setDatas] = useState([
-    {
-      id: 1,
-      name: 'john',
-      gender: 'm'
-    },
-    {
-      id: 2,
-      name: 'mary',
-      gender: 'f'
-    }
-  ])
+// const BlogPost = () => {
+//   const [datas, setDatas] = useState([
+//     {
+//       id: 1,
+//       name: 'john',
+//       gender: 'm'
+//     },
+//     {
+//       id: 2,
+//       name: 'mary',
+//       gender: 'f'
+//     }
+//   ])
 
-  const updateFieldChanged = event => {
-    event.persist()
-    console.log(event.target.value, event.target.name)
-    const users = [...datas]
-    users.map(userObj => {
-      if (userObj.id === event.target.name) return userObj.name = event.target.value
-    })
-    // const newUser = { ...user, name: event.target.value }
-    console.log(users)
-  }
+//   const updateFieldChanged = event => {
+//     event.persist()
+//     console.log(event.target.value, event.target.name)
+//     const users = [...datas]
+//     users.map(userObj => {
+//       if (userObj.id === event.target.name) return userObj.name = event.target.value
+//     })
+//     // const newUser = { ...user, name: event.target.value }
+//     console.log(users)
+//   }
 
-  return (
-    <div>
-      {datas.map((data, index) => (
-        <li key={data.name}>
-          <input type="text" name={data.id} onChange={(event) => updateFieldChanged(event)}  />
-          <span>{data.name}</span>
-        </li>
-      ))
-      }
-    </div>
-  )
-}
+//   return (
+//     <div>
+//       {datas.map((data, index) => (
+//         <li key={data.name}>
+//           <input type="text" name={data.id} onChange={(event) => updateFieldChanged(event)}  />
+//           <span>{data.name}</span>
+//         </li>
+//       ))
+//       }
+//     </div>
+//   )
+// }
   
-export default BlogPost
+// export default BlogPost

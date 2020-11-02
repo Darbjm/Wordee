@@ -4,20 +4,21 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import logo from '../../styles/images/Wordee.svg'
 
+/**Component to render register form*/
 const Register = ({ history }) => {
   const [data, setData] = useState({})
-  const [user, setUser] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [passCon, setPassCon] = useState('')
+  const [userError, setUserError] = useState('')
+  const [emailError, setEmailError] = useState('')
+  const [passwordError, setPasswordError] = useState('')
+  const [passConError, setPassConError] = useState('')
   // const [user, setUser] = useState(true);
 
   const handleChange = ({ target: { name, value } }) => {
     setData({ ...data, [name]: value })
-    setUser('')
-    setEmail('')
-    setPassword('')
-    setPassCon('')
+    setUserError('')
+    setEmailError('')
+    setPasswordError('')
+    setPassConError('')
   }
 
   // const handleUser = value => setUser(value);
@@ -26,21 +27,22 @@ const Register = ({ history }) => {
     e.preventDefault()
     // const address = user ? 'brands' : 'writers';
     try {
+      console.log(data)
       await axios.post('/api/brands/register', data)
       history.push('/')
     } catch (err) {
-      
+      console.log(err.response)
       if (err.response.data.errors.username.message) {
-        setUser(err.response.data.errors.username.message)
+        setUserError(err.response.data.errors.username.message)
       }
       if (err.response.data.errors.email.message) {
-        setEmail(err.response.data.errors.email.message)
+        setEmailError(err.response.data.errors.email.message)
       }
       if (err.response.data.errors.password.message) {
-        setPassword(err.response.data.errors.password.message)
+        setPasswordError(err.response.data.errors.password.message)
       }
       if (err) {
-        setPassCon('Does not match')
+        setPassConError('Does not match')
       }
     }
   }
@@ -85,37 +87,37 @@ const Register = ({ history }) => {
                   <div className="control">
                     <input
                       className={`input is-large is-rounded ${
-                        user ? 'is-danger' : ''
+                        userError ? 'is-danger' : ''
                       }`}
                       placeholder="Brandname"
                       name="username"
                       onChange={handleChange}
                     />
                   </div>
-                  {user && (
-                    <small className="help is-danger">{user}</small>
+                  {userError && (
+                    <small className="help is-danger">{userError}</small>
                   )}
                 </div>
                 <div className="field">
                   <div className="control">
                     <input
                       className={`input is-large is-rounded ${
-                        email ? 'is-danger' : ''
+                        emailError ? 'is-danger' : ''
                       }`}
                       placeholder="Email"
                       name="email"
                       onChange={handleChange}
                     />
                   </div>
-                  {email && (
-                    <small className="help is-danger">{email}</small>
+                  {emailError && (
+                    <small className="help is-danger">{emailError}</small>
                   )}
                 </div>
                 <div className="field">
                   <div className="control">
                     <input
                       className={`input is-large is-rounded ${
-                        password ? 'is-danger' : ''
+                        passwordError ? 'is-danger' : ''
                       }`}
                       type="password"
                       placeholder="Password"
@@ -123,15 +125,15 @@ const Register = ({ history }) => {
                       onChange={handleChange}
                     />
                   </div>
-                  {password && (
-                    <small className="help is-danger">{password}</small>
+                  {passwordError && (
+                    <small className="help is-danger">{passwordError}</small>
                   )}
                 </div>
                 <div className="field">
                   <div className="control">
                     <input
                       className={`input is-large is-rounded ${
-                        passCon ? 'is-danger' : ''
+                        passConError ? 'is-danger' : ''
                       }`}
                       type="password"
                       placeholder="Password Confirmation"
@@ -139,9 +141,9 @@ const Register = ({ history }) => {
                       onChange={handleChange}
                     />
                   </div>
-                  {passCon && (
+                  {passConError && (
                     <small className="help is-danger">
-                      {passCon}
+                      {passConError}
                     </small>
                   )}
                 </div> 

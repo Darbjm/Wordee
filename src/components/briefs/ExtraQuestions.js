@@ -1,5 +1,6 @@
 import React from 'react'
 
+/**Extra questions depending on the users choices*/
 const ExtraQuestions = ({ data, handleChange, errors }) => (
   <div>
     <div className="field">
