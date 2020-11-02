@@ -24,7 +24,7 @@ function login(req, res) {
         token
       })
     })
-    .catch(err => res.status(404).json(err))
+    .catch(err => res.status(401).json(err))
 }
 
 function adminLogin(req, res) {

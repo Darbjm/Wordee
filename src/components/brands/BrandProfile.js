@@ -2,7 +2,7 @@ import propTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import { getToken, getUser } from '../lib/auth'
+import { getToken, getUser, logout } from '../lib/auth'
 import Navbar from '../common/Navbar'
 import BrandFiles from '../brands/BrandFiles'
 import BrandImages from './BrandImages'
@@ -11,11 +11,12 @@ import BrandCover from './BrandCover'
 
 /** Component for displaying and editing profile information */
 const Profile = ({
+  history,
   match: {
     params: { id }
   }
 }) => {
-  const [user, setData] = useState({})
+  const [user, setUser] = useState({})
   const [success, setSuccess] = useState(false)
 
   useEffect(() => {
@@ -28,7 +29,7 @@ const Profile = ({
       const res = await axios.get(`/api/brands/${id}`, {
         headers: { Authorization: `Bearer ${getToken()}` }
       })
-      setData(res.data)
+      setUser(res.data)
     } catch (err) {
       console.log(err)
     }
@@ -60,6 +61,20 @@ const Profile = ({
     }
   }
 
+  /**Delete brand */
+  const deleteBrand = async e => {
+    e.preventDefault()
+    try {
+      await axios
+        .delete(`/api/brands/${user.id}`, { headers: { Authorization: `Bearer ${getToken()}` }
+        })
+      logout()
+      history.push('/')
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
     <main>
       <Navbar />
@@ -79,7 +94,7 @@ const Profile = ({
                 placeholder="Brandname"
                 name="username"
                 onChange={({ target: { name, value } }) =>
-                  setData({ ...user, [name]: value })
+                  setUser({ ...user, [name]: value })
                 }/> 
               <br/>
               <h2 style={{ display: 'inline' }}>Email:</h2> 
@@ -89,7 +104,7 @@ const Profile = ({
                 placeholder="Email"
                 name="email"
                 onChange={({ target: { name, value } }) =>
-                  setData({ ...user, [name]: value })
+                  setUser({ ...user, [name]: value })
                 }/> 
               <br/>
               <h2 style={{ display: 'inline' }}>Website:</h2> 
@@ -99,7 +114,7 @@ const Profile = ({
                 placeholder="Website"
                 name="website"
                 onChange={({ target: { name, value } }) =>
-                  setData({ ...user, [name]: value })
+                  setUser({ ...user, [name]: value })
                 }/> 
               <br/>
               <h2 style={{ display: 'inline' }}>Blog/refernce url:</h2> 
@@ -109,7 +124,7 @@ const Profile = ({
                 placeholder="Blog/refernce url"
                 name="blog"
                 onChange={({ target: { name, value } }) =>
-                  setData({ ...user, [name]: value })
+                  setUser({ ...user, [name]: value })
                 } 
               />
               <br/>
@@ -127,7 +142,7 @@ const Profile = ({
                 rows="16"
                 name="summary"
                 onChange={({ target: { name, value } }) =>
-                  setData({ ...user, [name]: value })
+                  setUser({ ...user, [name]: value })
                 }
               />
               <button type='submit' style={{ marginRight: '10px' }} className="button is-small blue is-rounded">Save</button>
@@ -149,7 +164,11 @@ const Profile = ({
             </p>
           </div>
           <hr/>
+          <div className="sect">
+            <button className='button is-rounded is-danger' onClick={e => deleteBrand(e)}>Delete Brand</button>
+          </div>
         </div>
+        {/* Change to aside */}
         <div className="right-side">
           <h3>Report Summary</h3>
           {user.reportSummary ? <a href={user.reportSummary} rel="noopener noreferrer" target="_blank" className='link'>Read report here</a> : <p>Pending</p> }

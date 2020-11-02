@@ -3,9 +3,6 @@ const users = require('../controllers/users')
 const authUsers = require('../controllers/auth')
 const secureRoute = require('../lib/secureRoute')
 
-router.route('/brands')
-  .get(users.index)
-
 router.route('/brands/:id')
   .get(secureRoute, users.show)
   .put(secureRoute, users.update)

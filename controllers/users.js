@@ -1,13 +1,5 @@
 const User = require('../models/user')
 
-function index(req, res) {
-  User
-    .find()
-    .populate('user')
-    .then(foundUsers => res.status(200).json(foundUsers))
-    .catch(err => res.json(err))
-}
-
 function show(req, res) {
   User
     .findById(req.currentUser._id)
@@ -20,7 +12,7 @@ function update(req, res) {
     .findById(req.currentUser._id)
     .then(user => {
       if (!user) return res.status(404).json({ message: 'Not Found' })
-      if (!user._id.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorized' })
+      if (!user._id.equals(req.params.id)) return res.status(401).json({ message: 'Unauthorized' })
       Object.assign(user, req.body) 
       return user.save()  
     })
@@ -32,7 +24,7 @@ function destroy(req, res) {
   User
     .findById(req.currentUser._id)
     .then(user => {
-      if (!user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorized' }) //This line was deleted when merged
+      if (!user._id.equals(req.params.id)) return res.status(401).json({ message: 'Unauthorized' }) //This line was deleted when merged
       if (!user) return res.status(404).json({ message: 'Not Found' })
       user.remove().then(() => res.sendStatus(204))
     })
@@ -44,7 +36,7 @@ function showBriefs(req, res) {
     .findById(req.currentUser._id)
     .then(brand => {
       if (!brand) return res.status(404).json({ message: 'Not Found' })
-      const brief = brand.liveBriefs.find(brief => brief.id === req.params.id)
+      const brief = brand.liveBriefs.find(checkBrief => checkBrief.id === req.params.id)
       return brief 
     })
     .then(Brief => res.status(202).json(Brief)) 
@@ -69,7 +61,7 @@ function briefsEdit(req, res) {
     .findById(req.currentUser._id)
     .then(brand => {
       if (!brand) return res.status(404).json({ message: 'Not Found' })
-      const brief = brand.liveBriefs.find(brief => brief.id === req.params.id)
+      const brief = brand.liveBriefs.find(checkBrief => checkBrief.id === req.params.id)
       Object.assign(brief, req.body) 
       return brand.save()  
     })
@@ -83,8 +75,8 @@ function briefsDestroy(req, res) {
     .then(brand => {
       if (!brand) return res.status(404).json({ message: 'Not Found' })
       if (!brand.liveBriefs.length) return res.status(404).json({ message: 'Not Found' })
-      const index = brand.liveBriefs.findIndex(brief => brief.id === req.params.id)
-      brand.liveBriefs.splice(index, 1)
+      const indexBrief = brand.liveBriefs.findIndex(brief => brief.id === req.params.id)
+      brand.liveBriefs.splice(indexBrief, 1)
       brand.save()
     })
     .then(() => res.sendStatus(204))
@@ -175,4 +167,4 @@ function addReport(req, res) {
 }
 
 
-module.exports = { index, show, update, destroy, showBriefs, briefsCreate, briefsEdit, briefsDestroy, imagesAdd, imagesDestory, docsAdd, docsDestory, addReport }
+module.exports = { show, update, destroy, showBriefs, briefsCreate, briefsEdit, briefsDestroy, imagesAdd, imagesDestory, docsAdd, docsDestory, addReport }
