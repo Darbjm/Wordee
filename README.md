@@ -18,21 +18,17 @@
 
 <h3>Introduction</h3>
 
-Wordee allows a brand to upload and update their information and files quickly and easily. It also provides a comprehensive briefing form to make it quick and easy to create a brief. The brand can easily edit and delete all information and briefs. From an admin panel myself and collegues can upload keyword searches for brands to access, while also downloading briefs and brand files to send to freelance copy writers.
+I was approached by two friends with and idea to create a copywriting briefing tool for brands. It is now being tested by TRIP DRINKS. Wordee allows a brand to upload and update their information and files quickly and easily. It also provides a comprehensive briefing form to make it quick and easy to create a brief. The brand can easily edit and delete all information and briefs. From an admin panel myself and collegues can upload keyword searches for brands to access, while also downloading briefs and brand files to send to freelance copy writers.
 
 <h3>Deployment</h3>
 
-The app is deployed on Heroku and can be found here: https://wordee-app.herokuapp.com/ <br>
+The app is deployed on Heroku and can be found here: https://wordee-app.herokuapp.com <br>
 The login details are email: test@email password: pass <br>
-
-<h3>Timeframe</h3>
-
-7 days
 
 <h2 name='brief'>Brief</h2>
 
-- **Build a full-stack application** by making your own backend and your own front-end
-- **Use a Python Django API** using Django REST Framework to serve your data from a Postgres database
+- **Build a briefing tool** Create a web app that allows a brand to create, edit and delete brand information and briefs
+- **Must have an admin panel** Admins must be able to download briefs and brand files
 - **Consume your API with a separate front-end** built with React
 - **Be a complete product** which most likely means multiple relationships and CRUD functionality for at least a couple of models
 - **Implement thoughtful user stories/wireframes** that are significant enough to help you know which features are core MVP and which you can cut

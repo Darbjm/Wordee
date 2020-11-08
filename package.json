@@ -7,8 +7,7 @@
     "start:back": "nodemon",
     "start:front": "webpack-dev-server --mode-development",
     "seed": "node db/seeds.js",
-    "test:back": "mocha tests/back/**/*_spec.js --require tests/back/helper --recursive --exit",
-    "test:front": "jest",
+    "test": "jest && mocha tests/back/**/*_spec.js --require tests/back/helper --recursive --exit",
     "start": "node index.js",
     "build": "webpack -p"
   },
