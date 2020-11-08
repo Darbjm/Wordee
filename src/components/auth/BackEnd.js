@@ -76,7 +76,7 @@ const BackEnd = () => {
                   </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-                  <p>filteredBrandsname: {filteredBrands.username}</p>
+                  <p>Brandsname: {filteredBrands.username}</p>
                   <p>Email: {filteredBrands.email}</p>
                   <p>Logo: {filteredBrands.logo}</p>
                   <p>Website: {filteredBrands.website}</p>
@@ -101,7 +101,7 @@ const BackEnd = () => {
                   </form>
                   <hr />
                   <div>
-                    <h2>filteredBrands documents:</h2>
+                    <h2>Brands documents:</h2>
                     {filteredBrands.docs &&
                   filteredBrands.docs.map((doc, i) => (
                     <div className="sec" key={i}>
@@ -117,7 +117,7 @@ const BackEnd = () => {
                   ))}
                   </div>
                   <div>
-                    <h2>filteredBrands briefs:</h2>
+                    <h2>Brands briefs:</h2>
                     <br />
                     {filteredBrands.liveBriefs &&
                   filteredBrands.liveBriefs.map((brief, i) => (
@@ -219,7 +219,7 @@ const BackEnd = () => {
                   ))}
                   </div>
                   <div>
-                    <h2>filteredBrands images:</h2>
+                    <h2>Brands images:</h2>
                     {filteredBrands.image &&
                   filteredBrands.image.map((image, i) => (
                     <div className="sec" key={i}>

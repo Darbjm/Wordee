@@ -23,7 +23,7 @@ describe('Test a Get request to index users', () => {
     User.deleteMany().then(() => done())
   })
 
-  it('should return a 200 response if the user search themself', done => {
+  it('should return a 200 response if the user can search themself', done => {
     api.get(`/api/brands/${user._id}`)
       .set('Authorization', `Bearer ${token}`)  
       .end((err, res) => {
@@ -46,38 +46,34 @@ describe('Test a Get request to index users', () => {
     api.get(`/api/brands/${user._id}`)
       .set('Authorization', `Bearer ${token}`)
       .end((err, res) => {
-        res.body.forEach(brand => {
-          expect(brand).to.contains.keys([
-            '_id',
-            'username',
-            'email',
-            'docs',
-            'image',
-            'liveBriefs',
-            'completedBriefs',
-            '__v',
-            'createdAt',
-            'updatedAt',
-            'id'
-          ])
-        })
+        expect(res.body).to.contains.keys([
+          '_id',
+          'username',
+          'email',
+          'docs',
+          'image',
+          'liveBriefs',
+          'completedBriefs',
+          '__v',
+          'createdAt',
+          'updatedAt',
+          'id'
+        ])
         done()
       })
   })
 
-  it('should return an array of objects with the correct fields and types of values', done => {
+  it('should return an object with the correct fields and types of values', done => {
     api.get(`/api/brands/${user._id}`)
       .set('Authorization', `Bearer ${token}`)
       .end((err, res) => {
-        res.body.forEach(brand => {
-          expect(brand._id).to.be.a('string')
-          expect(brand.brandname).to.be.a('string')
-          expect(brand.email).to.be.a('string')
-          expect(brand.image).to.be.an('array')
-          expect(brand.docs).to.be.an('array')
-          expect(brand.liveBriefs).to.be.an('array')
-          expect(brand.completedBriefs).to.be.an('array')
-        })
+        expect(res.body._id).to.be.a('string')
+        expect(res.body.username).to.be.a('string')
+        expect(res.body.email).to.be.a('string')
+        expect(res.body.image).to.be.an('array')
+        expect(res.body.docs).to.be.an('array')
+        expect(res.body.liveBriefs).to.be.an('array')
+        expect(res.body.completedBriefs).to.be.an('array')
         done()
       })
   })
