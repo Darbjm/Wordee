@@ -37,7 +37,7 @@ describe('Test to check if email already exists /register', () => {
   afterEach(done => { // as always emptying the db after the tests
     User.deleteMany().then(() => done())
   })
-}),
+})
 
 afterEach(done => { // as always emptying the db after the tests
   User.deleteMany().then(() => done())
