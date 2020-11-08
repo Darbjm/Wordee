@@ -1,0 +1,20 @@
+version: 2.1
+jobs:
+  run_tests:
+    docker:
+      - image: circleci/node:10
+    steps:
+      - checkout
+      - run:
+          name: Install npm dependencies
+          command: yarn install --save
+      - run:
+          name: Run front end tests
+          command: yarn jest
+      - run:
+          name: Run back end tests
+          command: yarn mocha tests/back/**/*_spec.js --require tests/back/helper --recursive --exit
+workflows:
+  build_tests:
+    jobs:
+      - run_tests
