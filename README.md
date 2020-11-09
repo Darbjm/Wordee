@@ -1,11 +1,11 @@
 # <img src='src/styles/images/Wordee_logo.svg' width='400'>
 
 <h1>Freelance Project: Wordee</h1>
-
+ 
 <h2>Problem: Brands find the process of creating, and sending briefs to copywriters with up to date brand files slow and complicated.</h2>
-
-<h2>Solution: Build a web app that allows a brand to manage all its files easily, while streamlining the briefing process for copywriters.</h2>
-
+ 
+<h2>Solution: Build a web app that allows a brand to manage all its files easily while streamlining the briefing process for copywriters.</h2>
+ 
 | Contents                      |                                |
 | ----------------------------- | ------------------------------ |
 | 1. [Overview](#overview)      | 6. [Future content](#future)   |
@@ -13,34 +13,34 @@
 | 3. [Technologies used](#tech) | 8. [Blockers](#blockers)       |
 | 4. [App](#app)                | 9. [Bugs](#bugs)               |
 | 5. [Approach](#approach)      | 10. [Future learnings](#learn) |
-
+ 
 <h2 name='overview'>Overview</h2>
-
+ 
 <h3>Introduction</h3>
-
-I was approached by two friends with and idea to create a copywriting briefing tool for brands. It is now being tested by TRIP DRINKS. Wordee allows a brand to upload and update their information and files quickly and easily. It also provides a comprehensive briefing form to make it quick and easy to create a brief. The brand can easily edit and delete all information and briefs. From an admin panel myself and collegues can upload keyword searches for brands to access, while also downloading briefs and brand files to send to freelance copy writers.
-
+ 
+I was approached by two colleagues with an idea to create a copywriting briefing tool for brands. It is now being tested by TRIP DRINKS. Wordee allows a brand to upload and update their information and files quickly and easily. It also provides a comprehensive briefing form to make it quick and easy to create a brief. The brand can easily edit and delete all information and briefs. From an admin panel, I and my colleagues can upload keyword searches for brands to access, while also downloading briefs and brand files to send to freelance copywriters.
+ 
 <h3>Deployment</h3>
-
+ 
 The app is deployed on Heroku and can be found here: https://wordee-app.herokuapp.com <br>
 The login details are email: test@email password: pass <br>
-
+ 
 <h2 name='brief'>Brief</h2>
-
+ 
 - **Build a briefing tool** Create a web app that allows a brand to create, edit and delete brand information and briefs
 - **Must have an admin panel** Admins must be able to download briefs and brand files
 - **Writers must be access files** use external hosting for files and images
 - **Have a simple design**
 - **Be deployed online**
-
+ 
 <h2 name='tech'>Technologies used and why?</h2>
-
+ 
 I used <strong>GraphQL</strong> to reduce the amount of work the server had to do to reduce latency.<br>
-I used <strong>Heroku</strong> because it comes ready to use with very little configuration compared to aws. If the project scales I will change to aws due to price concerns.<br>
-I used <strong>Firebox</strong> because like Heroku its a quick and simple setup to manage files and allows others to access those files via url.<br>
-I used <strong>CircleCI</strong> because I wanted to check every branch was being checked incase it broke my tests.<br>
-I used <strong>React</strong> because needed the brief form to be able to react and change quickly to the users imputs.<br>
-
+I used <strong>Heroku</strong> because it comes ready to use with very little configuration compared to AWS. If the project scales, I will change to AWS due to price concerns.<br>
+I used <strong>Firebox</strong> because like Heroku its a quick and simple setup to manage files and allows others to access those files via URL.<br>
+I used <strong>CircleCI</strong> because I wanted to know every branch was being tested.<br>
+I used <strong>React</strong> because needed the brief form to be able to react and change quickly to the user’s inputs.<br>
+ 
 <p>1. HTML5 <br>
 2. SCSS & Bulma <br>
 3. JavaScript (ES6) <br>
@@ -62,9 +62,9 @@ I used <strong>React</strong> because needed the brief form to be able to react 
 20. Yarn <br>
 21. Heroku <br>
 22. GitHub <br></p>
-
+ 
 <h2 name='app'>App</h2>
-
+ 
 The brand will log into the app will immediately be able to edit their supporting data that will be sent to copy writers along with their briefs.The brand will be sent a report summary it can access as soon as we have sent it.<br>
 <br>
 <br>
@@ -97,14 +97,14 @@ On the backend my colleagues and I are able to view brands and their information
 <br>
 <br>
 <img src='readme/5.gif' width='600'>
-
+ 
 <h2 name='approach'>Approach</h2>
-My approach was to always keep the user in mind when I made every decisions, for instance my first instinct was to make a profile page and an edit profile page. However I believe this gave the experiance needless friction for the user. Therefore these pages could be combined for easy and fast manipulation. This eneded making my code more simple too.
+My approach was to always keep the user in mind when I made every decision, for instance, my first instinct was to make a profile page and an edit profile page. However, I believe this gave the experience needless friction for the user. Therefore these pages could be combined for easy and fast manipulation. This ended making my code more simple too.
 <br>
 <br>
 <h2 name='future'>Future content</h2>
 <h3>A writers portal</h3>
-We were discussing creating a writers portal and profile and I have some code commented out in the login component should we build this. However we don't currently see any use for this<br>
+We were discussing creating a writers portal and profile and I have some code commented out in the login component should we build this. However, we don't currently see any use for this<br>
 <br>
 <br>
 <h3>Email alert system</h3>
@@ -117,11 +117,11 @@ We would like to be alerted by email if a user updates their information or edit
 <br>
 <br>
 <h3>GaphQL</h3>
-
+ 
 <br>
 <br>
 <h3>Redux</h3>
-
+ 
 <br>
 <br>
 <h3>Design</h3>
