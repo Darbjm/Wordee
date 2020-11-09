@@ -99,115 +99,38 @@ On the backend my colleagues and I are able to view brands and their information
 <img src='gifs/5.gif' width='600'>
 
 <h2 name='approach'>Approach</h2>
-Being a solo project I listed out a few ideas that interested me. I then mapped out potential features and the technologies behind them. I decided to go with Journo because it was similar to my last project meaning I wouldn't struggle to build it and so could focus on learning new techniques and technologies which I could use to build its features. I used the MoSCoW method to outline my timeline and produced wireframes for each page.
+My approach was to always keep the user in mind when I made every decisions, for instance my first instinct was to make a profile page and an edit profile page. However I believe this gave the experiance needless friction for the user. Therefore these pages could be combined for easy and fast manipulation. This eneded making my code more simple too.
 <br>
 <br>
 <h2 name='future'>Future content</h2>
-<h3>Favourites</h3>
-I would have liked for it to be possible for users to have favourite trips so they can quickly find them again. <br>
+<h3>A writers portal</h3>
+We were discussing creating a writers portal and profile and I have some code commented out in the login component should we build this. However we don't currently see any use for this<br>
 <br>
 <br>
-<h3>Categories model</h3>
-If I had more time I would have built another model called categories. This would have a many-to-many relationship with trips. This would allow trips to be searched under categories of trip, such as sunny, hot, beach, cold, skiing, activity, luxury, backpackers, ect<br>
+<h3>Email alert system</h3>
+We would like to be alerted by email if a user updates their information or edits a brief so we could send the new data to any writers who need it.<br>
 <br>
 <br>
 <h2 name='wins'>Wins</h2>
-<h3>Python</h3>
-This was my first project using Python, I found transition over from JavaScript to be quite easy at this level. The serializers where a specific win as I picked them up straight away and was able to edit their output fields easily.
+<h3>Tested by TRIP DRINKS</h3>
+[TRIP DRINKS](https://drink-trip.com)
 <br>
 <br>
-<h3>Hooks</h3>
-Hooks were new for me too, I built the map with them as I understood mapbox fairly well. Understanding that useState contains a variable that is whats being stored and it contains a method for updating whats being stored was key to making the map interactive. As we can see below in order for the user to move the map with the click and drag method, whenever the viewport changed I had to take the current viewport and update it with itself, which I still don't understand fully but I do see the basic mechanism.
+<h3>GaphQL</h3>
 
-```javascript
-      onViewportChange={viewport => {
-        setViewport(viewport)
-      }}
-```
+<br>
+<br>
+<h3>Redux</h3>
 
-The rest of the Hooks I found challenging but understood it and definately see the benefits as the code for this mapbox compared to my last one was shorter and in my view simpler and more readable, whilst producing similar effects.
+<br>
+<br>
+<h3>Design</h3>
 
-```javascript
-const [viewport, setViewport] = useState({
-  longitude: 0,
-  latitude: 0,
-  zoom: 2,
-});
-const [trips, setTrips] = useState({});
-
-const getData = async () => {
-  try {
-    const token = process.env.REACT_APP_MAPBOX_KEY;
-    const search = window.location.pathname.split("/").slice(2).join("/");
-    const mapStartFocus = await axios.get(
-      `https://api.mapbox.com/geocoding/v5/mapbox.places/${search}.json?access_token=${token}`
-    );
-    if (mapStartFocus.data.features.length === 0) {
-      this.props.history.push("/map/sudan");
-      alert("Sorry we couldn't find that address");
-    }
-    const firstLatLng = mapStartFocus.data.features[0].center;
-    const viewport = {
-      longitude: firstLatLng[0],
-      latitude: firstLatLng[1],
-      zoom: 5,
-    };
-    setViewport(viewport);
-    const { data } = await axios.get("/api/trips");
-    const arrOfLocalAreas = data.map((i) => i.local_area);
-    Promise.all(
-      arrOfLocalAreas.map((area) => {
-        return axios.get(
-          `https://api.mapbox.com/geocoding/v5/mapbox.places/${area}.json?access_token=${token}`
-        );
-      })
-    ).then((res) => {
-      const latlngs = res.map((r) => r.data.features[0].center);
-      setTrips(
-        data.map((trip, index) => {
-          return {
-            ...trip,
-            latlng: latlngs[index],
-          };
-        })
-      );
-    });
-  } catch (err) {
-    console.log(err);
-  }
-};
-```
-
-<h3>Password security</h3>
-Last project our password security was poor and so I placed it on my future learnings list. This project I'm happy to say I implemented a system for ensuring strong passwords. Importing django.contrib.auth.password_validation as validations mean't I can use the password validations that come along with django, I then placed the validators I wanted to use in my settings.py file.
-
-```python
-import django.contrib.auth.password_validation as validations
-from django.core.exceptions import ValidationError
-
-class UserSerializer(serializers.ModelSerializer):
-
-  password = serializers.CharField(write_only=True)
-  password_confirmation = serializers.CharField(write_only=True)
-
-  def validate(self, data):
-    password = data.pop('password')
-    password_confirmation = data.pop('password_confirmation')
-    if password != password_confirmation:
-      raise serializers.ValidationError({'password_confirmation': 'Does Not Match'})
-    try:
-      validations.validate_password(password=password)
-    except ValidationError as Err:
-      raise serializers.ValidationError({'password': 'Password must be 8 characters long and contain a letter'}) // this line sends the feedback to the user
-
-    data['password'] = make_password(password)
-
-    return data
-```
-
+<br>
+<br>
 <h2 name='blockers'>Blockers</h2>
-<h3>Form feedback</h3>
-I did this project on my own because I wanted to go over the parts of building a web app I had missed while in my group project. I was happy to discover that I needed to do this as I really struggled with the form feedback errors. I learned that you can add the property 'name' to the input and then use this in state to update the errors section just the same as anything else. I had forgotton that errors were sent back and could be used.
+<h3>Email feedback</h3>
+I struggled to get our email alert system to work with Heroku's deployment. I will continue to work on this when the project is taken off ice.
 
 ```javascript
 handleChange = (e) => {
