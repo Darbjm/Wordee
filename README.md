@@ -113,7 +113,7 @@ We would like to be alerted by email if a user updates their information or edit
 <br>
 <h2 name='wins'>Wins</h2>
 <h3>Tested by TRIP DRINKS</h3>
-[TRIP DRINKS](https://drink-trip.com)
+[TRIP](https://www.drink-trip.com/)
 <br>
 <br>
 <h3>GaphQL</h3>
