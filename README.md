@@ -29,32 +29,35 @@ The login details are email: test@email password: pass <br>
 
 - **Build a briefing tool** Create a web app that allows a brand to create, edit and delete brand information and briefs
 - **Must have an admin panel** Admins must be able to download briefs and brand files
-- **Consume your API with a separate front-end** built with React
-- **Be a complete product** which most likely means multiple relationships and CRUD functionality for at least a couple of models
-- **Implement thoughtful user stories/wireframes** that are significant enough to help you know which features are core MVP and which you can cut
-- **You May** use the React Hooks syntax on your front end, but the resposiblity of this will be largely on yourself.
-- **Have a visually impressive design**
+- **Writers must be access files** use external hosting for files and images
+- **Have a simple design**
 - **Be deployed online**
 
-<h2 name='tech'>Technologies used</h2>
+<h2 name='tech'>Technologies used and why?</h2>
+
+I used <strong>GraphQL</strong> to reduce the amount of work the server had to do to reduce latency.<br>
+I used <strong>Heroku</strong> because it comes ready to use with very little configuration compared to aws. If the project scales I will change to aws due to price concerns.<br>
+I used <strong>Firebox</strong> because like Heroku its a quick and simple setup to manage files and allows others to access those files via url.<br>
+I used <strong>CircleCI</strong> because I wanted to check every branch was being checked incase it broke my tests.<br>
+I used <strong>React</strong> because needed the brief form to be able to react and change quickly to the users imputs.<br>
+
 <p>1. HTML5 <br>
 2. SCSS & Bulma <br>
 3. JavaScript (ES6) <br>
-4. JSON <br>
-5. Python <br>
-6. SQL <br>
-7. PostgreSQL <br>
-8. Django <br>
+4. Redux <br>
+5. GraphQL <br>
+6. Mocha <br>
+7. Chai <br>
+8. Express <br>
 9. React.js <br>
-10. React Hooks <br>
 11. Node.js <br>
 12. Axios <br>
 13. Jest <br>
 14. Insomnia <br>
 15. Dotenv <br>
 16. Cloudinary <br>
-17. Mapbox <br>
-18. Z shell <br>
+17. Firebox <br>
+18. CircleCI <br>
 19. JWT <br>
 20. Yarn <br>
 21. Heroku <br>
@@ -62,14 +65,14 @@ The login details are email: test@email password: pass <br>
 
 <h2 name='app'>App</h2>
 
-The user can begin by taking a look around the app when not logged in. They can view the map and a few small details about the trip. As soon as they try to view a trip or profile in more detail they a redirected to log in. The user can register and upload a profile image via Cloudinary or log in with their existing information.<br>
+The brand will log into the app will immediately be able to create a brief as well as edit their supporting data that will be sent to copy writers along with their briefs.The brand will be sent a report summary it can access as soon as we have sent it.<br>
 <br>
 <br>
 <img src='readme/Reg.png' width='600'>
 <br>
 <br>
 <br>
-They are able to search for any area using the Mapbox built with Hooks and Mapbox Geocoder the interactive map then displays the area and trips within it. The markers display the trips image and then once clicked a pop-up showing some basic info about the trip. This is a link to the trips page where you can see more information and the user that created it.<br>
+Creating a brief is made simple by asking the brand to fill out a set of questions my colleagues thought essentially to fully explain what is needed. The brief reacts to choices made adds or removes questions accordingly.<br>
 <br>
 <br>
 <img src='readme/Map.gif' width='600'>
