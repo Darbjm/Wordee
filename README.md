@@ -68,35 +68,35 @@ I used <strong>React</strong> because needed the brief form to be able to react 
 The brand will log into the app will immediately be able to edit their supporting data that will be sent to copy writers along with their briefs.The brand will be sent a report summary it can access as soon as we have sent it.<br>
 <br>
 <br>
-<img src='gifs/1.gif' width='600'>
+<img src='readme/1.gif' width='600'>
 <br>
 <br>
 <br>
 Creating a brief is made simple by asking the brand to fill out a set of questions my colleagues thought essentially to fully explain what is needed. The brief reacts to choices made adds or removes questions accordingly.<br>
 <br>
 <br>
-<img src='gifs/2.gif' width='600'>
+<img src='readme/2.gif' width='600'>
 <br>
 <br>
 <br>
 The brand can easily edit the brief just by clicking on its list item.<br>
 <br>
 <br>
-<img src='gifs/3.gif' width='600'>
+<img src='readme/3.gif' width='600'>
 <br>
 <br>
 <br>
 The brand can easily change or remove their information.<br>
 <br>
 <br>
-<img src='gifs/4.gif' width='600'>
+<img src='readme/4.gif' width='600'>
 <br>
 <br>
 <br>
 On the backend my colleagues and I are able to view brands and their information and can easily edit report summarys, download briefs to excel, and view images and files.<br>
 <br>
 <br>
-<img src='gifs/5.gif' width='600'>
+<img src='readme/5.gif' width='600'>
 
 <h2 name='approach'>Approach</h2>
 My approach was to always keep the user in mind when I made every decisions, for instance my first instinct was to make a profile page and an edit profile page. However I believe this gave the experiance needless friction for the user. Therefore these pages could be combined for easy and fast manipulation. This eneded making my code more simple too.
@@ -113,7 +113,7 @@ We would like to be alerted by email if a user updates their information or edit
 <br>
 <h2 name='wins'>Wins</h2>
 <h3>Tested by TRIP DRINKS</h3>
-[TRIP](https://www.drink-trip.com/)
+[TRIP DRINKS](https://www.drink-trip.com/) Tested our app and found it very useful saying it was functional and well designed. TRIP is still using it and we are arranging user testing.
 <br>
 <br>
 <h3>GaphQL</h3>
@@ -124,45 +124,24 @@ We would like to be alerted by email if a user updates their information or edit
 
 <br>
 <br>
-<h3>Design</h3>
+<h3>CircleCI</h3>
 
+<br>
+<br>
+<h3>Design</h3>
+I'm personally very happy with the design, I think it looks good and is easy to use. Getting feedback from users like TRIP saying "it's functional and well designed"
 <br>
 <br>
 <h2 name='blockers'>Blockers</h2>
-<h3>Email feedback</h3>
-I struggled to get our email alert system to work with Heroku's deployment. I will continue to work on this when the project is taken off ice.
-
-```javascript
-handleChange = (e) => {
-  const data = { ...this.state.data, [e.target.name]: e.target.value };
-  const errors = { ...this.state.errors, [e.target.name]: "" };
-  this.setState({ data, errors });
-};
-```
-
-<br>
-<br>
-<br>
-<img src='readme/Formfeedback.png' width='600'>
-<br>
+<h3>COVID-19</h3>
+Due to the pandemic we are having to pause development due to this being a side project for my colleagues.
 <br>
 <br>
 <h2 name='bugs'>Bugs</h2>
 <h3>Reload page</h3>
-Unfortunately a major bug of the app seems to be it is unable to refresh or reload the page you are on. If you do it seems to try and look in the back-end for the address. If this happens you must start from the home address.<br>
-<br>
-<br>
-<img src='readme/Reload.png' width='600'>
-<br>
-<br>
-<br>
-<h3>SCSS</h3>
-The create trip and edit trip pages have a small issue of the form taking up too much space to fit on the page nicely.<br>
-<br>
-<br>
-<img src='readme/SCSSBug.png' width='600'>
-<br>
+Sometimes when uploading brand images the images may not appear on the brand profile until the page is reloaded. I checked to see if the getData function was waiting until the upload to the backend had been completed and it was.<br>
 <br>
 <br>
 <h2 name='learn'>Future learnings</h2>
-• Look into the reload bug and how this works<br>
+• Use TypeScript to better avoid bugs like merging objects and arrays.<br>
+• Use Storybook to test UI components.<br>
