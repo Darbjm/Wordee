@@ -137,6 +137,10 @@ Due to the pandemic we are having to pause development due to this being a side 
 I seem to behaving trouble getting the backend up and therefore test it in CircleCI. I have emailed them asking for support.
 <br>
 <br>
+<img src='readme/circle.png' width='600'>
+<br>
+<br>
+<br>
 <h2 name='bugs'>Bugs</h2>
 <h3>Brand images</h3>
 Sometimes when uploading brand images the images may not appear on the brand profile until the page is reloaded. I checked to see if the getData function was waiting until the upload to the backend had been completed and it was.<br>
