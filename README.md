@@ -65,34 +65,38 @@ I used <strong>React</strong> because needed the brief form to be able to react 
 
 <h2 name='app'>App</h2>
 
-The brand will log into the app will immediately be able to create a brief as well as edit their supporting data that will be sent to copy writers along with their briefs.The brand will be sent a report summary it can access as soon as we have sent it.<br>
+The brand will log into the app will immediately be able to edit their supporting data that will be sent to copy writers along with their briefs.The brand will be sent a report summary it can access as soon as we have sent it.<br>
 <br>
 <br>
-<img src='readme/Reg.png' width='600'>
+<img src='gifs/1.gif' width='600'>
 <br>
 <br>
 <br>
 Creating a brief is made simple by asking the brand to fill out a set of questions my colleagues thought essentially to fully explain what is needed. The brief reacts to choices made adds or removes questions accordingly.<br>
 <br>
 <br>
-<img src='readme/Map.gif' width='600'>
+<img src='gifs/2.gif' width='600'>
 <br>
 <br>
 <br>
-The user can also see the five most recent trips that have been posted, these also work as links.<br>
+The brand can easily edit the brief just by clicking on its list item.<br>
 <br>
 <br>
-<img src='readme/Others.gif' width='600'>
-<br>
-<br>
-<br>
-Finally the user can create a trip at anytime from the navbar or go to his profile and edit his information or that of his trips.<br>
-<br>
-<br>
-<img src='readme/ProfileTrips.gif' width='600'>
+<img src='gifs/3.gif' width='600'>
 <br>
 <br>
 <br>
+The brand can easily change or remove their information.<br>
+<br>
+<br>
+<img src='gifs/4.gif' width='600'>
+<br>
+<br>
+<br>
+On the backend my colleagues and I are able to view brands and their information and can easily edit report summarys, download briefs to excel, and view images and files.<br>
+<br>
+<br>
+<img src='gifs/5.gif' width='600'>
 
 <h2 name='approach'>Approach</h2>
 Being a solo project I listed out a few ideas that interested me. I then mapped out potential features and the technologies behind them. I decided to go with Journo because it was similar to my last project meaning I wouldn't struggle to build it and so could focus on learning new techniques and technologies which I could use to build its features. I used the MoSCoW method to outline my timeline and produced wireframes for each page.
