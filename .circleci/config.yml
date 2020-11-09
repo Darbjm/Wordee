@@ -12,14 +12,11 @@ jobs:
           name: Build app
           command: yarn webpack -p
       - run:
-          name: Start app
-          command: yarn start
+          name: Run back end tests
+          command: yarn mocha tests/back/**/*_spec.js --require tests/back/helper --recursive --exit
       - run:
           name: Run front end tests
           command: yarn jest
-      - run:
-          name: Run back end tests
-          command: yarn mocha tests/back/**/*_spec.js --require tests/back/helper --recursive --exit
 workflows:
   build_tests:
     jobs:
