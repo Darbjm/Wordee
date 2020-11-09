@@ -13,7 +13,7 @@ jobs:
           command: yarn webpack -p
       - run:
           name: Run back end tests
-          command: yarn start:back && mocha tests/back/**/*_spec.js --require tests/back/helper --recursive --exit
+          command: mocha tests/back/**/*_spec.js --require tests/back/helper --recursive --exit
       - run:
           name: Run front end tests
           command: yarn jest

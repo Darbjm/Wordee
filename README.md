@@ -124,10 +124,6 @@ We would like to be alerted by email if a user updates their information or edit
 
 <br>
 <br>
-<h3>CircleCI</h3>
-
-<br>
-<br>
 <h3>Design</h3>
 I'm personally very happy with the design, I think it looks good and is easy to use. Getting feedback from users like TRIP saying "it's functional and well designed"
 <br>
@@ -137,8 +133,12 @@ I'm personally very happy with the design, I think it looks good and is easy to 
 Due to the pandemic we are having to pause development due to this being a side project for my colleagues.
 <br>
 <br>
+<h3>CircleCI</h3>
+I seem to behaving trouble getting the backend up and therefore test it in CircleCI. I have emailed them asking for support.
+<br>
+<br>
 <h2 name='bugs'>Bugs</h2>
-<h3>Reload page</h3>
+<h3>Brand images</h3>
 Sometimes when uploading brand images the images may not appear on the brand profile until the page is reloaded. I checked to see if the getData function was waiting until the upload to the backend had been completed and it was.<br>
 <br>
 <br>
