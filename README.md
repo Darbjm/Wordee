@@ -1,6 +1,6 @@
 # <img src='src/styles/images/Wordee_logo.svg' width='400'>
 
-<h1>Personal Project: Wordee</h1>
+<h1>Freelance Project: Wordee</h1>
 
 <h2>Problem: Brands find the process of creating, and sending briefs to copywriters with up to date brand files slow and complicated.</h2>
 
