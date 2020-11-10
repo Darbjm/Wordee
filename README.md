@@ -123,7 +123,7 @@ We would like to be alerted by email if a user updates their information or edit
 <br>
 <br>
 <h3>GraphQL</h3>
-Gr
+I am in the process of converting my REST API into a GraphQL server.
 <br>
 <br>
 <h3>Redux</h3>
