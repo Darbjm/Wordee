@@ -44,7 +44,7 @@ const Profile = ({
   const handleSubmit = async e => {
     e.preventDefault()
     try {
-      // currently inefficient because it sends up data that might not be changed
+      // currently inefficient because it sends up data that may not be changed
       const newData = {
         username: user.username,
         email: user.email,
