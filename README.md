@@ -115,9 +115,9 @@ We would like to be alerted by email if a user updates their information or edit
 <br>
 <h2 name='wins'>Wins</h2>
 <h3>Tested by TRIP DRINKS</h3>
-[TRIP DRINKS](https://www.drink-trip.com/) Tested our app and found it very useful saying it was functional and well designed. TRIP is still using it and we are arranging user testing. 
-'The app looked clean, was very easy to use and didn’t glitch when we were using it. There were two sections that we interacted with. 
-1. The brand page allowed us to give writers a taste of our brand and helped them follow our brand tone of voice. In this section there was also a helpful guide showing the progress of our brief. 
+[TRIP DRINKS](https://www.drink-trip.com/) Tested our app and found it very useful saying it was functional and well designed. TRIP is still using it and we are arranging user testing.<br>
+'The app looked clean, was very easy to use and didn’t glitch when we were using it. There were two sections that we interacted with. <br>
+1. The brand page allowed us to give writers a taste of our brand and helped them follow our brand tone of voice. In this section there was also a helpful guide showing the progress of our brief. <br>
 2.	The briefing section - A challenge for us is briefing writers as it’s often difficult to find good quality and consistent writers. The app allowed us to brief in different pieces of content easily and this was due to its design.' - James Edmunds TRIP DRINKS
 <br>
 <br>
@@ -134,7 +134,6 @@ onChange={({ target: { name, value } }) =>
 }/>
 ```
 
- <br>
 <br>
 <br>
 <h3>Design</h3>
