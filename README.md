@@ -42,6 +42,7 @@ I used <strong>Heroku</strong> because it comes ready to use with very little co
 I used <strong>Firebox</strong> because like Heroku its a quick and simple setup to manage files and allows others to access those files via URL.<br>
 I used <strong>CircleCI</strong> because I wanted to know every branch was being tested.<br>
 I used <strong>React</strong> because needed the brief form to be able to react and change quickly to the user’s inputs.<br>
+I used <strong>Redux</strong> because if we were to add more pages to the app we could store the users information in the store meaning we have to do less requests to the server.<br>
  
 <p>1. HTML5 <br>
 2. SCSS & Bulma <br>
@@ -121,8 +122,8 @@ We would like to be alerted by email if a user updates their information or edit
 2.	The briefing section - A challenge for us is briefing writers as it’s often difficult to find good quality and consistent writers. The app allowed us to brief in different pieces of content easily and this was due to its design.' - James Edmunds TRIP DRINKS
 <br>
 <br>
-<h3>GaphQL</h3>
- 
+<h3>GraphQL</h3>
+Gr
 <br>
 <br>
 <h3>Redux</h3>
@@ -133,8 +134,6 @@ onChange={({ target: { name, value } }) =>
   dispatch(addUserInfo({ ...user, [name]: value }))
 }/>
 ```
-
-<br>
 <br>
 <h3>Design</h3>
 I'm personally very happy with the design, I think it looks good and is easy to use. Getting feedback from users like TRIP saying "it's functional and well designed"
