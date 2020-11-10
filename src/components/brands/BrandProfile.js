@@ -19,7 +19,6 @@ const Profile = ({
     params: { id }
   }
 }) => {
-  // const [user, setUser] = useState({})
   const [success, setSuccess] = useState(false)
   const user = useSelector(state => state.user)
   const dispatch = useDispatch()
