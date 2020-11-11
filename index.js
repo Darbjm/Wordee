@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 // build express server
 const app = express()
+const { graphqlFunc } = require('./graphql/UserSchema')
 const { port, dbURI } = require('./config/environment')
 const logger = require('./lib/logger')
 const router = require('./config/router')
@@ -24,6 +25,9 @@ app.use(logger)
 
 // set up router middleware
 app.use('/api', router)
+
+// graphql server
+app.use('/graphql', graphqlFunc)
 
 // error handler for return the correct statuses
 app.use(errorHandler)
