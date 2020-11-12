@@ -7,13 +7,13 @@ import logo from '../../styles/images/Wordee.svg'
 
 /**Component to render login form*/
 const Login = ({ history }) => {
-  const [data, setData] = useState({})
+  const [loginData, setLoginData] = useState({})
   const [error, setError] = useState('')
   // const [user, setUser] = useState(true);
 
   /**Change data in state */
   const handleChange = ({ target: { name, value } }) =>
-    setData({ ...data, [name]: value })
+    setLoginData({ ...loginData, [name]: value })
 
   // const handleUser = value => setUser(value);
 
@@ -21,11 +21,21 @@ const Login = ({ history }) => {
   const handleSubmit = async e => {
     e.preventDefault()
     // const address = user ? 'brands' : 'writers';
+    const reqBody = {
+      query: `
+      query {
+        login(email: "${loginData.email}", password: "${loginData.password}") {
+          userId
+          token
+        }
+      }
+      `
+    }
     try {
       const {
-        data: { token }
-      } = await axios.post('/api/brands/login', data)
-      setToken(token)
+        data: { data: { login } }
+      } = await axios.post('http://localhost:4000/graphql', reqBody)
+      setToken(login.token)
       history.push(`/profile/${getUser()}`)
     } catch (err) {
       setError('Invalid Credentials')

@@ -117,7 +117,7 @@ userSchema
   })
 
 userSchema
-  .pre('save', function hashPassword(next) { // this happens before the mode is saved
+  .pre('save', function hashPassword(next) { // this happens before the model is saved
     if (this.isModified('password')) { // if the password has been created or changed
       this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(8)) // reassign as a hash of itself
     }

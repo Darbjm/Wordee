@@ -25,10 +25,47 @@ const Profile = ({
 
   /**Get profile data */
   const getData = async () => {
+    // docs {
+    //   _id
+    //   name
+    //   url
+    // }
+    // image {
+    //   _id
+    //   name
+    // }
+    const reqBody = {
+      query: `
+        query {
+          singleUser {
+            _id
+            username
+            email
+            logo
+            summary
+            cover
+            website
+            blog
+            reportSummary
+            liveBriefs {
+              title
+              keyword1
+            }
+            completedBriefs {
+              title
+              keyword1
+            }
+          }
+        }
+      `
+    }
     try {
-      const res = await axios.get(`/api/brands/${id}`, {
+      const {
+        data: { data: { singleUser } }
+      } = await axios.post('http://localhost:4000/graphql', reqBody, {
         headers: { Authorization: `Bearer ${getToken()}` }
       })
+      console.log(singleUser)
       setUser(res.data)
     } catch (err) {
       console.log(err)

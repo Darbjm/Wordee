@@ -2,11 +2,12 @@ import propTypes from 'prop-types'
 import React, { useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { getUser, setToken } from '../lib/auth'
 import logo from '../../styles/images/Wordee.svg'
 
 /**Component to render register form*/
 const Register = ({ history }) => {
-  const [data, setData] = useState({})
+  const [userData, setUserData] = useState({})
   const [userError, setUserError] = useState('')
   const [emailError, setEmailError] = useState('')
   const [passwordError, setPasswordError] = useState('')
@@ -14,7 +15,7 @@ const Register = ({ history }) => {
   // const [user, setUser] = useState(true);
 
   const handleChange = ({ target: { name, value } }) => {
-    setData({ ...data, [name]: value })
+    setUserData({ ...userData, [name]: value })
     setUserError('')
     setEmailError('')
     setPasswordError('')
@@ -26,12 +27,49 @@ const Register = ({ history }) => {
   const handleSubmit = async e => {
     e.preventDefault()
     // const address = user ? 'brands' : 'writers';
+    if (userData.username === undefined || userData.email === undefined || userData.password === undefined || userData.password_confirmation === undefined) {
+      setUserError('Please fill all sections')
+      setEmailError('Please fill all sections')
+      setPasswordError('Please fill all sections')
+      return setPassConError('Please fill all sections')
+    }
+    const reqBody = {
+      query: `
+        mutation {
+          createUser(userInput: {
+            username: "${userData.username}", 
+            email: "${userData.email}", 
+            password: "${userData.password}", 
+            passwordConfirmation: "${userData.password_confirmation}"
+            })
+            {
+            username 
+            email 
+          }
+        }
+      `
+    }
     try {
-      console.log(data)
-      await axios.post('/api/brands/register', data)
-      history.push('/')
+      const {
+        data: { data }
+      } = await axios.post('http://localhost:4000/graphql', reqBody)
+      const loginBody = {
+        query: `
+        query {
+          login(email: "${data.createUser.email}", password: "${userData.password}") {
+            userId
+            token
+          }
+        }
+        `
+      }
+      const {
+        data: { data: { login } }
+      } = await axios.post('http://localhost:4000/graphql', loginBody)
+      setToken(login.token)
+      history.push(`/profile/${getUser()}`)
     } catch (err) {
-      console.log(err.response)
+      console.log(err)
       if (err.response.data.errors.username.message) {
         setUserError(err.response.data.errors.username.message)
       }

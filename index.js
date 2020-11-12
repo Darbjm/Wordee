@@ -3,7 +3,10 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 // build express server
 const app = express()
-const { graphqlFunc } = require('./graphql/UserSchema')
+const { graphqlHTTP } = require('express-graphql')
+const graphQLSchema = require('./graphql/schema/index')
+const graphQLResolver = require('./graphql/resolvers/index')
+const isAuth = require('./middleware/is-auth')
 const { port, dbURI } = require('./config/environment')
 const logger = require('./lib/logger')
 const router = require('./config/router')
@@ -24,11 +27,29 @@ app.use(bodyParser.json())
 app.use(logger)
 
 // set up router middleware
-app.use('/api', router)
+// app.use('/api', router)
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+  next();
+});
+
+app.use(isAuth)
 
 // graphql server
-app.use('/graphql', graphqlFunc)
-
+app.use(
+  '/graphql',
+  graphqlHTTP({
+    schema: graphQLSchema,
+    rootValue: graphQLResolver,
+    graphiql: true
+  })
+)
 // error handler for return the correct statuses
 app.use(errorHandler)
 
