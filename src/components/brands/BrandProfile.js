@@ -2,6 +2,9 @@ import propTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { addUserInfo } from '../../redux/user/userActions'
+// import { fetchUsers } from '../redux'
 import { getToken, getUser, logout } from '../lib/auth'
 import Navbar from '../common/Navbar'
 import BrandFiles from '../brands/BrandFiles'
@@ -16,8 +19,9 @@ const Profile = ({
     params: { id }
   }
 }) => {
-  const [user, setUser] = useState({})
   const [success, setSuccess] = useState(false)
+  const user = useSelector(state => state.user)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     getData()
@@ -67,7 +71,8 @@ const Profile = ({
       } = await axios.post('http://localhost:4000/graphql', reqBody, {
         headers: { Authorization: `Bearer ${getToken()}` }
       })
-      setUser(singleUser)
+      // setUser(res.data)
+      dispatch(addUserInfo(singleUser))
     } catch (err) {
       console.log(err)
     }
@@ -134,8 +139,8 @@ const Profile = ({
       console.log(err)
     }
   }
-
-  return (
+  
+  return user ? (
     <main>
       <Navbar />
       <section className="brandprofile">
@@ -154,7 +159,7 @@ const Profile = ({
                 placeholder="Brandname"
                 name="username"
                 onChange={({ target: { name, value } }) =>
-                  setUser({ ...user, [name]: value })
+                  dispatch(addUserInfo({ ...user, [name]: value }))
                 }/> 
               <br/>
               <h2 style={{ display: 'inline' }}>Email:</h2> 
@@ -164,7 +169,7 @@ const Profile = ({
                 placeholder="Email"
                 name="email"
                 onChange={({ target: { name, value } }) =>
-                  setUser({ ...user, [name]: value })
+                  dispatch(addUserInfo({ ...user, [name]: value }))
                 }/> 
               <br/>
               <h2 style={{ display: 'inline' }}>Website:</h2> 
@@ -174,7 +179,7 @@ const Profile = ({
                 placeholder="Website"
                 name="website"
                 onChange={({ target: { name, value } }) =>
-                  setUser({ ...user, [name]: value })
+                  dispatch(addUserInfo({ ...user, [name]: value }))
                 }/> 
               <br/>
               <h2 style={{ display: 'inline' }}>Blog/refernce url:</h2> 
@@ -184,7 +189,7 @@ const Profile = ({
                 placeholder="Blog/refernce url"
                 name="blog"
                 onChange={({ target: { name, value } }) =>
-                  setUser({ ...user, [name]: value })
+                  dispatch(addUserInfo({ ...user, [name]: value }))
                 } 
               />
               <br/>
@@ -202,7 +207,7 @@ const Profile = ({
                 rows="16"
                 name="summary"
                 onChange={({ target: { name, value } }) =>
-                  setUser({ ...user, [name]: value })
+                  dispatch(addUserInfo({ ...user, [name]: value }))
                 }
               />
               <button type='submit' style={{ marginRight: '10px' }} className="button is-small blue is-rounded">Save</button>
@@ -265,7 +270,7 @@ const Profile = ({
         </div>
       </section>
     </main>
-  )
+  ) : (<main style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}><h1>Loading...</h1></main>)
 }
 
 Profile.propTypes = {
@@ -273,7 +278,8 @@ Profile.propTypes = {
     params: propTypes.shape({
       id: propTypes.string.isRequired
     })
-  })
+  }),
+  history: propTypes.func.isRequired
 }
 
 export default Profile

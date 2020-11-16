@@ -17,9 +17,11 @@
 <h2 name='overview'>Overview</h2>
  
 <h3>Introduction</h3>
- 
+
+'A challenge for us is briefing writers as it’s often difficult to find good quality and consistent writers. The app allowed us to brief in different pieces of content easily and this was due to its design.' - James Edmunds TRIP DRINKS
+
 I was approached by two colleagues with an idea to create a copywriting briefing tool for brands. It is now being tested by TRIP DRINKS. Wordee allows a brand to upload and update their information and files quickly and easily. It also provides a comprehensive briefing form to make it quick and easy to create a brief. The brand can easily edit and delete all information and briefs. From an admin panel, I and my colleagues can upload keyword searches for brands to access, while also downloading briefs and brand files to send to freelance copywriters.
- 
+
 <h3>Deployment</h3>
  
 The app is deployed on Heroku and can be found here: https://wordee-app.herokuapp.com <br>
@@ -40,6 +42,7 @@ I used <strong>Heroku</strong> because it comes ready to use with very little co
 I used <strong>Firebox</strong> because like Heroku its a quick and simple setup to manage files and allows others to access those files via URL.<br>
 I used <strong>CircleCI</strong> because I wanted to know every branch was being tested.<br>
 I used <strong>React</strong> because needed the brief form to be able to react and change quickly to the user’s inputs.<br>
+I used <strong>Redux</strong> because if we were to add more pages to the app we could store the users information in the store meaning we have to do less requests to the server.<br>
  
 <p>1. HTML5 <br>
 2. SCSS & Bulma <br>
@@ -113,16 +116,24 @@ We would like to be alerted by email if a user updates their information or edit
 <br>
 <h2 name='wins'>Wins</h2>
 <h3>Tested by TRIP DRINKS</h3>
-[TRIP DRINKS](https://www.drink-trip.com/) Tested our app and found it very useful saying it was functional and well designed. TRIP is still using it and we are arranging user testing.
+[TRIP DRINKS](https://www.drink-trip.com/) Tested our app and found it very useful saying it was functional and well designed. TRIP is still using it and we are arranging user testing.<br>
+'The app looked clean, was very easy to use and didn’t glitch when we were using it. There were two sections that we interacted with. <br>
+1. The brand page allowed us to give writers a taste of our brand and helped them follow our brand tone of voice. In this section there was also a helpful guide showing the progress of our brief. <br>
+2.	The briefing section - A challenge for us is briefing writers as it’s often difficult to find good quality and consistent writers. The app allowed us to brief in different pieces of content easily and this was due to its design.' - James Edmunds TRIP DRINKS
 <br>
 <br>
-<h3>GaphQL</h3>
- 
+<h3>GraphQL</h3>
+I am in the process of converting my REST API into a GraphQL server.
 <br>
 <br>
 <h3>Redux</h3>
- 
-<br>
+This was my first full build of Redux. I didn't find it too difficult to understand the concepts and intergrate with middleware. I didn't realise it would be so easy to use the dispatch to update the input values. I really like it now though and will continue to use it.
+
+```
+onChange={({ target: { name, value } }) =>
+  dispatch(addUserInfo({ ...user, [name]: value }))
+}/>
+```
 <br>
 <h3>Design</h3>
 I'm personally very happy with the design, I think it looks good and is easy to use. Getting feedback from users like TRIP saying "it's functional and well designed"
