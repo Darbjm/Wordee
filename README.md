@@ -123,7 +123,7 @@ We would like to be alerted by email if a user updates their information or edit
 <br>
 <br>
 <h3>GraphQL</h3>
-I am in the process of converting my REST API into a GraphQL server.
+Converting the REST API to a graphQL server was challenging, but I lean't a lot and found myself using it comfortably after a while. I also used a package called Data Loader which reduced the amount of work my server had to do.
 <br>
 <br>
 <h3>Redux</h3>
