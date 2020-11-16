@@ -23,22 +23,23 @@ module.exports = buildSchema(
 
     type Brief {
       _id: ID!
-      title: String!
-      content: String!
-      length: String!
-      level: String!
-      purpose: String!
+      title: String
+      content: String
+      length: String
+      level: String
+      purpose: String
+      message: String
+      key: String
+      url: String
       prodName: String
       new: String
       keypoints: String
-      message: String!
-      url: String!
-      first_draft: String!
-      topic: String!
-      keyword1: String!
-      keyword2: String!
-      keyword3: String!
-      brand: User!
+      first_draft: String
+      topic: String
+      keyword1: String
+      keyword2: String
+      keyword3: String
+      brand: String
       createdAt: String
       updatedAt: String
     }
@@ -71,10 +72,20 @@ module.exports = buildSchema(
       summary: String
       website: String
       blog: String
-      reportSummary: String
+    }
+
+    input EditUserInput {
+      username: String!
+      email: String!
+      logo: String
+      cover: String
+      summary: String
+      website: String
+      blog: String
     }
 
     input BriefInput {
+      _id: String
       title: String!
       content: String!
       length: String!
@@ -90,7 +101,6 @@ module.exports = buildSchema(
       keyword1: String!
       keyword2: String!
       keyword3: String!
-      brand: String!
     }
 
     input DocInput {
@@ -104,17 +114,27 @@ module.exports = buildSchema(
       brand: String!
     }
 
+    input ReportInput {
+      userId: String!
+      reportSummary: String!
+    }
+
     type RootQuery {
       users: [User!]!
       singleUser: User!
       brief: [Brief!]
+      singleBrief(briefId: String!): Brief!
       login(email: String!, password: String!): AuthData!
+      backLogin(email: String!, password: String!): AuthData!
     }
 
     type RootMutation {
       createUser(userInput: UserInput): User
+      editUser(userInput: EditUserInput): User
+      editUserReport(userInput: ReportInput): User
       deleteUser(userId: ID!): User
       createBrief(briefInput: BriefInput): Brief
+      editBrief(briefInput: BriefInput): Brief
       deleteBrief(briefId: ID!): User
       createDoc(docInput: DocInput): Doc
       deleteDoc(docId: ID!): User

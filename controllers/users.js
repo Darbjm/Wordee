@@ -153,7 +153,6 @@ function docsDestory(req, res) {
 }
 
 function addReport(req, res) {
-  console.log(req)
   User
     .findOne({ _id: req.params.id })
     .then(brand => {

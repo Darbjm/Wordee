@@ -19,11 +19,55 @@ const BackEnd = () => {
   const [filterBrand, setBrandFilter] = useState('')
 
   const getData = async () => {
+    const BackEndData = {
+      query: `
+      query {
+        users {
+          _id
+          username
+          email
+          logo
+          summary
+          cover
+          website
+          blog
+          reportSummary
+          liveBriefs {
+            _id
+            title
+            content
+            length
+            level
+            purpose
+            message
+            key
+            url
+            prodName            
+            new
+            keypoints
+            first_draft
+            topic
+            keyword1
+            keyword2
+            keyword3
+            brand
+            createdAt
+            updatedAt
+          }
+          completedBriefs {
+            title
+            keyword1
+          }
+        }
+      }
+      `
+    }
     try {
-      const res = await axios.get('/api/all', {
+      const {data: {data: { users }}} = await axios.post('http://localhost:4000/graphql', BackEndData, {
         headers: { Authorization: `Bearer ${getToken()}` }
       })
-      setBrands(res.data)
+      setBrands(users)
+      console.log(users)
     } catch (err) {
       console.log(err)
     }
@@ -36,8 +80,18 @@ const BackEnd = () => {
   const submit = async e => {
     e.preventDefault()
     try {
-      console.log(report.id, report.reportSummary)
-      await axios.post(`/api/report/add/${report.id}`, report, {
+      const reportData = {
+        query: `
+        mutation {
+          editUserReport(userInput: {userId: "${report.id}", reportSummary: "${report.reportSummary}"}){
+            username
+            email
+            reportSummary
+          }
+        }
+        `
+      }
+      await axios.post('http://localhost:4000/graphql', reportData, {
         headers: { Authorization: `Bearer ${getToken()}` }
       })
       getData()
@@ -173,10 +227,6 @@ const BackEnd = () => {
                               </tr>
                             </>
                             : null}
-                          <tr>
-                            <th>Description of purpose in a sentance:</th>
-                            <td>{brief.sentance}</td>
-                          </tr>
                           <tr>
                             <th>Message the audience should leave with:</th>
                             <td>{brief.message}</td>

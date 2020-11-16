@@ -1,6 +1,15 @@
+const DataLoader = require('dataloader')
 const User = require('../../models/user')
 const Brief = require('../../models/brief')
 const { dateToString } = require('../helpers/index')
+
+const briefLoader = new DataLoader((briefIds) => {
+  return findBriefs(briefIds)
+})
+
+const userLoader = new DataLoader((userIds) => {
+  return User.find({_id: {$in: userIds}})
+})
 
 const findBriefs = async briefsIds => {
   try {
@@ -13,10 +22,21 @@ const findBriefs = async briefsIds => {
   }
 }
 
+const findUsers = async userIds => {
+  try {
+    const users = await User.find({ _id: { $in: userIds } })
+    return users.map(user => {
+      return transformUser(user)
+    })
+  } catch (err) {
+    throw err
+  }
+}
+
 const singleBrief = async briefId => {
   try {
-    const brief = await Brief.findById(briefId)
-    return transformBrief(brief)
+    const brief = await briefLoader.load(briefId.toString())
+    return brief
   } catch (err) {
     throw err
   }
@@ -25,10 +45,10 @@ const singleBrief = async briefId => {
 const transformBrief = brief => {
   try {
     return { 
-      ...brief._doc, 
+      ...brief._doc,
       createdAt: dateToString(brief._doc.createdAt),
       updatedAt: dateToString(brief._doc.updatedAt),
-      brand: findUser.bind(this, brief.brand) 
+      brand: () => userLoader.load(brief.brand.toString()) 
     }
   } catch (err) {
     throw err
@@ -37,42 +57,27 @@ const transformBrief = brief => {
 
 const findUser = async userId => {
   try {
-    const user = await User.findById(userId)
+    const user = await userLoader.load(userId.toString())
     return transformUser(user)
   } catch (err) {
     throw err
   }
 }
 
-const transformUser = user => {
+const transformUser = (brand) => {
+  console.log(brand)
   return {
-    ...user._doc,
-    createdAt: dateToString(user._doc.createdAt),
-    updatedAt: dateToString(user._doc.updatedAt),
+    ...brand._doc,
+    createdAt: dateToString(brand._doc.createdAt),
+    updatedAt: dateToString(brand._doc.updatedAt),
     password: null,
-    liveBriefs: findBriefs.bind(this, user._doc.liveBriefs)
   }
 }
 
-const createUser = args => {
-  const user = new User({
-    username: args.username,
-    email: args.email,
-    password: args.password,
-    passwordConfirmation: args.passwordConfirmation,
-    logo: args.logo,
-    cover: args.cover,
-    summary: args.summary,
-    website: args.website,
-    blog: args.blog,
-    reportSummary: args.reportSummary,
-  })
-  return user
-}
 
 exports.findUser = findUser
 exports.transformBrief = transformBrief
 exports.singleBrief = singleBrief
 exports.findBriefs = findBriefs
 exports.transformUser = transformUser
-exports.createUser = createUser
+exports.findUsers = findUsers
