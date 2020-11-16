@@ -29,12 +29,50 @@ const Profile = ({
 
   /**Get profile data */
   const getData = async () => {
+    // docs {
+    //   _id
+    //   name
+    //   url
+    // }
+    // image {
+    //   _id
+    //   name
+    // }
+    const reqBody = {
+      query: `
+        query {
+          singleUser {
+            _id
+            username
+            email
+            logo
+            summary
+            cover
+            website
+            blog
+            reportSummary
+            liveBriefs {
+              _id
+              title
+              keyword1
+            }
+            completedBriefs {
+              _id
+              title
+              keyword1
+            }
+          }
+        }
+      `
+    }
     try {
-      const res = await axios.get(`/api/brands/${id}`, {
+      const {
+        data: { data: { singleUser } }
+      } = await axios.post('http://localhost:4000/graphql', reqBody, {
         headers: { Authorization: `Bearer ${getToken()}` }
       })
       // setUser(res.data)
-      dispatch(addUserInfo(res.data))
+      dispatch(addUserInfo(singleUser))
     } catch (err) {
       console.log(err)
     }
@@ -44,19 +82,32 @@ const Profile = ({
   const handleSubmit = async e => {
     e.preventDefault()
     try {
-      // currently inefficient because it sends up data that may not be changed
+      if (!user.username || !user.email) return
+      if (!user.blog) user.blog = ''
+      if (!user.summary) user.summary = ''
+      if (!user.website) user.website = ''
       const newData = {
-        username: user.username,
-        email: user.email,
-        summary: user.summary,
-        blog: user.blog,
-        website: user.website,
-        cover: user.cover
+      query:`
+      mutation {
+        editUser(userInput: {
+          email: "${user.email}", 
+          username: "${user.username}",
+          blog: "${user.blog}",
+          website: "${user.website}",
+          summary: "${user.summary}"
+        }){
+          email
+          username
+          blog
+          website
+          summary
+        }
       }
-      await axios
-        .put(`/api/brands/${getUser()}`, newData, {
-          headers: { Authorization: `Bearer ${getToken()}` }
-        })
+      `
+    }
+      await axios.post('http://localhost:4000/graphql', newData, {
+        headers: { Authorization: `Bearer ${getToken()}` }
+    })
       setSuccess(!success)
       setTimeout(() => {
         setSuccess(false)
@@ -69,9 +120,18 @@ const Profile = ({
   /**Delete brand */
   const deleteBrand = async e => {
     e.preventDefault()
+    const deleteData = {
+      query:`
+      mutation {
+        deleteUser(userId: "${user._id}"){
+          email
+          username
+        }
+      }
+      `
+    }
     try {
-      await axios
-        .delete(`/api/brands/${user.id}`, { headers: { Authorization: `Bearer ${getToken()}` }
+      await axios.post('http://localhost:4000/graphql', deleteData, { headers: { Authorization: `Bearer ${getToken()}` }
         })
       logout()
       history.push('/')

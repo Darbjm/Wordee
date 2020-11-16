@@ -6,23 +6,34 @@ import logo from '../../styles/images/Wordee.svg'
 
 /**Component to render login for backend */
 const BackEndLogin = ({ history }) => {
-  const [data, setData] = useState({})
+  const [loginData, setLoginData] = useState({})
   const [error, setError] = useState('')
 
   /**Change data in state */
   const handleChange = ({ target: { name, value } }) =>
-    setData({ ...data, [name]: value })
+    setLoginData({ ...loginData, [name]: value })
 
   /**Submit data for login on backend */
   const handleSubmit = async e => {
     e.preventDefault()
+    const reqBody = {
+      query: `
+      query {
+        backLogin(email: "${loginData.email}", password: "${loginData.password}") {
+          userId
+          token
+        }
+      }
+      `
+    }
     try {
       const {
-        data: { token }
-      } = await axios.post('/api/admin/login', data)
-      setToken(token)
+        data: { data: {backLogin} }
+      } = await axios.post('http://localhost:4000/graphql', reqBody)
+      setToken(backLogin.token)
       history.push('/backendtesting5702918301')
     } catch (err) {
+      console.log(err)
       setError('Invalid Credentials')
     }
   }

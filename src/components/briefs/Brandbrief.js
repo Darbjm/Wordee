@@ -44,8 +44,34 @@ const Brandbrief = ({ history }) => {
         }
       })
       setErrors(newError)
+      const briefData = {
+        query: `
+        mutation {
+          createBrief(briefInput: {
+            title: "${data.title}",
+            content: "${data.content}",
+            length: "${data.length}",
+            level: "${data.level}",
+            purpose: "${data.purpose}",
+            prodName: "${data.prodName}",
+            new: "${data.new}",
+            keypoints: "${data.keypoints}",
+            message: "${data.message}",
+            url: "${data.url}",
+            first_draft: "${data.first_draft}",
+            topic: "${data.topic}",
+            keyword1: "${data.keyword1}",
+            keyword2: "${data.keyword2}",
+            keyword3: "${data.keyword3}",
+          }){
+            _id
+            title
+          }
+        }
+        `
+      }
       if (Object.keys(newError).length > 0) return
-      await axios.post('/api/briefs/add', data, {
+      await axios.post('http://localhost:4000/graphql', briefData, {
         headers: { Authorization: `Bearer ${getToken()}` }
       })
       history.push(`/profile/${getUser()}`)
@@ -100,8 +126,5 @@ const Brandbrief = ({ history }) => {
   )
 }
 
-Brandbrief.propTypes = {
-  history: propTypes.object
-}
 
 export default Brandbrief

@@ -18,12 +18,36 @@ const BrandEditBrief = ({
 
   useEffect(() => {
     const getData = async () => {
+      const briefData = {
+        query: `
+        query {
+        singleBrief(briefId: "${id}"){
+          _id
+          title
+          content
+          length
+          level
+          purpose
+          prodName
+          new
+          keypoints
+          message
+          url
+          first_draft
+          topic
+          keyword1
+          keyword2
+          keyword3
+        }
+      }
+        `
+      }
       try {
-        const res = await axios.get(`/api/briefs/${id}`, {
+        const { data: { data: { singleBrief }}} = await axios.post('http://localhost:4000/graphql', briefData, {
           headers: { Authorization: `Bearer ${getToken()}` }
         })
-        if (res.data.purpose === 'Sell a product or service') setExtraQuestions(true)
-        setData(res.data)
+        if (singleBrief.purpose === 'Sell a product or service') setExtraQuestions(true)
+        setData(singleBrief)
       } catch (err) {
         console.log(err)
       }
@@ -34,9 +58,17 @@ const BrandEditBrief = ({
   /**Upload Brief */
   const handleSubmit = async e => {
     e.preventDefault()
+    const noExtraQuestions = {
+      ...data
+    }
+    if (noExtraQuestions.purpose !== 'Sell a product or service') {
+      delete noExtraQuestions['prodName']
+      delete noExtraQuestions['new']
+      delete noExtraQuestions['keypoints']
+    }
     try {
-      const keys = Object.keys(data)
-      const vals = Object.values(data)
+      const keys = Object.keys(noExtraQuestions)
+      const vals = Object.values(noExtraQuestions)
       const newError = {}
       vals.forEach((value, i) => {
         if (value === '') {
@@ -45,7 +77,34 @@ const BrandEditBrief = ({
       })
       setErrors(newError)
       if (Object.keys(newError).length > 0) return
-      await axios.put(`/api/briefs/${id}`, data, {
+      const briefData = {
+        query: `
+        mutation {
+          editBrief(briefInput: {
+            _id: "${id}",
+            title: "${data.title}",
+            content: "${data.content}",
+            length: "${data.length}",
+            level: "${data.level}",
+            purpose: "${data.purpose}",
+            prodName: "${data.prodName}",
+            new: "${data.new}",
+            keypoints: "${data.keypoints}",
+            message: "${data.message}",
+            url: "${data.url}",
+            first_draft: "${data.first_draft}",
+            topic: "${data.topic}",
+            keyword1: "${data.keyword1}",
+            keyword2: "${data.keyword2}",
+            keyword3: "${data.keyword3}",
+          }){
+            _id
+            title
+          }
+        }
+        `
+      }
+      await axios.post('http://localhost:4000/graphql', briefData, {
         headers: { Authorization: `Bearer ${getToken()}` }
       })
       history.push(`/profile/${getUser()}`)
@@ -57,11 +116,20 @@ const BrandEditBrief = ({
   /**Delete Brief */
   const remove = async e => {
     e.preventDefault()
+    const deleteBrief = {
+      query: `
+      mutation {
+        deleteBrief(briefId: "${id}"){
+          _id
+        }
+      }
+      `
+    }
     try {
-      await axios.delete(`/api/briefs/${id}`, {
+      await axios.post('http://localhost:4000/graphql', deleteBrief, {
         headers: { Authorization: `Bearer ${getToken()}` }
       })
-      history.push(`/profile/${getUser()}`)
+      // history.push(`/profile/${getUser()}`)
     } catch (err) {
       console.log(err.response)
     }
@@ -72,7 +140,9 @@ const BrandEditBrief = ({
     event.persist()
     const { name, value } = event.target
     if (name === 'purpose') setExtraQuestions(false)
-    if (value === 'Sell a product or service') setExtraQuestions(true)
+    if (value === 'Sell a product or service') {
+      setExtraQuestions(true)
+    }
     setData({ ...data, [name]: value })
     setErrors({})
   }
